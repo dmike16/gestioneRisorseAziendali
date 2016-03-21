@@ -6,9 +6,17 @@ public class Anagrafica {
 	@NotNull
 	@Digits(integer=6,fraction=0)
 	private int idAnagrafica;
-	private int idAnagraficaCandidato;
-	private int idRisorsa;
+	
 	@NotNull
+	@Digits(integer=6,fraction=0)
+	private int idAnagraficaCandidato;
+	
+	@NotNull
+	@Digits(integer=6,fraction=0)
+	private int idRisorsa;
+	
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idIndirizzo;
 	@NotNull
 	private String luogoNascita;
