@@ -1,11 +1,17 @@
 package domain.anagrafica;
-
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 public class LuogoData {
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idLuogoData;
+	
 	private LocalDate dataInizio;
 	private LocalDate dataFine;
+	
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idAzienda;
 	public LuogoData() {
 		super();
