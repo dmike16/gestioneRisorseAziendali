@@ -1,8 +1,12 @@
 package domain.anagrafica;
+import javax.validation.constraints.*;
 
 public class ConoscenzaLingua {
-
+	
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idConoscenzaLingua;
+	
 	private String scritta;
 	private String parlata;
 	private String comprensione;
