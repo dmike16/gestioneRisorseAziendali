@@ -1,11 +1,22 @@
 package domain.anagrafica;
-
+import javax.validation.constraints.*;
 public class Formazione {
 	
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idFormazione;
+	
+	@NotNull
 	private String titoloStudio;
+	
+	@NotNull
 	private String descrizione;
+	
+	@NotNull
 	private String votazione;
+	
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idLuogoData;
 	
 	
