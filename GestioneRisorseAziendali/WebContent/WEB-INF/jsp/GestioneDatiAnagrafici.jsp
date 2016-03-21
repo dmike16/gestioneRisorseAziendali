@@ -39,7 +39,7 @@
 
                         <a href="InserimentoDatiAnagrafici.action">
                             <h2>Inserimento Dati Anagrafici</h2>
-                            <input type="image" src="../img/GestioneDatiAnagrafici_form_input.png" width="15%" class="inserimento" style="cursor:pointer" />
+                            <input type="image" src="../img/GestioneDatiAnagrafici_form_input.png" width="10%" class="inserimento" style="cursor:pointer" />
                         </a>
 
 
@@ -50,7 +50,7 @@
 
                         <a href="RicercaDatiAnagrafici.action">
                             <h2>Ricerca Dati Anagrafici</h2>
-                            <input type="image" src="../img/GestioneDatiAnagrafici_form_search.png" width="15%" class="ricerca" style="cursor:pointer" />
+                            <input type="image" src="../img/GestioneDatiAnagrafici_form_search.png" width="10%" class="ricerca" style="cursor:pointer" />
                         </a>
 
                     </div>
