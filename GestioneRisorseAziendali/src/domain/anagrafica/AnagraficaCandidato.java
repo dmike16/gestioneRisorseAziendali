@@ -1,15 +1,33 @@
 package domain.anagrafica;
-
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 public class AnagraficaCandidato {
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idAnagraficaCandidato;
+	
+	@NotNull
 	private int idIndirizzo;
+	
+	@NotNull
 	private String nome;
+	
+	@NotNull
 	private String cognome;
+	
+	@NotNull
+	@Past
 	private LocalDate dataNascita;
+	
+	@NotNull
+	@Size(min=10,max=10)
 	private String cellulare;
+	
+	@NotNull
 	private String email;
+	
+	@NotNull
 	private String titoloStudio;
 	public AnagraficaCandidato() {
 		super();
