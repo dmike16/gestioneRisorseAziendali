@@ -5,8 +5,8 @@ import javax.validation.constraints.Size;
 
 public class CorsoHistory {
 	
-	@Size (min=6, max=7)
-	private int idCorso;
+	@Size(min = 6, max=7)
+	private String idCorso;
 	
 	@NotNull
 	private int idRisorsa;
@@ -17,12 +17,12 @@ public class CorsoHistory {
 	}
 
 
-	public int getIdCorso() {
+	public String getIdCorso() {
 		return idCorso;
 	}
 
 
-	public void setIdCorso(int idCorso) {
+	public void setIdCorso(String idCorso) {
 		this.idCorso = idCorso;
 	}
 

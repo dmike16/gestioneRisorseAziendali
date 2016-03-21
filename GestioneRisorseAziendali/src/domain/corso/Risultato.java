@@ -1,12 +1,14 @@
 package domain.corso;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class Risultato {
 	
-	@NotNull
+	@NotNull @Size(min=6, max=7)
 	private String idModulo;
-	@NotNull
+	@NotNull @Digits(integer =6, fraction = 0)
 	private int idRisorsa;
 	
 	private String valutazione;
