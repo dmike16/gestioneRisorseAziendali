@@ -1,14 +1,24 @@
 package domain.anagrafica;
+import javax.validation.constraints.*;
 
 public class Anagrafica {
+	
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idAnagrafica;
 	private int idAnagraficaCandidato;
-	private String idRisorsa;
+	private int idRisorsa;
+	@NotNull
 	private int idIndirizzo;
+	@NotNull
 	private String luogoNascita;
+	@NotNull
 	private String telefono;
+	@NotNull
 	private String codiceFiscale;
+	@NotNull
 	private String nazionalita;
+	@NotNull
 	private String sesso;
 	
 	
@@ -28,10 +38,10 @@ public class Anagrafica {
 	public void setIdAnagraficaCandidato(int idAnagraficaCandidato) {
 		this.idAnagraficaCandidato = idAnagraficaCandidato;
 	}
-	public String getIdRisorsa() {
+	public int getIdRisorsa() {
 		return idRisorsa;
 	}
-	public void setIdRisorsa(String idRisorsa) {
+	public void setIdRisorsa(int idRisorsa) {
 		this.idRisorsa = idRisorsa;
 	}
 	public int getIdIndirizzo() {
