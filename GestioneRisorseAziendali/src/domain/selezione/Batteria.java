@@ -1,13 +1,17 @@
 package domain.selezione;
+import javax.validation.constraints.NotNull;
 
 public class Batteria {
-private String codiceBatteria;
+	
+@NotNull
+private int codiceBatteria;
+
 private String tipo;
 
-public String getCodiceBatteria() {
+public int getCodiceBatteria() {
 	return codiceBatteria;
 }
-public void setCodiceBatteria(String codiceBatteria) {
+public void setCodiceBatteria(int codiceBatteria) {
 	this.codiceBatteria = codiceBatteria;
 }
 public String getTipo() {
