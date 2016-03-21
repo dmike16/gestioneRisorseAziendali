@@ -1,25 +1,20 @@
 package domain.anagrafica;
-import javax.validation.constraints.*;
+
+import javax.validation.constraints.NotNull;
+
 public class Formazione {
-	
 	@NotNull
-	@Digits(integer=6,fraction=0)
 	private int idFormazione;
-	
 	@NotNull
 	private String titoloStudio;
-	
 	@NotNull
 	private String descrizione;
-	
 	@NotNull
 	private String votazione;
-	
 	@NotNull
-	@Digits(integer=6,fraction=0)
 	private int idLuogoData;
-	
-	
+
+
 	public int getIdFormazione() {
 		return idFormazione;
 	}
@@ -50,6 +45,6 @@ public class Formazione {
 	public void setIdLuogoData(int idLuogoData) {
 		this.idLuogoData = idLuogoData;
 	}
-	
-	
+
+
 }

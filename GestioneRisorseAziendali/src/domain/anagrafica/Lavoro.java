@@ -1,22 +1,16 @@
 package domain.anagrafica;
-import javax.validation.constraints.*;
+
+import javax.validation.constraints.NotNull;
 
 public class Lavoro {
-	
 	@NotNull
-	@Digits(integer=6,fraction=0)
 	private int idLavoro;
-	
 	@NotNull
 	private String ambito;
-	
 	@NotNull
 	private String impiego;
-	
 	@NotNull
-	@Digits(integer=6,fraction=0)
 	private int idLuogoData;
-	
 	@NotNull
 	private int stipendio;
 	

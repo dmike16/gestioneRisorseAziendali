@@ -1,14 +1,16 @@
 package domain.anagrafica;
-import javax.validation.constraints.*;
+
+import javax.validation.constraints.NotNull;
+
 public class CV {
-	
 	@NotNull
-	@Digits(integer=6,fraction=0)
 	private int idCV;
+	
 	private int idFormazione;
 	private int idLavoro;
 	private String urlImage;
 	private int idLingua;
+	
 	public int getIdCV() {
 		return idCV;
 	}

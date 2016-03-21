@@ -1,10 +1,9 @@
 package domain.anagrafica;
-import javax.validation.constraints.*;
+
+import javax.validation.constraints.NotNull;
 
 public class ConoscenzaLingua {
-	
 	@NotNull
-	@Digits(integer=6,fraction=0)
 	private int idConoscenzaLingua;
 	
 	private String scritta;
