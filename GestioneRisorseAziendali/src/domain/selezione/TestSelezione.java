@@ -2,6 +2,7 @@ package domain.selezione;
 
 import java.util.Date;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -16,6 +17,7 @@ public class TestSelezione {
 	
 	private int punteggio;
 	
+	@Digits(integer=6, fraction=0)
 	private int idSelezione;
 	
 	public String getIdTest() {
