@@ -1,17 +1,19 @@
 package domain.selezione;
+
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 public class Colloquio {
+
 	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idColloquio;
-	
 	private float valutazioneFinale;
 	private String osservazioni;
 	private String tipologia;
-	
 	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idSelezione;
-	
 	private String potenzialita;
 	private String profiloCaretteriale;
 	public int getIdColloquio() {

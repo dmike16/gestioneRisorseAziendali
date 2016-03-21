@@ -1,26 +1,21 @@
 package domain.anagrafica;
-import javax.validation.constraints.*;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class Indirizzo {
-	
+
 	@NotNull
-	@Digits(integer=6,fraction=0)
 	private int idIndirizzo;
-	
 	@NotNull
 	private String citta;
-	
 	@NotNull
 	@Size(min=5,max=5)
 	private String cap;
-	
 	@NotNull
 	private String via;
-	private String nCivico;
-	public Indirizzo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private int nCivico;
+	
 	public int getIdIndirizzo() {
 		return idIndirizzo;
 	}
@@ -45,12 +40,12 @@ public class Indirizzo {
 	public void setVia(String via) {
 		this.via = via;
 	}
-	public String getnCivico() {
+	public int getnCivico() {
 		return nCivico;
 	}
-	public void setnCivico(String nCivico) {
+	public void setnCivico(int nCivico) {
 		this.nCivico = nCivico;
 	}
 	
-
+	
 }
