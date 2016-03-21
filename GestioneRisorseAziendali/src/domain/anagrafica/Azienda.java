@@ -1,10 +1,18 @@
 package domain.anagrafica;
+import javax.validation.constraints.*;
 
 public class Azienda {
-
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idAzienda;
+	
+	@NotNull
 	private String nome;
+	
+	@NotNull
 	private String tipoAzienda;
+	
+	@NotNull
 	private String settore;
 	private int idSede;
 	
