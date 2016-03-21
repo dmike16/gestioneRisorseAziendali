@@ -10,7 +10,7 @@ public class Corso {
 	private Date dataFine;
 	private String azienda;
 	private char superamento;
-	private String idCompetenza;
+	private int idCompetenza;
 	
 	
 	public String getIdCorso() {
@@ -49,10 +49,10 @@ public class Corso {
 	public void setSuperamento(char superamento) {
 		this.superamento = superamento;
 	}
-	public String getIdCompetenza() {
+	public int getIdCompetenza() {
 		return idCompetenza;
 	}
-	public void setIdCompetenza(String idCompetenza) {
+	public void setIdCompetenza(int idCompetenza) {
 		this.idCompetenza = idCompetenza;
 	}
 	
