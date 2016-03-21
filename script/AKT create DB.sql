@@ -93,6 +93,13 @@ create sequence sequenceCandidato
   increment by 1
   nocache
   nocycle;
+
+  create sequence sequenceBatteria
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+
 create table conoscenzaLingua(
 idConoscenzaLingua number(3) primary key,
 scritta varchar2(2),
@@ -209,7 +216,7 @@ create table esito
 );
 
 create table batteria (
-codicebatteria char(7),
+codicebatteria number(3),
 tipo varchar2(30) not null,
 primary key (codicebatteria)
 );
@@ -224,7 +231,7 @@ create table selezione
 
 create table testselezione (
 idtest char(7) primary key,
-codicebattera char(7),
+codicebattera number(3),
 punteggio number(3),
 idselezione number(3),
 foreign key (idselezione) references selezione(idselezione)
