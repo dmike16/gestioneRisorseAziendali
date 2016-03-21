@@ -1,9 +1,20 @@
 package domain.anagrafica;
+import javax.validation.constraints.*;
 
 public class Indirizzo {
+	
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idIndirizzo;
+	
+	@NotNull
 	private String citta;
+	
+	@NotNull
+	@Size(min=5,max=5)
 	private String cap;
+	
+	@NotNull
 	private String via;
 	private String nCivico;
 	public Indirizzo() {
