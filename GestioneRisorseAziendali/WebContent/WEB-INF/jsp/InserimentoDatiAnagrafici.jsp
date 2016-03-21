@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Aggiungi dati anagrafici</title>
-<style type="text/css">@import url("<c:url value="/css/main.css"/>");</style>
+<style type="text/css">@import url("<c:url value="/css/InserimentoDatiAnagrafici.css"/>");</style>
 </head>
 <body>
 
