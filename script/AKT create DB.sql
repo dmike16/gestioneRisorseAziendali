@@ -198,13 +198,13 @@ CONSTRAINT fk_idCorso FOREIGN KEY (idCorso) REFERENCES corso(idCorso));
 
 CREATE TABLE risorsa(
 	idRisorsa number(6) primary key not null,
-	idTirocinio varchar(5),
+	idTirocinio number(6),
 	foreign key(idTirocinio) references risorsa(idRisorsa)
 );
 
 CREATE TABLE CorsoHistory(
 	idcorso		CHAR(7),
-	idrisorsa	VARCHAR2(3),
+	idrisorsa	number(6),
 	FOREIGN KEY(idcorso) REFERENCES Corso(idCorso),
 	FOREIGN KEY(idrisorsa) REFERENCES Risorsa(idRisorsa),
 	PRIMARY KEY(idcorso,idrisorsa)
@@ -212,7 +212,7 @@ CREATE TABLE CorsoHistory(
 
 CREATE TABLE risultato (
 	idModulo char(7) not null,
-	idRisorsa varchar2(5) not null,
+	idRisorsa number(6) not null,
   valutazione varchar2(250),
   esito varchar2(250),
   primary key(idModulo,idRisorsa),
@@ -221,9 +221,9 @@ CREATE TABLE risultato (
 );
 
 CREATE TABLE Candidato(
-	idcandidato		VARCHAR2(5),
+	idcandidato		number(6),
 	idanagrafica	NUMBER(6),
-	idrisorsa 		VARCHAR2(3),
+	idrisorsa 		number(6),
 	idcv			NUMBER(6),
 	CONSTRAINT idprimary PRIMARY KEY(idcandidato),
 	CONSTRAINT	refrisorsa FOREIGN KEY(idrisorsa) REFERENCES Risorsa(idRisorsa),
@@ -233,7 +233,7 @@ CREATE TABLE Candidato(
 
 create table partecipa
 (
-  idCandidato varchar2(5),
+  idCandidato number(6),
   idSelezione number(3),
   primary key (idCandidato,idSelezione),
   foreign key (idCandidato) references candidato(idCandidato),
