@@ -2,15 +2,15 @@ package domain.corso;
 
 public class Competenza {
 	
-	private String idCompetenza;
+	private int idCompetenza;
 	private String settore;
 	private String specializzazione;
 	
 	
-	public String getIdCompetenza() {
+	public int getIdCompetenza() {
 		return idCompetenza;
 	}
-	public void setIdCompetenza(String idCompetenza) {
+	public void setIdCompetenza(int idCompetenza) {
 		this.idCompetenza = idCompetenza;
 	}
 	public String getSettore() {
