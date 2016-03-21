@@ -1,6 +1,7 @@
 package domain.anagrafica;
-
+import javax.validation.constraints.*;
 public class Nazionalita {
+	
 	private int idNazionalita;
 	private String siglaNazione;
 	private String nomeNazione;
