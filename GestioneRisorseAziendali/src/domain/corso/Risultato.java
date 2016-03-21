@@ -1,16 +1,9 @@
 package domain.corso;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 public class Risultato {
 	
-	@NotNull @Size(min=6, max=7)
 	private String idModulo;
-	@NotNull @Digits(integer =6, fraction = 0)
-	private int idRisorsa;
-	
+	private String idRisorsa;
 	private String valutazione;
 	private String esito;
 	
@@ -30,12 +23,12 @@ public class Risultato {
 	}
 
 
-	public int getIdRisorsa() {
+	public String getIdRisorsa() {
 		return idRisorsa;
 	}
 
 
-	public void setIdRisorsa(int idRisorsa) {
+	public void setIdRisorsa(String idRisorsa) {
 		this.idRisorsa = idRisorsa;
 	}
 

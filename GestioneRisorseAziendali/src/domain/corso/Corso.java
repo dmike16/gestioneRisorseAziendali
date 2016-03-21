@@ -2,26 +2,14 @@ package domain.corso;
 
 import java.sql.Date;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 public class Corso {
 	
-	
-	@Size(min=6, max=7)
 	private String idCorso;
-	
-	@NotNull
 	private String titoloCorso;
-	
-    private Date dataInizio;
+	private Date dataInizio;
 	private Date dataFine;
-	
-	@NotNull
 	private String azienda;
 	private char superamento;
-	
-	@NotNull
 	private int idCompetenza;
 	
 	

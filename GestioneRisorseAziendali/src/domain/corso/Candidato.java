@@ -1,16 +1,22 @@
-package corso;
+package domain.corso;
+
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 public class Candidato {
-	private String idCandidato;
+	@NotNull
+	@Digits(integer=6 , fraction=0)
+	private int idCandidato;
+	@NotNull
 	private int idAnagrafica;
-	private String idRisorsa;
+	private int idRisorsa;
 	private int idCv;
 	
 	
-	public String getIdCandidato() {
+	public int getIdCandidato() {
 		return idCandidato;
 	}
-	public void setIdCandidato(String idCandidato) {
+	public void setIdCandidato(int idCandidato) {
 		this.idCandidato = idCandidato;
 	}
 	public int getIdAnagrafica() {
@@ -19,10 +25,10 @@ public class Candidato {
 	public void setIdAnagrafica(int idAnagrafica) {
 		this.idAnagrafica = idAnagrafica;
 	}
-	public String getIdRisorsa() {
+	public int getIdRisorsa() {
 		return idRisorsa;
 	}
-	public void setIdRisorsa(String idRisorsa) {
+	public void setIdRisorsa(int idRisorsa) {
 		this.idRisorsa = idRisorsa;
 	}
 	public int getIdCv() {

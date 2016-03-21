@@ -1,13 +1,8 @@
 package domain.corso;
 
-import javax.validation.constraints.NotNull;
-
 public class Competenza {
 	
-	@NotNull
 	private int idCompetenza;
-	
-	
 	private String settore;
 	private String specializzazione;
 	

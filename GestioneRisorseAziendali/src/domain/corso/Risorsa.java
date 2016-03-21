@@ -1,18 +1,23 @@
 package domain.corso;
 
+import javax.validation.constraints.NotNull;
+
 public class Risorsa {
+	@NotNull
 	private int idRisorsa;
-	private String idTirocinio;
+	
+	private int idTirocinio;
+	
 	public int getIdRisorsa() {
 		return idRisorsa;
 	}
 	public void setIdRisorsa(int idRisorsa) {
 		this.idRisorsa = idRisorsa;
 	}
-	public String getIdTirocinio() {
+	public int getIdTirocinio() {
 		return idTirocinio;
 	}
-	public void setIdTirocinio(String idTirocinio) {
+	public void setIdTirocinio(int idTirocinio) {
 		this.idTirocinio = idTirocinio;
 	}
 	
