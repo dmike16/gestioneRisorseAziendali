@@ -173,7 +173,7 @@ create table colloquio
 );
 
 CREATE TABLE competenza(
-  idCompetenza varchar2(3) NOT NULL PRIMARY KEY,
+  idCompetenza number(6) NOT NULL PRIMARY KEY,
   settore varchar2(20) NOT NULL,
   specializzazione varchar2(30)
 );
@@ -197,7 +197,7 @@ dataFine date NOT NULL,
 CONSTRAINT fk_idCorso FOREIGN KEY (idCorso) REFERENCES corso(idCorso));
 
 CREATE TABLE risorsa(
-	idRisorsa varchar(3) primary key not null,
+	idRisorsa number(6) primary key not null,
 	idTirocinio varchar(5),
 	foreign key(idTirocinio) references risorsa(idRisorsa)
 );
