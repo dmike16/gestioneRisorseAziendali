@@ -1,8 +1,15 @@
 package domain.anagrafica;
+import javax.validation.constraints.*;
 
 public class Sede {
+	
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idSede;
 	private String tipoSede;
+
+	@NotNull
+	@Digits(integer=6,fraction=0)
 	private int idIndirizzo;
 	public Sede() {
 		super();
