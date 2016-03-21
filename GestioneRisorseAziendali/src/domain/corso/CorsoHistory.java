@@ -1,9 +1,15 @@
 package domain.corso;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class CorsoHistory {
 	
-	private String idCorso;
-	private String idRisorsa;
+	@Size (min=6, max=7)
+	private int idCorso;
+	
+	@NotNull
+	private int idRisorsa;
 	
 	
 	public CorsoHistory() {
@@ -11,22 +17,22 @@ public class CorsoHistory {
 	}
 
 
-	public String getIdCorso() {
+	public int getIdCorso() {
 		return idCorso;
 	}
 
 
-	public void setIdCorso(String idCorso) {
+	public void setIdCorso(int idCorso) {
 		this.idCorso = idCorso;
 	}
 
 
-	public String getIdRisorsa() {
+	public int getIdRisorsa() {
 		return idRisorsa;
 	}
 
 
-	public void setIdRisorsa(String idRisorsa) {
+	public void setIdRisorsa(int idRisorsa) {
 		this.idRisorsa = idRisorsa;
 	}
 	
