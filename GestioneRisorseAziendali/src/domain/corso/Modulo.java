@@ -3,13 +3,13 @@ package domain.corso;
 import java.time.LocalDate;
 
 public class Modulo {
-	private String idCorso;
+	private int idCorso;
 	private LocalDate dataInizio;
 	private LocalDate dataFine;
-	public String getIdCorso() {
+	public int getIdCorso() {
 		return idCorso;
 	}
-	public void setIdCorso(String idCorso) {
+	public void setIdCorso(int idCorso) {
 		this.idCorso = idCorso;
 	}
 	public LocalDate getDataInizio() {

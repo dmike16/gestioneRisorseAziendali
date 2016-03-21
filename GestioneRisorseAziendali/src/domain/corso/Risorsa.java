@@ -1,12 +1,12 @@
 package domain.corso;
 
 public class Risorsa {
-	private String idRisorsa;
+	private int idRisorsa;
 	private String idTirocinio;
-	public String getIdRisorsa() {
+	public int getIdRisorsa() {
 		return idRisorsa;
 	}
-	public void setIdRisorsa(String idRisorsa) {
+	public void setIdRisorsa(int idRisorsa) {
 		this.idRisorsa = idRisorsa;
 	}
 	public String getIdTirocinio() {
