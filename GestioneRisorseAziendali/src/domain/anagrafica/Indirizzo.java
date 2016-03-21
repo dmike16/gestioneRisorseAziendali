@@ -1,12 +1,15 @@
 package domain.anagrafica;
 
 public class Indirizzo {
-
 	private int idIndirizzo;
 	private String citta;
-	private int cap;
+	private String cap;
 	private String via;
-	private int nCivico;
+	private String nCivico;
+	public Indirizzo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getIdIndirizzo() {
 		return idIndirizzo;
 	}
@@ -19,10 +22,10 @@ public class Indirizzo {
 	public void setCitta(String citta) {
 		this.citta = citta;
 	}
-	public int getCap() {
+	public String getCap() {
 		return cap;
 	}
-	public void setCap(int cap) {
+	public void setCap(String cap) {
 		this.cap = cap;
 	}
 	public String getVia() {
@@ -31,12 +34,12 @@ public class Indirizzo {
 	public void setVia(String via) {
 		this.via = via;
 	}
-	public int getnCivico() {
+	public String getnCivico() {
 		return nCivico;
 	}
-	public void setnCivico(int nCivico) {
+	public void setnCivico(String nCivico) {
 		this.nCivico = nCivico;
 	}
 	
-	
+
 }
