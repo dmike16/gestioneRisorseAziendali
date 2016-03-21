@@ -9,16 +9,13 @@ import javax.validation.constraints.Size;
 public class TestSelezione {
 	
 	@NotNull
+	@Size(min=6, max=7)
 	private String idTest;
 	
-	@NotNull
-	@Size(min=7, max=7)
-	private String codiceBatteria;
-	
+	private int codiceBatteria;
 	
 	private int punteggio;
 	
-	@NotNull
 	private int idSelezione;
 	
 	public String getIdTest() {
@@ -29,11 +26,11 @@ public class TestSelezione {
 		this.idTest = idTest;
 	}
 	
-	public String getCodiceBatteria() {
+	public int getCodiceBatteria() {
 		return codiceBatteria;
 	}
 	
-	public void setCodiceBatteria(String codiceBatteria) {
+	public void setCodiceBatteria(int codiceBatteria) {
 		this.codiceBatteria = codiceBatteria;
 	}
 	
