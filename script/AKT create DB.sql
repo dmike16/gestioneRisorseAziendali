@@ -15,6 +15,19 @@ create sequence sequenceSelezione
   increment by 1
   nocache
   nocycle;
+
+create sequence sequenceConoscenzaLingua
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+  
+create sequence sequenceIndirizzo
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+
   
 create table conoscenzaLingua(
 idConoscenzaLingua number(3) primary key,
