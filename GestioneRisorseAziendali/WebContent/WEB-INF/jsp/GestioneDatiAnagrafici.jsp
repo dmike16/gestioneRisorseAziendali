@@ -29,6 +29,11 @@
                 <div class="row">
                     <h1>Gestione Dati Anagrafici</h1>
                 </div>
+                <c:forEach items="${alerts}" var="alert">
+                    <tr>
+                        <td>${alert}</td>
+                    </tr>
+                </c:forEach>
                 <div class="row">
                     <div class="col-xs-6 col-md-6">
 
