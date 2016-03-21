@@ -1,20 +1,3 @@
-create sequence sequenceColloquio
-  start with 1
-  increment by 1
-  nocache
-  nocycle;
-  
-create sequence sequenceEsito
-  start with 1
-  increment by 1
-  nocache
-  nocycle;
-  
-create sequence sequenceSelezione
-  start with 1
-  increment by 1
-  nocache
-  nocycle;
 
 create sequence sequenceConoscenzaLingua
   start with 1
@@ -27,8 +10,89 @@ create sequence sequenceIndirizzo
   increment by 1
   nocache
   nocycle;
-
   
+create sequence sequenceLingua
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+  
+create sequence sequenceSede
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+  
+create sequence sequenceAzienda
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+create sequence sequenceLuogoData
+  start with 1
+  increment by 1
+  nocache
+  nocycle;  
+create sequence sequenceFormazione
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+create sequence sequenceLavoro
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+create sequence sequenceCV
+  start with 1
+  increment by 1
+  nocache
+  nocycle;  
+create sequence sequenceNazionalita
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+create sequence sequenceAnagraficaCandidato
+  start with 1
+  increment by 1
+  nocache
+  nocycle;  
+create sequence sequenceAnagrafica
+  start with 1
+  increment by 1
+  nocache
+  nocycle;  
+create sequence sequenceEsito
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+create sequence sequenceSelezione
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+create sequence sequenceColloquio
+  start with 1
+  increment by 1
+  nocache
+  nocycle; 
+create sequence sequenceCompetenza
+  start with 1
+  increment by 1
+  nocache
+  nocycle;  
+create sequence sequenceRisorsa
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
+create sequence sequenceCandidato
+  start with 1
+  increment by 1
+  nocache
+  nocycle;
 create table conoscenzaLingua(
 idConoscenzaLingua number(3) primary key,
 scritta varchar2(2),
@@ -92,11 +156,7 @@ constraint fk_idFormazione foreign key(idFormazione) references formazione(idFor
 constraint fk_idLavoro foreign key(idLavoro) references lavoro(idLavoro),
 constraint fk_idLingua foreign key(idLingua) references lingua(idLingua)
 );
-create sequence sequenceNazionalita
-  start with 1
-  increment by 1
-  nocache
-  nocycle;
+
 
 CREATE TABLE nazionalita (
   idNazionalita number(3) NOT NULL,
