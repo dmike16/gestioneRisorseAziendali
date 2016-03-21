@@ -1,9 +1,14 @@
 package domain.corso;
 
+import javax.validation.constraints.NotNull;
+
 public class Risultato {
 	
+	@NotNull
 	private String idModulo;
-	private String idRisorsa;
+	@NotNull
+	private int idRisorsa;
+	
 	private String valutazione;
 	private String esito;
 	
@@ -23,12 +28,12 @@ public class Risultato {
 	}
 
 
-	public String getIdRisorsa() {
+	public int getIdRisorsa() {
 		return idRisorsa;
 	}
 
 
-	public void setIdRisorsa(String idRisorsa) {
+	public void setIdRisorsa(int idRisorsa) {
 		this.idRisorsa = idRisorsa;
 	}
 
