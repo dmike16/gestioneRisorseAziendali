@@ -1,9 +1,12 @@
 package domain.selezione;
-
+import javax.validation.constraints.NotNull;
 public class Esito {
-	
+	@NotNull
 	private int idEsito;
+	
+	@NotNull
 	private String valutazione;
+	
 	private String descrizione;
 	
 	public int getIdEsito() {
