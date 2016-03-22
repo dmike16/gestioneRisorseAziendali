@@ -8,6 +8,7 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/RicercaDatiAnagrafici.css"/>
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <title>Ricerca Dati Anagrafici</title>
@@ -75,7 +76,8 @@
 				</div>
 			</div>
 		</section>
-
+		
+		<%-- Parte lista  --%>
 		<div class="row titleTable">
 			<div class="col-md-1">
 				<img src="img/pointRed.png" class="icon" />
