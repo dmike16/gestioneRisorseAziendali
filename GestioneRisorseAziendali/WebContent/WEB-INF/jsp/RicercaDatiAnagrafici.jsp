@@ -119,10 +119,18 @@
 					<h3>${DatoAnagrafico.email }</h3>
 				</div>
 				<div class="col-md-3">
-					<p class="sprite elimina"></p>
-					<p class="sprite modifica"></p>
-					<p class="sprite view"></p>
-					<p class="sprite scarica"></p>
+					<button type="button" class="sprite elimina"
+						data-toggle="modal" data-target="#myModal">
+					</button>
+					<button type="button" class="sprite modifica"
+						data-toggle="modal" data-target="#myModal">
+					</button>
+					<button type="button" class="sprite view"
+						data-toggle="modal" data-target="#myModal">
+					</button>
+					<button type="button" class="sprite scarica"
+						data-toggle="modal" data-target="#myModal">
+					</button>
 				</div>
 			</div>
 		</c:forEach>
