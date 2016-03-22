@@ -18,15 +18,15 @@ DROP TABLE Esito;
 DROP TABLE Anagrafica;
 DROP TABLE AnagraficaCandidato;
 DROP TABLE Nazionalita;
-DROP TABLE CV;
+
 DROP TABLE Lavoro;
 DROP TABLE Formazione;
-DROP TABLE LuogoData;
+DROP TABLE CV;
 DROP TABLE Azienda;
-DROP TABLE Sede;
-DROP TABLE Lingua;
+
 DROP TABLE Indirizzo;
 DROP TABLE ConoscenzaLingua;
+DROP TABLE Lingua;
 
 REM =================
 REM Drop Sequence
@@ -39,11 +39,11 @@ DROP SEQUENCE sequenceNazionalita;
 DROP SEQUENCE sequenceConoscenzaLingua;
 DROP SEQUENCE sequenceIndirizzo;
 DROP SEQUENCE sequenceLingua;
-DROP SEQUENCE sequenceSede;
+--DROP SEQUENCE sequenceSede;
 DROP SEQUENCE sequenceAzienda;
-DROP SEQUENCE sequenceLuogoData;
+--DROP SEQUENCE sequenceLuogoData;
 DROP SEQUENCE sequenceFormazione;
-DROP SEQUENCE sequenceLavoro
+DROP SEQUENCE sequenceLavoro;
 DROP SEQUENCE sequenceCV;
 DROP SEQUENCE sequenceAnagraficaCandidato;
 DROP SEQUENCE sequenceAnagrafica;
