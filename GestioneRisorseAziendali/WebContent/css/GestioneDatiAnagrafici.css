@@ -12,8 +12,11 @@ h1 {
     color: black;
 }
 
-.col-md-6 {
+.colonna {
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .box {
@@ -23,8 +26,17 @@ h1 {
     height: 250px;
     width: 250px;
     background: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-.row {
-    height: 200px;
+#GestioneDatiAnagraficiTitolo {
+    box-shadow: 18px 0 14px -14px rgba(0, 0, 0, 0.6);
+    box-shadow: -18px 0 14px -14px rgba(0, 0, 0, 0.6);
+    border: 1px solid black;
+    height: 150px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
