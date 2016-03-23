@@ -40,13 +40,13 @@
 						</c:if>
 						<form action="ricercaDatiAnagrafici1.action" method="post">
 							<div class="form-group">
-								<label for="nome"> <form:input id="nome"
+								<label for="nome"> <input id="nome"
 										class="form-control" path="nome" placeholder="nome" />
 								</label>
 							</div>
 
 							<div class="form-group">
-								<label for="cognome"> <form:input id="cognome"
+								<label for="cognome"> <input id="cognome"
 										class="form-control" path="cognome" placeholder="cognome" />
 								</label>
 							</div>
