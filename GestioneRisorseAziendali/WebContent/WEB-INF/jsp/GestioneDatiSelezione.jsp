@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Gestione dati selezione</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../../js/jquery-2.2.0.min.js"></script>
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="../../css/style.css" />
-    <link rel="stylesheet" href="../../css/gestioneDatiSelezione.css" />
+    <link rel="stylesheet" href="../../css/GestioneDatiSelezione.css" />
 </head>
 
 <body>
