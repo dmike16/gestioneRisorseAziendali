@@ -149,17 +149,18 @@ CREATE TABLE lavoro(
 idLavoro number(6) PRIMARY KEY,
 ambito varchar2(15) NOT NULL,
 impiego varchar2(20) NOT NULL,
-stipendio number(5),
+stipendio number(5,2),
 datainizio date,
 datafine date,
 idCv number(6),
-FOREIGN KEY (idCv) REFERENCES Cv(idCv)
+idAzienda number(6),
+FOREIGN KEY (idCv) REFERENCES Cv(idCv),
+FOREIGN KEY (idAzienda) REFERENCES Azienda(idAzienda)
 );
 
 CREATE TABLE nazionalita (
   idNazionalita number(6) NOT NULL,
-  siglaNazione varchar2(5) default NULL,
-  nomeNazione varchar2(30) default NULL,
+  nomeNazionalita varchar2(30) default NULL,
   PRIMARY KEY  (idnazionalita)
 ); 
 
