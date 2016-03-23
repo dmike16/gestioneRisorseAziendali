@@ -1,9 +1,11 @@
+/*
 alter table Nazionalita drop column nomeNazione;
 alter table Nazionalita drop column siglaNazione;
 alter table Nazionalita add nomeNazionalita varchar2(30);
 alter table Lavoro modify stipendio number(5,2);
 alter table Lavoro add idAzienda number(6);
 alter table Lavoro add foreign key (idAzienda) references Azienda(idAzienda);
+*/
 
 --Tabella NAZIONALITA
 INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, 'Russo');
