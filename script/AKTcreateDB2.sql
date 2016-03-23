@@ -170,14 +170,7 @@ idIndirizzo number(6) not null,
 FOREIGN KEY(idIndirizzo) REFERENCES indirizzo(idIndirizzo)
 );
 
-
-
-
 --Compilato fino a qui--
-
-
-
-
 
 create table anagrafica(
 idAnagrafica number(6) primary key,
@@ -204,7 +197,9 @@ create table esito
 create table batteria (
 codicebatteria char(7),
 tipo varchar2(30) not null,
-primary key (codicebatteria)
+idTest char(7),
+primary key (codicebatteria),
+foreign key (idTest) references TestSelezione(idTest)
 );
 
 create table selezione
@@ -217,7 +212,6 @@ create table selezione
 
 create table testselezione (
 idtest char(7) primary key,
-codicebattera char(7),
 punteggio number(3),
 idselezione number(6),
 foreign key (idselezione) references selezione(idselezione)
@@ -249,7 +243,6 @@ CREATE TABLE corso(
 	dataInizio date,
 	dataFine date,
 	azienda varchar2(20),
-	superamento char(1),
 	idCompetenza number(6) not null,
 	foreign key(idCompetenza) references competenza(idCompetenza)
 );
@@ -257,6 +250,7 @@ CREATE TABLE corso(
 
 CREATE TABLE modulo(idModulo char(7) PRIMARY KEY,
 idCorso char(7) NOT NULL,
+nomeModulo varchar2(30),
 dataInizio date,
 dataFine date,
 CONSTRAINT fk_idCorso FOREIGN KEY (idCorso) REFERENCES corso(idCorso));
@@ -272,6 +266,7 @@ CREATE TABLE risorsa(
 CREATE TABLE CorsoHistory(
 	idcorso		CHAR(7),
 	idrisorsa	number(6),
+  superamento char(1),
 	FOREIGN KEY(idcorso) REFERENCES Corso(idCorso),
 	FOREIGN KEY(idrisorsa) REFERENCES Risorsa(idRisorsa),
 	PRIMARY KEY(idcorso,idrisorsa)

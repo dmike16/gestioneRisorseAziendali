@@ -5,7 +5,15 @@ alter table Nazionalita add nomeNazionalita varchar2(30);
 alter table Lavoro modify stipendio number(5,2);
 alter table Lavoro add idAzienda number(6);
 alter table Lavoro add foreign key (idAzienda) references Azienda(idAzienda);
+alter table corso drop column superamento;
+alter table corsohistory add superamento char(1);
+alter table testselezione drop column codicebattera;
+alter table batteria add idtest char(7);
+alter table batteria add foreign key (idtest) references testselezione (idtest);
+alter table modulo add nomemodulo varchar2(30);
 */
+
+/*SEZIONE ANAGRAFICA*/
 
 --Tabella NAZIONALITA
 INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, 'Russo');
@@ -41,7 +49,7 @@ INSERT INTO Cv VALUES (sequenceCV.nextval, 'dog.jpg');
 INSERT INTO Cv VALUES (sequenceCV.nextval, 'dog.jpg');
 INSERT INTO Cv VALUES (sequenceCV.nextval, 'dog.jpg');
 
---Tabella lingua
+--Tabella LINGUA
 insert into lingua values(sequenceLingua.nextval, 'Cinese mandarino');
 insert into lingua values(sequenceLingua.nextval, 'Inglese');
 insert into lingua values(sequenceLingua.nextval, 'Spagnolo');
@@ -227,3 +235,53 @@ insert into AnagraficaCandidato values (sequenceAnagraficaCandidato.nextval,'jes
 insert into AnagraficaCandidato values (sequenceAnagraficaCandidato.nextval,'maria','cuccia','1995-FEB-15','3467543578','mary25@cuccia.it','diploma',1);
 insert into AnagraficaCandidato values (sequenceAnagraficaCandidato.nextval,'girolama','prende','1996-DEC-22','3309764314','giro96@prend.it','diploma',1);
 insert into AnagraficaCandidato values (sequenceAnagraficaCandidato.nextval,'rocco','re','1985-JUN-21','3787653215','rocco@er.it','diploma',1);
+
+/*SEZIONE CORSO*/
+
+--Tabella CANDIDATO -> secondo campo FK IDCV -> TERZO CAMPO FK IDANAGRAFICA -> QUARTOCAMPO FK IDRISORSA
+
+
+--Tabella RISORSA -> SECONDO CAMPO FK IDTIROCINIO -> TERZO CAMPO FK IDANAGRAFICA
+insert into Risorsa values(sequenceRisorsa.nextval, 327, 1);
+insert into Risorsa values(sequenceRisorsa.nextval, 357, 3);
+insert into Risorsa values(sequenceRisorsa.nextval, 333, 4);
+insert into Risorsa values(sequenceRisorsa.nextval, 456, 5);
+insert into Risorsa values(sequenceRisorsa.nextval, 234, 6);
+insert into Risorsa values(sequenceRisorsa.nextval, 143, 7);
+insert into Risorsa values(sequenceRisorsa.nextval, 123, 8);
+insert into Risorsa values(sequenceRisorsa.nextval, 215, 9);
+insert into Risorsa values(sequenceRisorsa.nextval, 197, 10);
+
+--Tabella COMPETENZA
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Html5');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Javascript');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'jQuery');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Css3');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Grafica', 'Adobe Photoshop');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Sistemistica', 'SQL');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Sistemistica', 'PL SQL');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Framework Spring');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Java SE');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Java EE');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Framework Spring');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Framework Spring');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Framework Liferay');
+
+--Tabella CORSO  -> ULTIMO CAMPO FK IDCOMPETENZA
+insert into Corso values ('AKT000C', 'Corso Analista Programmatore Java-Oracle', '2016-JAN-07', '2016-MAR-17', 'AKT S.r.l', 10);
+insert into Corso values ('AKT001C', 'Corso Sistemista', '2016-MAR-01', '2016-MAY-17', 'AKT S.r.l', 7);
+insert into Corso values ('AKT002C', 'Corso Sviluppatore Android', '2015-SEP-07', '2015-NOV-17', 'AKT S.r.l', 11);
+
+--Tabella MODULO 
+insert into modulo(idmodulo, idcorso, nomemodulo) values('AKT000M', 'AKT001C', 'Strutturata');
+insert into modulo(idmodulo, idcorso, nomemodulo) values('AKT002M', 'AKT001C', 'PL-SQL');
+insert into modulo(idmodulo, idcorso, nomemodulo) values('AKT001M', 'AKT001C', 'SQL');
+insert into modulo(idmodulo, idcorso, nomemodulo) values('AKT000M', 'AKT000C', 'Strutturata');
+insert into modulo(idmodulo, idcorso, nomemodulo) values('AKT003M', 'AKT000C', 'Java SE');
+
+
+
+--
+
+
+
