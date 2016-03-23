@@ -16,18 +16,15 @@ public class ConnessioneDb {
     }
 
     // method used to establish connection with database
-    private void establishConnection() {
+    private void establishConnection() throws SQLException, NamingException {
 
-    	try {
     		Context initContext = new InitialContext();
     		Context envContext = (Context) initContext.lookup("java:comp/env");
     		DataSource ds = (DataSource) envContext.lookup("jdbc/hrakt");
-    		con = ds.getConnection();
-    	} catch (SQLException e) {
-    		System.out.println("SQLException "+e);
-    	} catch (NamingException e) {
-    		System.out.println("NamingException "+e);
-    	}
-
+    		con= ds.getConnection();
+    }
+    public Connection returnConnection()
+    {
+    	return con;
     }
 }
