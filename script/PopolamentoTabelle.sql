@@ -40,6 +40,48 @@ INSERT INTO Cv VALUES (sequenceCV.nextval, 'dog.jpg');
 INSERT INTO Cv VALUES (sequenceCV.nextval, 'dog.jpg');
 
 --Tabella lingua
+insert into lingua values(sequenceLingua.nextval, 'Cinese mandarino');
+insert into lingua values(sequenceLingua.nextval, 'Inglese');
+insert into lingua values(sequenceLingua.nextval, 'Spagnolo');
+insert into lingua values(sequenceLingua.nextval, 'Hindi-Urdu');
+insert into lingua values(sequenceLingua.nextval, 'Arabo');
+insert into lingua values(sequenceLingua.nextval, 'Portoghese');
+insert into lingua values(sequenceLingua.nextval, 'Bengalese');
+insert into lingua values(sequenceLingua.nextval, 'Russo');
+insert into lingua values(sequenceLingua.nextval, 'Giapponese');
+insert into lingua values(sequenceLingua.nextval, 'Tedesco');
+insert into lingua values(sequenceLingua.nextval, 'Giavanese');
+insert into lingua values(sequenceLingua.nextval, 'Punjabi');
+insert into lingua values(sequenceLingua.nextval, 'Coreano');
+insert into lingua values(sequenceLingua.nextval, 'Wu');
+insert into lingua values(sequenceLingua.nextval, 'Francese');
+insert into lingua values(sequenceLingua.nextval, 'Telugu');
+insert into lingua values(sequenceLingua.nextval, 'Turco');
+insert into lingua values(sequenceLingua.nextval, 'Marathi');
+insert into lingua values(sequenceLingua.nextval, 'Tamil');
+insert into lingua values(sequenceLingua.nextval, 'Vietnamita');
+insert into lingua values(sequenceLingua.nextval, 'Italiano');
+insert into lingua values(sequenceLingua.nextval, 'Yue');
+insert into lingua values(sequenceLingua.nextval, 'Persiano');
+insert into lingua values(sequenceLingua.nextval, 'Malese-indonesiano');
+insert into lingua values(sequenceLingua.nextval, 'Taiwanese');
+insert into lingua values(sequenceLingua.nextval, 'Gujarati');
+insert into lingua values(sequenceLingua.nextval, 'Bhojpuri');
+insert into lingua values(sequenceLingua.nextval, 'Polacco');
+insert into lingua values(sequenceLingua.nextval, 'Kannada');
+insert into lingua values(sequenceLingua.nextval, 'Pashto');
+insert into lingua values(sequenceLingua.nextval, 'Ucraino');
+insert into lingua values(sequenceLingua.nextval, 'Xiang');
+insert into lingua values(sequenceLingua.nextval, 'Malayalam');
+insert into lingua values(sequenceLingua.nextval, 'Maithili');
+insert into lingua values(sequenceLingua.nextval, 'Sondanese');
+insert into lingua values(sequenceLingua.nextval, 'Oriya');
+insert into lingua values(sequenceLingua.nextval, 'Birmano');
+insert into lingua values(sequenceLingua.nextval, 'Curdo');
+insert into lingua values(sequenceLingua.nextval, 'Hakka');
+insert into lingua values(sequenceLingua.nextval, 'Hausa');
+insert into lingua values(sequenceLingua.nextval, 'Azero');
+insert into lingua values(sequenceLingua.nextval, 'Filippino');
 insert into lingua values(sequenceLingua.nextval, 'Rumeno');
 insert into lingua values(sequenceLingua.nextval, 'Fula');
 insert into lingua values(sequenceLingua.nextval, 'Amarico');
@@ -91,15 +133,26 @@ insert into lingua values(sequenceLingua.nextval, 'Madurese');
 insert into lingua values(sequenceLingua.nextval, 'Baluchi');
 insert into lingua values(sequenceLingua.nextval, 'Ilocano');
 insert into lingua values(sequenceLingua.nextval, 'varhadi-nagpuri');
-insert into lingua values(sequenceLingua.nextval, 'gikuyu');
-insert into lingua values(sequenceLingua.nextval, 'konkani');
-insert into lingua values(sequenceLingua.nextval, 'armeno');
+insert into lingua values(sequenceLingua.nextval, 'Gikuyu');
+insert into lingua values(sequenceLingua.nextval, 'Konkani');
+insert into lingua values(sequenceLingua.nextval, 'Armeno');
 insert into lingua values(sequenceLingua.nextval, 'Danese');
 insert into lingua values(sequenceLingua.nextval, 'Finlandese');
 insert into lingua values(sequenceLingua.nextval, 'Ebraico');
 insert into lingua values(sequenceLingua.nextval, 'Tataro');
 insert into lingua values(sequenceLingua.nextval, 'Slovacco');
 
+--Tabella CONOSCENZALINGUA 
+insert into conoscenzalingua(idlingua, idcv) values(1,1)
+insert into conoscenzalingua(idlingua, idcv) values(2,2)
+insert into conoscenzalingua(idlingua, idcv) values(3,3)
+insert into conoscenzalingua(idlingua, idcv) values(4,4)
+insert into conoscenzalingua(idlingua, idcv) values(5,5)
+insert into conoscenzalingua(idlingua, idcv) values(6,6)
+insert into conoscenzalingua(idlingua, idcv) values(7,7)
+insert into conoscenzalingua(idlingua, idcv) values(8,8)
+insert into conoscenzalingua(idlingua, idcv) values(9,9)
+insert into conoscenzalingua(idlingua, idcv) values(10,10)
 
 --Tabella LAVORO = FK ultima colonna -> CV 
 insert into Lavoro values (sequenceLavoro.nextval,'edilizia','operaio',13150.64,'2005-APR-01','2006-OCT-10',1);

@@ -1,9 +1,3 @@
-create sequence sequenceConoscenzaLingua
-  start with 1
-  increment by 1
-  nocache
-  nocycle;
-  
 create sequence sequenceIndirizzo
   start with 1
   increment by 1
