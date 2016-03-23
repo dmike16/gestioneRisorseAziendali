@@ -5,6 +5,39 @@ alter table Lavoro modify stipendio number(5,2);
 alter table Lavoro add idAzienda number(6);
 alter table Lavoro add foreign key (idAzienda) references Azienda(idAzienda);
 
+--Tabella NAZIONALITA
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Russo);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Tedesco);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Francese);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Inglese);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Italiano);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Spagnolo);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Ucraino);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Polacco);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Romeno);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Olandese);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Portoghese);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Belga);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Ceco);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Greco);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Svedese);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Cinese);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Indiano);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Brasiliano);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Argentino);
+INSERT INTO Nazionalita VALUES (sequenceNazionalita.nextval, Turco);
+
+--Tabella CV
+INSERT INTO Cv VALUES (sequenceCV.nextval);
+INSERT INTO Cv VALUES (sequenceCV.nextval);
+INSERT INTO Cv VALUES (sequenceCV.nextval);
+INSERT INTO Cv VALUES (sequenceCV.nextval);
+INSERT INTO Cv VALUES (sequenceCV.nextval);
+INSERT INTO Cv VALUES (sequenceCV.nextval);
+INSERT INTO Cv VALUES (sequenceCV.nextval);
+INSERT INTO Cv VALUES (sequenceCV.nextval);
+INSERT INTO Cv VALUES (sequenceCV.nextval);
+INSERT INTO Cv VALUES (sequenceCV.nextval);
 
 --Tabella LAVORO = FK ultima colonna -> CV 
 insert into Lavoro values (sequenceLavoro.nextval,'edilizia','operaio',13150.64,'2005-APR-01','2006-OCT-10',1);
