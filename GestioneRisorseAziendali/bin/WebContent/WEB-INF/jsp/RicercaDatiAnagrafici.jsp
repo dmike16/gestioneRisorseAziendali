@@ -6,11 +6,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap-theme.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/RicercaDatiAnagrafici.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/RicercaDatiAnagrafici.css"/>
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <title>Ricerca Dati Anagrafici</title>
@@ -35,21 +33,21 @@
 				<div class="col-md-5">
 					<section>
 						<h2>Ricerca per nome</h2>
-
+			
 						<%-- Messaggio di Errore in caso entrambi campi nulli --%>
 						<c:if test="${nomeCognomeError != null}">
 							<p class="text-danger">${nomeCognomeError}</p>
 						</c:if>
 						<form action="ricercaDatiAnagrafici1.action" method="post">
 							<div class="form-group">
-								<label for="nome"> <input id="nome" class="form-control"
-									path="nome" placeholder="nome" />
+								<label for="nome"> <form:input id="nome"
+										class="form-control" path="nome" placeholder="nome" />
 								</label>
 							</div>
 
 							<div class="form-group">
-								<label for="cognome"> <input id="cognome"
-									class="form-control" path="cognome" placeholder="cognome" />
+								<label for="cognome"> <form:input id="cognome"
+										class="form-control" path="cognome" placeholder="cognome" />
 								</label>
 							</div>
 
@@ -61,7 +59,7 @@
 				<div class="col-md-5">
 					<section>
 						<h2>Ricerca per email</h2>
-
+						
 						<%-- Messaggio di Errore in caso entrambi campi nulli --%>
 						<c:if test="${emailError != null}">
 							<p class="text-danger">${emailError}</p>
@@ -78,7 +76,7 @@
 				</div>
 			</div>
 		</section>
-
+		
 		<%-- Parte lista  --%>
 		<div class="row titleTable">
 			<div class="col-md-1">
@@ -121,14 +119,18 @@
 					<h3>${DatoAnagrafico.email }</h3>
 				</div>
 				<div class="col-md-3">
-					<button type="button" class="sprite elimina" data-toggle="modal"
-						data-target="#eliminaModal"></button>
-					<button type="button" class="sprite modifica" data-toggle="modal"
-						data-target="#myModal"></button>
-					<button type="button" class="sprite view" data-toggle="modal"
-						data-target="#myModal"></button>
-					<button type="button" class="sprite scarica" data-toggle="modal"
-						data-target="#myModal"></button>
+					<button type="button" class="sprite elimina"
+						data-toggle="modal" data-target="#myModal">
+					</button>
+					<button type="button" class="sprite modifica"
+						data-toggle="modal" data-target="#myModal">
+					</button>
+					<button type="button" class="sprite view"
+						data-toggle="modal" data-target="#myModal">
+					</button>
+					<button type="button" class="sprite scarica"
+						data-toggle="modal" data-target="#myModal">
+					</button>
 				</div>
 			</div>
 		</c:forEach>
@@ -136,27 +138,6 @@
 
 
 	</div>
-
-	<div class="modal fade" id="eliminaModal" tabindex="-1" role="dialog"
-		aria-labelledby="eliminaLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="eliminaLabel">Modal title</h4>
-				</div>
-				<div class="modal-body">...</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<script src="js/RicercaDatiAnagrafici.js"></script>
 </body>
 </html>

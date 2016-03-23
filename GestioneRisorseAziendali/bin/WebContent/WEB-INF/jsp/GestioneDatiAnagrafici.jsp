@@ -10,10 +10,10 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/GestioneDatiAnagrafici.css" />
-    <script src="../../js/jquery-2.2.0.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/GestioneDatiAnagrafici.css" />
+    <script src="js/jquery-2.2.0.min.js"></script>
 
 
 
@@ -37,7 +37,7 @@
                     <div class="box">
                         <a href="InserimentoDatiAnagrafici.action">
                             <h2>Inserimento Dati Anagrafici</h2>
-                            <input type="image" src="../../img/GestioneDatiAnagrafici_form_input.png" width="30%" class="inserimento" style="cursor:pointer" />
+                            <input type="image" src="../img/GestioneDatiAnagrafici_form_input.png" width="30%" class="inserimento" style="cursor:pointer" />
                         </a>
                     </div>
 
@@ -49,15 +49,10 @@
                 <div class="col-xs-6 col-md-6 colonna">
 
                     <div class="box">
-
-                        <form action="RicercaDatiAnagrafici.action" method="post">
+                        <a href="RicercaDatiAnagrafici.action">
                             <h2>Ricerca Dati Anagrafici</h2>
-                            <input type="checkbox" name="scelta" value="Corsisti" /> Corsisti
-                            <input type="checkbox" name="scelta" value="Candidati" /> Candidati
-                            <br/>
-                            <input type="image" src="../../img/GestioneDatiAnagrafici_form_search.png" width="30%" class="ricerca" style="cursor:pointer" alt="Submit Form" />
-                        </form>
-
+                            <input type="image" src="../img/GestioneDatiAnagrafici_form_search.png" width="30%" class="ricerca" style="cursor:pointer" />
+                        </a>
                     </div>
 
                 </div>
@@ -70,5 +65,5 @@
 
         <footer>FOOTER</footer>
     </div>
-    <script src="../../js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
