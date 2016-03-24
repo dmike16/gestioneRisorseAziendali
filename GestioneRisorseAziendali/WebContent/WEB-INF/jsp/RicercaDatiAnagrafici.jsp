@@ -6,8 +6,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap-theme.min.css" />
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <title>Ricerca Dati Anagrafici</title>
@@ -32,21 +33,22 @@
 				<div class="col-md-5">
 					<section>
 						<h2>Ricerca per nome</h2>
-			
+
 						<%-- Messaggio di Errore in caso entrambi campi nulli --%>
 						<c:if test="${nomeCognomeError != null}">
 							<p class="text-danger">${nomeCognomeError}</p>
 						</c:if>
 						<form action="ricercaDatiAnagrafici1.action" method="post">
 							<div class="form-group">
-								<label for="nome"> <form:input id="nome"
-										class="form-control" path="nome" placeholder="nome" />
+								<label for="nome"> <input id="nome" name="nome"
+									class="form-control" placeholder="nome" value="${ricerca.nome}" />
 								</label>
 							</div>
 
 							<div class="form-group">
-								<label for="cognome"> <form:input id="cognome"
-										class="form-control" path="cognome" placeholder="cognome" />
+								<label for="cognome"> <input id="cognome" name="cognome"
+									class="form-control" placeholder="cognome"
+									value="${ricerca.cognome}" />
 								</label>
 							</div>
 
@@ -58,15 +60,16 @@
 				<div class="col-md-5">
 					<section>
 						<h2>Ricerca per email</h2>
-						
+
 						<%-- Messaggio di Errore in caso entrambi campi nulli --%>
 						<c:if test="${emailError != null}">
 							<p class="text-danger">${emailError}</p>
 						</c:if>
 						<form action="ricercaDatiAnagrafici2.action">
 							<div class="form-group">
-								<label for="nome"><input id="nome" class="form-control"
-									name="email" type="email" placeholder="email" /> </label>
+								<label for="nome"><input id="nome" name="email"
+									class="form-control" name="email" type="email"
+									placeholder="email" value="${email}" /> </label>
 							</div>
 
 							<button class="btn btn-default" type="submit">Cerca</button>
@@ -124,9 +127,25 @@
 				</div>
 			</div>
 		</c:forEach>
-
-
-
+	</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script src="js/RicercaDatiAnagrafici.js"></script>
 </body>
