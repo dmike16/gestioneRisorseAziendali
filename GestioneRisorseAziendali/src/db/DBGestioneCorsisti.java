@@ -17,7 +17,7 @@ public class DBGestioneCorsisti{
 		if(ricercaScelta.getScelta().equals("studi"))
 		{
 			String sql="select f.*"
-					+ "from risorsa r, anagrfica a,anagraficacandidato ac ,candidato c, cv , formazione f"
+					+ "from risorsa r, anagrafica a,anagraficacandidato ac ,candidato c, cv , formazione f"
 					+ "where r.idAnagrafica=a.idAnagrafica and a.idAnagraficaCandidato=ac.idAnagraficaCandidato"
 					+ "and ac.nome=? and ac.cognome=? and c.idRisorsa=r.idRisorsa and cv.idCV=c.idCV and"
 					+ "cv.idDV=f.idCV"
