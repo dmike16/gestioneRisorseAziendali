@@ -1,96 +1,115 @@
 create sequence sequenceIndirizzo
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceLingua
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceAzienda
-  start with 1
+  start with 0
+  minvalue 0  
   increment by 1
   nocache
   nocycle;
  
 create sequence sequenceFormazione
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceLavoro
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceCV
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;  
 
 create sequence sequenceNazionalita
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceAnagraficaCandidato
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;  
   
 create sequence sequenceAnagrafica
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;  
 create sequence sequenceEsito
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;
 create sequence sequenceSelezione
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;
 create sequence sequenceColloquio
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle; 
 create sequence sequenceCompetenza
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;  
 create sequence sequenceRisorsa
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;
 create sequence sequenceCandidato
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;
 
   create sequence sequenceBatteria
-  start with 1
+  start with 0
+  minvalue 0
   increment by 1
   nocache
   nocycle;
   
+/*SEZIONE ANAGRAFICA*/
+
 create table cv(
 idCv number(6) primary key,
-urlImage varchar2(50)
+urlImage varchar2(50),
+competenzeInformatiche varchar2(255)
 );
 
 create table lingua(
@@ -143,7 +162,7 @@ CREATE TABLE lavoro(
 idLavoro number(6) PRIMARY KEY,
 ambito varchar2(15) NOT NULL,
 impiego varchar2(20) NOT NULL,
-stipendio number(5,2),
+stipendio number(8,2),
 datainizio date,
 datafine date,
 idCv number(6),
@@ -170,8 +189,6 @@ idIndirizzo number(6) not null,
 FOREIGN KEY(idIndirizzo) REFERENCES indirizzo(idIndirizzo)
 );
 
---Compilato fino a qui--
-
 create table anagrafica(
 idAnagrafica number(6) primary key,
 sesso char(1) not null,
@@ -185,21 +202,15 @@ foreign key(idIndirizzo) references indirizzo(idIndirizzo),
 foreign key(idAnagraficaCandidato) references anagraficaCandidato(idAnagraficaCandidato),
 foreign key(idNazionalita) references nazionalita(idNazionalita)
 );
-  
+
+/*SEZIONE SELEZIONE*/
+
 create table esito
 (
   idEsito number(6),
   valutazione varchar2(250) not null,
   descrizione varchar2(250),
   primary key(idEsito)
-);
-
-create table batteria (
-codicebatteria char(7),
-tipo varchar2(30) not null,
-idTest char(7),
-primary key (codicebatteria),
-foreign key (idTest) references TestSelezione(idTest)
 );
 
 create table selezione
@@ -217,11 +228,18 @@ idselezione number(6),
 foreign key (idselezione) references selezione(idselezione)
 );
 
+create table batteria (
+codicebatteria char(7),
+tipo varchar2(30) not null,
+idTest char(7),
+primary key (codicebatteria),
+foreign key (idTest) references TestSelezione(idTest)
+);
 
 create table colloquio
 (
   idColloquio number(6),
-  valutazioneFinale number(5,2),
+  valutazioneFinale varchar2(20),
   osservazioni varchar2(250),
   tipologia varchar2(30),
   idSelezione number(6) not null,
@@ -231,15 +249,17 @@ create table colloquio
   foreign key (idSelezione) references selezione(idSelezione)
 );
 
+/*SEZIONE CORSO*/
+
 CREATE TABLE competenza(
   idCompetenza number(6) PRIMARY KEY,
   settore varchar2(20),
   specializzazione varchar2(30)
 );
---Compilato fino a qui--
+
 CREATE TABLE corso(
 	idCorso char(7) primary key,
-	titoloCorso varchar2(20) not null,
+	titoloCorso varchar2(100) not null,
 	dataInizio date,
 	dataFine date,
 	azienda varchar2(20),
@@ -248,19 +268,27 @@ CREATE TABLE corso(
 );
 
 
-CREATE TABLE modulo(idModulo char(7) PRIMARY KEY,
-idCorso char(7) NOT NULL,
-nomeModulo varchar2(30),
+CREATE TABLE modulo(
+idModulo char(7) PRIMARY KEY,
+nomeModulo varchar2(30)
+);
+
+CREATE TABLE ModuloCorsi(
+idCorso char(7),
+idModulo char(7),
 dataInizio date,
 dataFine date,
-CONSTRAINT fk_idCorso FOREIGN KEY (idCorso) REFERENCES corso(idCorso));
+foreign key (idCorso) references corso(idCorso),
+foreign key (idModulo) references modulo (idModulo),
+primary key (idCorso, idModulo)
+);
 
 CREATE TABLE risorsa(
 	idRisorsa number(6) primary key,
 	idTirocinio number(6),
 	IdAnagrafica number(6),
-	foreign key(idAnagrafica) references anagrafica(idAnagrafica),
-	foreign key(idTirocinio) references risorsa(idRisorsa)
+	foreign key(idAnagrafica) references anagrafica(idAnagrafica)
+	--foreign key(idTirocinio) references risorsa(idRisorsa)
 );
 
 CREATE TABLE CorsoHistory(
