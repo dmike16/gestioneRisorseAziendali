@@ -1,13 +1,14 @@
 package domain.corso;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Corso {
 	
 	private String idCorso;
 	private String titoloCorso;
-	private Date dataInizio;
-	private Date dataFine;
+	private LocalDate dataInizio;
+	private LocalDate dataFine;
 	private String azienda;
 	private char superamento;
 	private int idCompetenza;
@@ -28,14 +29,14 @@ public class Corso {
 	public Date getDataInizio() {
 		return dataInizio;
 	}
-	public void setDataInizio(Date dataInizio) {
-		this.dataInizio = dataInizio;
+	public void setDataInizio(LocalDate localDate) {
+		this.dataInizio = localDate;
 	}
 	public Date getDataFine() {
 		return dataFine;
 	}
-	public void setDataFine(Date dataFine) {
-		this.dataFine = dataFine;
+	public void setDataFine(LocalDate localDate) {
+		this.dataFine = localDate;
 	}
 	public String getAzienda() {
 		return azienda;

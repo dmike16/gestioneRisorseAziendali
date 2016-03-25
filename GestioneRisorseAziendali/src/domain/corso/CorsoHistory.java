@@ -4,11 +4,23 @@ public class CorsoHistory {
 	
 	private String idCorso;
 	private String idRisorsa;
+	private String superamento;
 	
 	
+	
+
 	public CorsoHistory() {
 		super();
 	}
+	public String getSuperamento() {
+		return superamento;
+	}
+
+
+	public void setSuperamento(String superamento) {
+		this.superamento = superamento;
+	}
+
 
 
 	public String getIdCorso() {

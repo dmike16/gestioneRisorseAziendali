@@ -10,10 +10,7 @@ public class Modulo {
 	private String idModulo;
 	
 	@NotNull
-	private String idCorso;
-	
-	private LocalDate dataInizio;
-	private LocalDate dataFine;
+	private String nomeModulo;
 	
 	
 	public String getIdModulo() {
@@ -22,24 +19,13 @@ public class Modulo {
 	public void setIdModulo(String idModulo) {
 		this.idModulo = idModulo;
 	}
-	public String getIdCorso() {
-		return idCorso;
+	public String getNomeModulo() {
+		return nomeModulo;
 	}
-	public void setIdCorso(String idCorso) {
-		this.idCorso = idCorso;
+	public void setNomeModulo(String nomeModulo) {
+		this.nomeModulo = nomeModulo;
 	}
-	public LocalDate getDataInizio() {
-		return dataInizio;
-	}
-	public void setDataInizio(LocalDate dataInizio) {
-		this.dataInizio = dataInizio;
-	}
-	public LocalDate getDataFine() {
-		return dataFine;
-	}
-	public void setDataFine(LocalDate dataFine) {
-		this.dataFine = dataFine;
-	}
+	
 	
 	
 	

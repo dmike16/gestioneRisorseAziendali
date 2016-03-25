@@ -3,8 +3,7 @@ import javax.validation.constraints.*;
 public class Nazionalita {
 	
 	private int idNazionalita;
-	private String siglaNazione;
-	private String nomeNazione;
+	private String nomeNazionalita;
 	public Nazionalita() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -15,17 +14,13 @@ public class Nazionalita {
 	public void setIdNazionalita(int idNazionalita) {
 		this.idNazionalita = idNazionalita;
 	}
-	public String getSiglaNazione() {
-		return siglaNazione;
+	
+	
+	public String getNomeNazionalita() {
+		return nomeNazionalita;
 	}
-	public void setSiglaNazione(String siglaNazione) {
-		this.siglaNazione = siglaNazione;
-	}
-	public String getNomeNazione() {
-		return nomeNazione;
-	}
-	public void setNomeNazione(String nomeNazione) {
-		this.nomeNazione = nomeNazione;
+	public void setNomeNazionalita(String nomeNazionalita) {
+		this.nomeNazionalita = nomeNazionalita;
 	}
 	
 
