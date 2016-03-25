@@ -14,5 +14,5 @@ hs_err_pid*
 #Add on for eclipse
 *.project
 *.classpath
-.settting/
+.settings/
 build/
