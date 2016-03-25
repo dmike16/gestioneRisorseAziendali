@@ -167,16 +167,16 @@ insert into conoscenzalingua(idlingua, idcv) values(9,9);
 insert into conoscenzalingua(idlingua, idcv) values(10,10);
 
 --Tabella INDIRIZZO
-insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00143','via giunio antonio resti',71);
-insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00173','viale luigi schiavonetti',270);
-insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00153','via di porta via',54);
-insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00115','via del gianicolo',15);
-insert into Indirizzo values (sequenceIndirizzo.nextval,'napoli','80153','via del gallitello',1);
-insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00153','via del mar della cina',90);
-insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00123','via magliana',557);
-insert into Indirizzo values (sequenceIndirizzo.nextval,'milano','20153','viale regina margherita',23);
-insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00153','via alessio baldovinetti',4);
-insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00153','via vittorio veneto',13);
+insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00143','via giunio antonio resti','71');
+insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00173','viale luigi schiavonetti','270');
+insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00153','via di porta via','54');
+insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00115','via del gianicolo','15');
+insert into Indirizzo values (sequenceIndirizzo.nextval,'napoli','80153','via del gallitello','1');
+insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00153','via del mar della cina','90');
+insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00123','via magliana','557');
+insert into Indirizzo values (sequenceIndirizzo.nextval,'milano','20153','viale regina margherita','23');
+insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00153','via alessio baldovinetti','4');
+insert into Indirizzo values (sequenceIndirizzo.nextval,'roma','00153','via vittorio veneto','13');
 
 --Tabella AZIENDA = FK ultima colonna -> INDIRIZZO
 insert into Azienda values (sequenceAzienda.nextval,'AKT srl','formazione','it',1);
@@ -189,6 +189,18 @@ insert into Azienda values (sequenceAzienda.nextval,'Ducati','produzione','autom
 insert into Azienda values (sequenceAzienda.nextval,'Pastificio Giovanni Rana','produzione','ristorazione',8);
 insert into Azienda values (sequenceAzienda.nextval,'Mediaset','intrattenimento','intrattenimento',9);
 insert into Azienda values (sequenceAzienda.nextval,'Bar del pomeriggio','fornitura','ristorazione',10);
+
+--Tabella CERTIFICAZIONE -> FK ultima colonna -> idCV
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 1);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 4);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 3);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 2);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 6);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 9);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 5);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java EE', 1);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java EE', 6);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java EE', 4);
 
 --Tabella FORMAZIONE = FK ultima colonna -> 1-CV 2-AZIENDA
 insert into Formazione values (sequenceFormazione.nextval,'diploma scientifico','diploma','80/100',(TO_DATE ('2005-OTT-10', 'YYYY-MON-DD')) ,(TO_DATE ('2010-GIU-20', 'yyyy-mon-dd')),1,1);
@@ -284,7 +296,6 @@ insert into Risorsa values(sequenceRisorsa.nextval, null, 8);
 insert into Risorsa values(sequenceRisorsa.nextval, null, 9);
 insert into Risorsa values(sequenceRisorsa.nextval, null, 10);
 
-
 --Tabella CORSOHISTORY -> PRIMO CAMPO IDCORSO --> SECONDO CAMPO IDRISORSA
 insert into corsohistory(IDCORSO, IDRISORSA) values('AKT000C', 1);
 insert into corsohistory(IDCORSO, IDRISORSA) values('AKT000C', 3);
@@ -295,7 +306,16 @@ insert into corsohistory(IDCORSO, IDRISORSA) values('AKT001C', 7);
 insert into corsohistory(IDCORSO, IDRISORSA) values('AKT001C', 8);
 insert into corsohistory(IDCORSO, IDRISORSA) values('AKT001C', 9);
 
---Tabella Risultato (non abbiamo risultati, tutti in corso)
+--Tabella RISULTATO
+INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT000M',1,'Ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT000M',2,'Non ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT002M',1,'Non ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT002M',2,'Ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT001M',3,'Non ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT003M',5,'Ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT003M',6,'Non ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT002M',7,'Ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT002M',8,'Non ammesso');
 
 --Tabella CANDIDATO -> secondo campo FK IDCV -> TERZO CAMPO FK IDANAGRAFICA -> QUARTOCAMPO FK IDRISORSA
 insert into Candidato values (sequenceCandidato.nextval, 1, 1, 1);
@@ -313,6 +333,8 @@ insert into Candidato values (sequenceCandidato.nextval, 9, 9, 9);
 --Tabella ESITO
 INSERT INTO Esito VALUES (sequenceEsito.nextval, 'Ammesso', null);
 INSERT INTO Esito VALUES (sequenceEsito.nextval, 'Non ammesso', null);
+
+
 
 --Tabella SELEZIONE -> FK IDESITO
 INSERT INTO Selezione VALUES (sequenceSelezione.nextval, (TO_DATE ('2015-APR-12', 'yyyy-mon-dd')), 1);
@@ -339,16 +361,28 @@ INSERT INTO TestSelezione VALUES ('gepi98e', 100, 9);
 INSERT INTO TestSelezione VALUES ('chiap33', 77, 10);
 
 --Tabella BATTERIA
-INSERT INTO Batteria VALUES ('batt001', 'JSE', 'frak98c');
-INSERT INTO Batteria VALUES ('batt002', 'strutturata', 'frib43n');
-INSERT INTO Batteria VALUES ('batt003', 'JEE', 'gesu47b');
-INSERT INTO Batteria VALUES ('batt004', 'SQL', 'lallo44');
-INSERT INTO Batteria VALUES ('batt005', 'jbdc', 'filos39');
-INSERT INTO Batteria VALUES ('batt006', 'html', 'jurk98c');
-INSERT INTO Batteria VALUES ('batt007', 'xml', 'lupw92c');
-INSERT INTO Batteria VALUES ('batt008', 'css', 'caio993');
-INSERT INTO Batteria VALUES ('batt009', 'javascript', 'gepi98e');
-INSERT INTO Batteria VALUES ('batt010', 'logica', 'chiap33');
+INSERT INTO Batteria VALUES ('batt001', 'JSE');
+INSERT INTO Batteria VALUES ('batt002', 'strutturata');
+INSERT INTO Batteria VALUES ('batt003', 'JEE');
+INSERT INTO Batteria VALUES ('batt004', 'SQL');
+INSERT INTO Batteria VALUES ('batt005', 'jbdc');
+INSERT INTO Batteria VALUES ('batt006', 'html');
+INSERT INTO Batteria VALUES ('batt007', 'xml');
+INSERT INTO Batteria VALUES ('batt008', 'css');
+INSERT INTO Batteria VALUES ('batt009', 'javascript');
+INSERT INTO Batteria VALUES ('batt010', 'logica');
+
+--Tabella BATTERIATEST
+INSERT INTO BatteriaTest VALUES ('frak98c','batt001',  77); 
+INSERT INTO BatteriaTest VALUES ('frib43n','batt002',  55);
+INSERT INTO BatteriaTest VALUES ('gesu47b','batt003',  64);
+INSERT INTO BatteriaTest VALUES ('lallo44','batt004',  85);
+INSERT INTO BatteriaTest VALUES ('filos39','batt005',  45);
+INSERT INTO BatteriaTest VALUES ('jurk98c','batt006',  82);
+INSERT INTO BatteriaTest VALUES ('lupw92c','batt007',  90);
+INSERT INTO BatteriaTest VALUES ('caio993','batt008',  71);
+INSERT INTO BatteriaTest VALUES ('gepi98e','batt009',  70);
+INSERT INTO BatteriaTest VALUES ('chiap33','batt010',  88);
 
 --Tabella COLLOQUIO -> FK IDSELEZIONE
 INSERT INTO Colloquio VALUES (sequenceColloquio.nextval, 'Selezionato', 'Il candidato sembra predisposto per l informatica.', 'Conoscitivo', 1,'Buona conoscenza dell inglese','Determinato e sicuro');

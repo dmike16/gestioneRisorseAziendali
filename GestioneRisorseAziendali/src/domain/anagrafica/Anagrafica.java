@@ -13,19 +13,25 @@ public class Anagrafica {
 	
 	@NotNull
 	@Digits(integer=6,fraction=0)
-	private int idRisorsa;
+	private int idRisorsa
+	
+	@NotNull
+	@Digits(integer=6,fraction=0)
+	private int idNazionalita;
 	
 	@NotNull
 	@Digits(integer=6,fraction=0)
 	private int idIndirizzo;
+	
 	@NotNull
 	private String luogoNascita;
+	
 	@NotNull
 	private String telefono;
+	
 	@NotNull
 	private String codiceFiscale;
-	@NotNull
-	private String nazionalita;
+	
 	@NotNull
 	private String sesso;
 	
@@ -76,11 +82,11 @@ public class Anagrafica {
 	public void setCodiceFiscale(String codiceFiscale) {
 		this.codiceFiscale = codiceFiscale;
 	}
-	public String getNazionalita() {
-		return nazionalita;
+	public int getIdNazionalita() {
+		return idNazionalita;
 	}
-	public void setNazionalita(String nazionalita) {
-		this.nazionalita = nazionalita;
+	public void setIdNazionalita(int idNazionalita) {
+		this.idNazionalita = idNazionalita;
 	}
 	public String getSesso() {
 		return sesso;

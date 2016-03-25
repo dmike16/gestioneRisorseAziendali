@@ -12,6 +12,7 @@ DROP TABLE Modulo;
 DROP TABLE Corso;
 DROP TABLE Competenza;
 
+DROP TABLE BatteriaTest;
 DROP TABLE Batteria;
 DROP TABLE TestSelezione;
 DROP TABLE Colloquio;
@@ -46,6 +47,7 @@ DROP SEQUENCE sequenceLingua;
 --DROP SEQUENCE sequenceSede;
 DROP SEQUENCE sequenceAzienda;
 --DROP SEQUENCE sequenceLuogoData;
+DROP SEQUENCE sequenceCertificazione;
 DROP SEQUENCE sequenceFormazione;
 DROP SEQUENCE sequenceLavoro;
 DROP SEQUENCE sequenceCV;
