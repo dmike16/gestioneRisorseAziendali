@@ -19,6 +19,13 @@ create sequence sequenceAzienda
   nocache
   nocycle;
  
+ create sequence sequenceCertificazione
+  start with 0
+  minvalue 0
+  increment by 1
+  nocache
+  nocycle;
+ 
 create sequence sequenceFormazione
   start with 0
   minvalue 0
@@ -59,19 +66,22 @@ create sequence sequenceAnagrafica
   minvalue 0
   increment by 1
   nocache
-  nocycle;  
+  nocycle;
+  
 create sequence sequenceEsito
   start with 0
   minvalue 0
   increment by 1
   nocache
   nocycle;
+  
 create sequence sequenceSelezione
   start with 0
   minvalue 0
   increment by 1
   nocache
   nocycle;
+  
 create sequence sequenceColloquio
   start with 0
   minvalue 0
@@ -193,7 +203,7 @@ CREATE TABLE certificazione(
 idCertificazione number(6) primary key,
 settore varchar2(20),
 specializzazione varchar2(30),
-idCv number(6),
+idCv number(6) not null,
 foreign key (idCv) references cv(idCv)
 );
 
@@ -239,6 +249,7 @@ foreign key (idselezione) references selezione(idselezione)
 create table batteria (
 codicebatteria char(7),
 tipo varchar2(30) not null,
+punteggioBatteria number(3) not null,
 idTest char(7),
 primary key (codicebatteria),
 foreign key (idTest) references TestSelezione(idTest)

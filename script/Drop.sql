@@ -46,6 +46,7 @@ DROP SEQUENCE sequenceLingua;
 --DROP SEQUENCE sequenceSede;
 DROP SEQUENCE sequenceAzienda;
 --DROP SEQUENCE sequenceLuogoData;
+DROP SEQUENCE certificazione;
 DROP SEQUENCE sequenceFormazione;
 DROP SEQUENCE sequenceLavoro;
 DROP SEQUENCE sequenceCV;

@@ -190,6 +190,18 @@ insert into Azienda values (sequenceAzienda.nextval,'Pastificio Giovanni Rana','
 insert into Azienda values (sequenceAzienda.nextval,'Mediaset','intrattenimento','intrattenimento',9);
 insert into Azienda values (sequenceAzienda.nextval,'Bar del pomeriggio','fornitura','ristorazione',10);
 
+--Tabella CERTIFICAZIONE -> FK ultima colonna -> idCV
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 1);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 4);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 3);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 2);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 6);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 9);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java SE', 5);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java EE', 1);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java EE', 6);
+insert into Certificazione values (sequenceCertificazione.nextval, 'Informatica', 'Java EE', 4);
+
 --Tabella FORMAZIONE = FK ultima colonna -> 1-CV 2-AZIENDA
 insert into Formazione values (sequenceFormazione.nextval,'diploma scientifico','diploma','80/100',(TO_DATE ('2005-OTT-10', 'YYYY-MON-DD')) ,(TO_DATE ('2010-GIU-20', 'yyyy-mon-dd')),1,1);
 insert into Formazione values (sequenceFormazione.nextval,'diploma linguistico','diploma','75/100',(TO_DATE ('2005-OTT-10', 'yyyy-mon-dd')),(TO_DATE ('2010-GIU-20', 'yyyy-mon-dd')),2,2);
@@ -339,16 +351,16 @@ INSERT INTO TestSelezione VALUES ('gepi98e', 100, 9);
 INSERT INTO TestSelezione VALUES ('chiap33', 77, 10);
 
 --Tabella BATTERIA
-INSERT INTO Batteria VALUES ('batt001', 'JSE', 'frak98c');
-INSERT INTO Batteria VALUES ('batt002', 'strutturata', 'frib43n');
-INSERT INTO Batteria VALUES ('batt003', 'JEE', 'gesu47b');
-INSERT INTO Batteria VALUES ('batt004', 'SQL', 'lallo44');
-INSERT INTO Batteria VALUES ('batt005', 'jbdc', 'filos39');
-INSERT INTO Batteria VALUES ('batt006', 'html', 'jurk98c');
-INSERT INTO Batteria VALUES ('batt007', 'xml', 'lupw92c');
-INSERT INTO Batteria VALUES ('batt008', 'css', 'caio993');
-INSERT INTO Batteria VALUES ('batt009', 'javascript', 'gepi98e');
-INSERT INTO Batteria VALUES ('batt010', 'logica', 'chiap33');
+INSERT INTO Batteria VALUES ('batt001', 'JSE', 77, 'frak98c');
+INSERT INTO Batteria VALUES ('batt002', 'strutturata', 55, 'frib43n');
+INSERT INTO Batteria VALUES ('batt003', 'JEE', 64,'gesu47b');
+INSERT INTO Batteria VALUES ('batt004', 'SQL', 85,'lallo44');
+INSERT INTO Batteria VALUES ('batt005', 'jbdc', 45,'filos39');
+INSERT INTO Batteria VALUES ('batt006', 'html', 82,'jurk98c');
+INSERT INTO Batteria VALUES ('batt007', 'xml', 90,'lupw92c');
+INSERT INTO Batteria VALUES ('batt008', 'css', 71,'caio993');
+INSERT INTO Batteria VALUES ('batt009', 'javascript', 70,'gepi98e');
+INSERT INTO Batteria VALUES ('batt010', 'logica', 88,'chiap33');
 
 --Tabella COLLOQUIO -> FK IDSELEZIONE
 INSERT INTO Colloquio VALUES (sequenceColloquio.nextval, 'Selezionato', 'Il candidato sembra predisposto per l informatica.', 'Conoscitivo', 1,'Buona conoscenza dell inglese','Determinato e sicuro');
