@@ -1,5 +1,3 @@
-<!doctype html>
-<html>
 <head>
 <title>Gestione Corsisti</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -11,40 +9,18 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-xs-4 col-md-4"><p id="parNome"> Ricerca per nome</p></div>
-			<!-- <div id="nome"class="col-xs-5 col-md-5 nome">
-					<p id="parNome">Ricerca per nome</p>-->
-			
-			<div class="col-xs-4 col-md-4"><p id="parStudio"> Ricerca per titolo di studio</p></div>
-			<!-- <div id="studio" class="col-xs-5 col-md-5 studio">
-				<p id="parStudio">Ricerca per titolo di studio</p>-->
-			<div class="col-xs-4 col-md-4"><p id="parLavoro"> Ricerca per lavoro</p></div>
-			<!--<div id="lavoro" class="col-xs-5 col-md-5 lavoro">
-				<p id="parLavoro">Ricerca per lavoro</p>-->
+		<div class = "row">
+			<div class="col-md-4 menu">
+				<input type="radio" id="nome">Ricerca per nome</br>
+				<input type="radio" id="studio">Ricerca per titolo di studio</br>
+				<input type="radio" id="lavoro">Ricerca per lavoro</br>
+				<input type="radio" id="formazione">Ricerca per formazione</br>
+				<input type="radio" id="corso">Ricerca per corso</br>
+				
+			</div>
+			<div class="col-md-3"></div>
+			<div class="col-md-5 ricerca"></div>
 		</div>
-		<div class="row">
-			<div id="nome" class="col-xs-4 col-md-4 "></div>
-			<div id="studio" class="col-xs-4 col-md-4"></div>
-			<div id="lavoro" class="col-xs-4 col-md-4"></div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4 col-md-4"><p id="parFormazione"> Ricerca per formazione</p></div>
-			<!--<div id="formazione" class="col-xs-5 col-md-5 formazione">
-				<p id="parFormazione">Ricerca per formazione</p>-->
-			
-			<div id="col-xs-4 col-md-4"><p id="parCorso"> Ricerca per corso</p></div>
-			<!--<div id="corso" class="col-xs-5 col-md-5 corso">
-				<p id="parCorso">Ricerca per corso</p>-->
-		</div>			
-		<div class="row">
-			
-			<div id="formazione" class="col-xs-4 col-md-4 formazione"></div>
-			<div id="corso" class="col-xs-4 col-md-4 corso"></div>
-		</div>
+		<input id ="submit" type="submit" action="Index.html" value="Ritorna Al Menu Principale">
 	</div>
-	<input id ="submit" type="submit" action="Index.html" value="Ritorna Al Menu Principale">
-
-	<script src="js/GestioneCorsisti.js"></script>
 </body>
-</html>
