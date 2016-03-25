@@ -190,8 +190,9 @@ FOREIGN KEY(idIndirizzo) REFERENCES indirizzo(idIndirizzo)
 );
 
 CREATE TABLE certificazione(
+idCertificazione number(6) primary key,
 settore varchar2(20),
-specializzazione varchar2(30),-
+specializzazione varchar2(30),
 idCv number(6),
 foreign key (idCv) references cv(idCv)
 );
