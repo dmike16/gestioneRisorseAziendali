@@ -1,5 +1,7 @@
 package test;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,13 +18,13 @@ public class TestSpring {
 		return "RicercaDatiAnagrafici";
 	}
 	@RequestMapping("ricercaDatiAnagrafici1.action")
-	public String testFormSpring(Ricerca sch, Model model){
+	public String testFormSpring(@RequestParam Map<String,String> ricerca, Model model){
 		
-		if(sch.getNome().isEmpty() && sch.getCognome().isEmpty()){
+		if(ricerca.get("nome").isEmpty() && ricerca.get("cognome").isEmpty()){
 			model.addAttribute("nomeCognomeError","Entrambi i campi nulli");
 		}
 		
-		model.addAttribute("ricerca", sch);
+		model.addAllAttributes(ricerca);
 		
 		return "RicercaDatiAnagrafici";
 	}
@@ -32,7 +34,7 @@ public class TestSpring {
 		
 		
 		if(email.isEmpty()){
-			model.addAttribute("emailError", "email Vuota");
+			model.addAttribute("emailError", "Email vuota");
 		}
 		model.addAttribute("email", email);
 		

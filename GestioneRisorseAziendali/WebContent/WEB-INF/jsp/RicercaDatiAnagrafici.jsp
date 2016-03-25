@@ -41,14 +41,14 @@
 						<form action="ricercaDatiAnagrafici1.action" method="post">
 							<div class="form-group">
 								<label for="nome"> <input id="nome" name="nome"
-									class="form-control" placeholder="nome" value="${ricerca.nome}" />
+									class="form-control" placeholder="nome" value="${nome}" />
 								</label>
 							</div>
 
 							<div class="form-group">
 								<label for="cognome"> <input id="cognome" name="cognome"
 									class="form-control" placeholder="cognome"
-									value="${ricerca.cognome}" />
+									value="${cognome}" />
 								</label>
 							</div>
 
