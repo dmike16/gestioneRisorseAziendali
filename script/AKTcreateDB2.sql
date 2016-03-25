@@ -189,6 +189,13 @@ idIndirizzo number(6) not null,
 FOREIGN KEY(idIndirizzo) REFERENCES indirizzo(idIndirizzo)
 );
 
+CREATE TABLE certificazione(
+settore varchar2(20),
+specializzazione varchar2(30),-
+idCv number(6),
+foreign key (idCv) references cv(idCv)
+);
+
 create table anagrafica(
 idAnagrafica number(6) primary key,
 sesso char(1) not null,

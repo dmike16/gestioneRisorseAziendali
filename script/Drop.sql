@@ -25,6 +25,7 @@ DROP TABLE Nazionalita;
 DROP TABLE ConoscenzaLingua;
 DROP TABLE Lavoro;
 DROP TABLE Formazione;
+DROP TABLE Certificazione;
 DROP TABLE CV;
 DROP TABLE Lingua;
 
