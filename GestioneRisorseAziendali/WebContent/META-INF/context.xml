@@ -8,8 +8,8 @@
 		maxIdle="30"
 		maxWaitMillis="10000"
 		driverClassName="oracle.jdbc.OracleDriver"
-		url="jdbc:oracle:thin:@localhost:1521:XE" 
-		username="HR"
-		password="HR8716linUX"
+		url="jdbc:oracle:thin:@192.168.1.201:1521:ORCL" 
+		username="hrakt"
+		password="hrakt"
 	/>
 </Context>

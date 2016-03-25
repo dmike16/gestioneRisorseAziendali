@@ -9,6 +9,8 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css"
 	href="css/bootstrap-theme.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="css/RicercaDatiAnagrafici.css" />
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <title>Ricerca Dati Anagrafici</title>
@@ -41,14 +43,14 @@
 						<form action="ricercaDatiAnagrafici1.action" method="post">
 							<div class="form-group">
 								<label for="nome"> <input id="nome" name="nome"
-									class="form-control" placeholder="nome" value="${nome}" />
+									class="form-control" placeholder="nome" value="${ricerca.nome}" />
 								</label>
 							</div>
 
 							<div class="form-group">
 								<label for="cognome"> <input id="cognome" name="cognome"
 									class="form-control" placeholder="cognome"
-									value="${cognome}" />
+									value="${ricerca.cognome}" />
 								</label>
 							</div>
 
@@ -65,7 +67,7 @@
 						<c:if test="${emailError != null}">
 							<p class="text-danger">${emailError}</p>
 						</c:if>
-						<form action="ricercaDatiAnagrafici2.action">
+						<form action="ricercaDatiAnagrafici2.action" method="post">
 							<div class="form-group">
 								<label for="nome"><input id="nome" name="email"
 									class="form-control" name="email" type="email"
@@ -120,13 +122,22 @@
 					<h3>${DatoAnagrafico.email }</h3>
 				</div>
 				<div class="col-md-3">
-					<p class="sprite elimina"></p>
-					<p class="sprite modifica"></p>
-					<p class="sprite view"></p>
-					<p class="sprite scarica"></p>
+					<button type="button" class="sprite elimina"></button>
+					<button type="button" class="sprite modifica"></button>
+					<button type="button" class="sprite view"></button>
+					<button type="button" class="sprite scarica"></button>
 				</div>
 			</div>
 		</c:forEach>
+		<c:if test="${errors != null}">
+			<div class="alert alert-danger alert-dimissable">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<p>${errors}</p>
+			</div>
+		</c:if>
 	</div>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
