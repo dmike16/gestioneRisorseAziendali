@@ -3,7 +3,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -57,9 +56,9 @@ public class DBGestioneCorsisti{
 	}
 	
 	//Seleziona tutti i lavori dei corsisti partendo da nome e cognome presi da input(TASK D SUBTASK 2) query 1/2
-	public List<Lavoro> selectLavoriCorsisti(RicercaScelta ricercaScelta) throws SQLException
+	public ArrayList<Lavoro> selectLavoriCorsisti(RicercaScelta ricercaScelta) throws SQLException
 	{
-		List<Lavoro>listaLavori = new ArrayList<>();
+		ArrayList<Lavoro>listaLavori = new ArrayList<>();
 		String sql ="select l.* "
 					+ "from risorsa r, candidato c, anagraficaCandidato ac, cv cv, lavoro l, azienda az "
 					+ "where r.idRisorsa = c.idRisorsa and c.idAnagraficaCandidato = ac.idAnagraficaCandidato and ac.nome = ? "
@@ -88,9 +87,9 @@ public class DBGestioneCorsisti{
 	}
 	/*Seleziona tutte le aziende relative alle esperienze lavorative dei corsisti, partendo da
 	 * nome e cognome presi da input(TASK D SUBTASK 2) query 2/2 */
-	public List<Azienda> selectAziendeCorsisti(RicercaScelta ricercaScelta) throws SQLException
+	public ArrayList<Azienda> selectAziendeCorsisti(RicercaScelta ricercaScelta) throws SQLException
 	{
-		List<Azienda>listaAziende = new ArrayList<>();
+		ArrayList<Azienda>listaAziende = new ArrayList<>();
 		String sql ="select az.* "
 				+"from anagraficaCandidato ac, indirizzo i, azienda az "
 				+ "where ac.nome = ? and ac.cognome = ? and ac.idIndirizzo = i.idIndirizzo and az.idIndirizzo = i.idIndirizzo";
@@ -112,9 +111,9 @@ public class DBGestioneCorsisti{
 	
 	/*Seleziona la lista delle certificazioni informatiche dei corsisti partendo da nome e cognome
 	 * presi da input(NON IN ORDINE CRONOLOGICO) (TASK E SUBTASK 2)*/
-	public List<Certificazione> selectCompetenzeInformaticheCorsisti(RicercaScelta ricercaScelta) throws SQLException
+	public ArrayList<Certificazione> selectCompetenzeInformaticheCorsisti(RicercaScelta ricercaScelta) throws SQLException
 	{
-		List<Certificazione> listCertificazioni = new ArrayList<>();
+		ArrayList<Certificazione> listCertificazioni = new ArrayList<>();
 		String sql = "select ce.* "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
 				+ "where ac.nome = ? and ac.cognome = ? and ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv "
@@ -137,9 +136,9 @@ public class DBGestioneCorsisti{
 	}
 	
 	/*Seleziona l'insieme dei corsi frequentati dai corsisti, partendo da nome e cognome presi da input (TASK F SUBTASK 2)*/
-	public List<Corso> selectCorsiCorsisti(RicercaScelta ricercaScelta) throws SQLException
+	public ArrayList<Corso> selectCorsiCorsisti(RicercaScelta ricercaScelta) throws SQLException
 	{
-		List<Corso> listCorsi = new ArrayList<>();
+		ArrayList<Corso> listCorsi = new ArrayList<>();
 		String sql = "select co.* "
 				+ "from risorsa r, candidato c, anagraficaCandidato ac, corsoHistory ch, corso co "
 				+ "where r.idRisorsa = c.idRisorsa and c.idAnagraficaCandidato = ac.idAnagraficaCandidato and ac.nome = ? "
@@ -166,9 +165,9 @@ public class DBGestioneCorsisti{
 	/*Fornisce il nome e cognome dei candidati, partendo da un titolo di studio preso da input
 	 * (TASK C SUBTASK 1) query 1/2
 	 */
-	public List<AnagraficaCandidato> selectCorsistiPerStudio(String formazione) throws SQLException 
+	public ArrayList<AnagraficaCandidato> selectCorsistiPerStudio(String formazione) throws SQLException 
 	{
-		List<AnagraficaCandidato>listCandidati = new ArrayList<>();
+		ArrayList<AnagraficaCandidato>listCandidati = new ArrayList<>();
 		String sql = "select ac.nome, ac.cognome "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, formazione f "
 				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv and cv.idCv = f.idCv "
@@ -188,8 +187,8 @@ public class DBGestioneCorsisti{
 	}
 	
 	/*Fornisce una lista di votazioni, partendo da un titolo di studio preso da input (TASK C SUBTASK 1) query 2/2*/
-	public List<Formazione> selectCorsistiPerVotoStudio(String formazione)throws SQLException{
-		List<String>listVoti = new ArrayList<>();
+	public ArrayList<Formazione> selectCorsistiPerVotoStudio(String formazione)throws SQLException{
+		ArrayList<String>listVoti = new ArrayList<>();
 		String sql = "select f.votazione "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, formazione f "
 				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv and cv.idCv = f.idCv "
@@ -209,9 +208,9 @@ public class DBGestioneCorsisti{
 	
 	/*seleziona una lista di nomi e cognomi di corsisti, partendo da un settore lavorativo preso da input
 	 * (TASK D SUBTASK 1) query 1/2 */
-	public List<AnagraficaCandidato> selectCorsistiSettoreLavorativo(String settore) throws SQLException
+	public ArrayList<AnagraficaCandidato> selectCorsistiSettoreLavorativo(String settore) throws SQLException
 	{
-		List<AnagraficaCandidato>listCandidati = new ArrayList<>();
+		ArrayList<AnagraficaCandidato>listCandidati = new ArrayList<>();
 		String sql = "select ac.nome, ac.cognome "
 				+ "from anagraficaCandidato ac, indirizzo i, azienda az "
 				+ "where ac.idIndirizzo = i.idIndirizzo and az.idIndirizzo = i.idIndirizzo and az.settore = ?";
@@ -231,9 +230,9 @@ public class DBGestioneCorsisti{
 	
 	/*seleziona una lista di nomi e cognomi dei corsisti, partendo dal nome di un'azienda, preso da input
 	 * (TASK D SUBTASK 1) query 2/2*/
-	public List<AnagraficaCandidato> selectCorsistiNomeAzienda(String azienda) throws SQLException
+	public ArrayList<AnagraficaCandidato> selectCorsistiNomeAzienda(String azienda) throws SQLException
 	{
-		List<AnagraficaCandidato>listCandidati = new ArrayList<>();
+		ArrayList<AnagraficaCandidato>listCandidati = new ArrayList<>();
 		String sql = "select ac.nome, ac.cognome "
 				+ "from anagraficaCandidato ac, indirizzo i, azienda az "
 				+ "where ac.idIndirizzo = i.idIndirizzo and az.idIndirizzo = i.idIndirizzo and az.nome = ?";
@@ -253,9 +252,9 @@ public class DBGestioneCorsisti{
 	
 	/*seleziona una lista di nomi e cognomi di corsisti, partendo da un'area di competenza informatica, presa da input
 	 * (TASK F SUBTASK 1)*/
-	public List<AnagraficaCandidato>selectCorsistiCompetenzeInformatiche(String competenza)throws SQLException
+	public ArrayList<AnagraficaCandidato>selectCorsistiCompetenzeInformatiche(String competenza)throws SQLException
 	{
-		List<AnagraficaCandidato>listCandidati = new ArrayList<>();
+		ArrayList<AnagraficaCandidato>listCandidati = new ArrayList<>();
 		String sql ="select ac.nome, ac.cognome "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
 				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv "
@@ -276,9 +275,9 @@ public class DBGestioneCorsisti{
 	
 	/*fornisce una lista di nomi e cognomi dei candidati, partendo da un'area di competenza informatica, presa da input
 	 * (task E subtask1) query 1 di 4 coppia A 1 di 2*/
-	public List<AnagraficaCandidato> selectCorsistiCertificazioniDaCompetenze(String competenza) throws SQLException
+	public ArrayList<AnagraficaCandidato> selectCorsistiCertificazioniDaCompetenze(String competenza) throws SQLException
 	{
-		List<AnagraficaCandidato>listCandidati = new ArrayList<>();
+		ArrayList<AnagraficaCandidato>listCandidati = new ArrayList<>();
 		String comp = "%" + competenza;
 		String sql = "select ac.nome, ac.cognome "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
@@ -300,9 +299,9 @@ public class DBGestioneCorsisti{
 	
 	/*fornisce una lista di certificazioni, partendo da un'area di competenza informatica
 	 * (task E subtask1) query 2 di 4 coppia A 2 di 2*/
-	public List<AnagraficaCandidato>selectCertificazioniDaCompetenze(String competenza) throws SQLException
+	public ArrayList<AnagraficaCandidato>selectCertificazioniDaCompetenze(String competenza) throws SQLException
 	{
-		List<Certificazione>listCertificazioni = new ArrayList<>();
+		ArrayList<Certificazione>listCertificazioni = new ArrayList<>();
 		String sql = "select ce.* "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
 				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv "
@@ -325,9 +324,9 @@ public class DBGestioneCorsisti{
 	
 	/*fornisce una lista di nomi e cognomi dei corsisti, partendo dalla specializzazione di una certificazione presa da input
 	 * (Task E subtask1) query 3 di 4 coppia B 1 di 2 */
-	public List<AnagraficaCandidato> selectCorsistiDaCertificazioni(Certificazione certificazione) throws SQLException
+	public ArrayList<AnagraficaCandidato> selectCorsistiDaCertificazioni(Certificazione certificazione) throws SQLException
 	{
-		List<AnagraficaCandidato>listCandidati = new ArrayList<>();
+		ArrayList<AnagraficaCandidato>listCandidati = new ArrayList<>();
 		String sql = "select ac.nome, ac.cognome "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
 				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv and cv.idCv = ce.idCv "
@@ -348,9 +347,9 @@ public class DBGestioneCorsisti{
 	
 	/*fornisce una lista di certificazioni, partendo dalla specializzazione di una certificazione presa da input
 	 * (Task E subtask 1)query 4 di 4 coppia B 2 di 2*/
-	public List<Certificazione> selectCertificazioniDaCertificazione(Certificazione certificazione) throws SQLException
+	public ArrayList<Certificazione> selectCertificazioniDaCertificazione(Certificazione certificazione) throws SQLException
 	{
-		List<Certificazione>listCertificazioni = new ArrayList<>();
+		ArrayList<Certificazione>listCertificazioni = new ArrayList<>();
 		String sql = "select ce.* "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
 				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv and cv.idCv = ce.idCv "
