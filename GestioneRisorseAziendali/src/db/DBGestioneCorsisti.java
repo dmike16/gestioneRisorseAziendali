@@ -76,7 +76,7 @@ public class DBGestioneCorsisti{
 				lavoro.setIdLavoro(result.getInt(1));
 				lavoro.setAmbito(result.getString(2));
 				lavoro.setImpiego(result.getString(3));
-				lavoro.setStipendio(result.getDouble(4));
+				lavoro.setStipendio(result.getInt(4));
 				lavoro.setDataInizio(result.getDate(5).toLocalDate());
 				lavoro.setDataFine(result.getDate(6).toLocalDate());
 				lavoro.setIdCv(result.getInt(7));

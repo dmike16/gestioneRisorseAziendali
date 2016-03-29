@@ -13,7 +13,7 @@ public class Anagrafica {
 	
 	@NotNull
 	@Digits(integer=6,fraction=0)
-	private int idRisorsa
+	private int idRisorsa;
 	
 	@NotNull
 	@Digits(integer=6,fraction=0)
