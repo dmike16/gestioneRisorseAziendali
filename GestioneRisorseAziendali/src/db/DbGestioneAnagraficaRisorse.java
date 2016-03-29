@@ -15,8 +15,11 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Service;
+
 import domain.anagrafica.Anagrafica;
 import domain.anagrafica.AnagraficaCandidato;
+import domain.anagrafica.Indirizzo;
 import domain.corso.Candidato;
 import domain.corso.Competenza;
 import domain.corso.Corso;
@@ -27,8 +30,8 @@ import domain.corso.Risultato;
 import domain.anagrafica.Nazionalita;
 import db.ConnessioneDb;
 
-
-public class DbGestioneAnagraficaRisorse  {
+@Service
+public class DbGestioneAnagraficaRisorse implements DbGestRis {
 	
 	Connection con;
 	
@@ -49,7 +52,12 @@ public class DbGestioneAnagraficaRisorse  {
 		
 	}    
     
-	//visualizzazione post ricerca
+	/**
+	 * Visualizzazione dati Candidato a partire dalla lista della ricerca
+	 * @param idCandidato
+	 * @return AnagraficaCandidato
+	 * @throws SQLException
+	 */
     public AnagraficaCandidato selectAnagraficaCandidato(int idCandidato) throws SQLException{
     	AnagraficaCandidato anagraficaCandidato =new AnagraficaCandidato();
     	String sql = "select * from anagraficaCandidato, Candidato where idCandidato = ?";
@@ -337,7 +345,120 @@ public class DbGestioneAnagraficaRisorse  {
     	return corso;
     	
     }
-    
+  //ultimo da inserire 
+  	public void insertCandidato(Candidato candidato)throws SQLException{
+  		String sql = "INSERT INTO CANDIDATO (idCandidato,idCv,idAnagraficaCandidato)"+
+  					" VALUES(sequenceCandidato.nextval,sequenceCv.currval,sequenceAnagraficaCandidato.currval)";
+  		
+  		PreparedStatement ps = con.prepareStatement(sql);
+  	
+  		ps.executeUpdate();
+  	}
+  	
+  	public void insertIndirizzo(Indirizzo indirizzo)throws SQLException{
+  		//String sql= "INSERT INTO INDIRIZZO VALUES (sequenceIndirizzo.nextval,?,?,?,?)";
+  		String sql= "INSERT INTO INDIRIZZO (idindirizzo,citta) VALUES (sequenceIndirizzo.nextval,?)";
+  		PreparedStatement ps = con.prepareStatement(sql);
+  		
+
+  		String citta = indirizzo.getCitta();
+  		//String cap = indirizzo.getCap();
+  		//String via = indirizzo.getVia();
+  		//String nCivico = indirizzo.getnCivico();
+  		
+  		ps.setString(1, citta);
+  		//ps.setString(2, cap);
+  		//ps.setString(3, via);
+  		//ps.setString(4,nCivico);
+  		
+  		ps.executeUpdate();
+  			
+  		}
+  		
+  	public void insertAnagraficaCandidato(AnagraficaCandidato anag)throws SQLException{
+  	String sql = "INSERT INTO ANAGRAFICACANDIDATO VALUES(sequenceAnagraficaCandidato.nextval,?,?,?,?,?,sequenceIndirizzo.currval)";
+  	
+  	PreparedStatement ps = con.prepareStatement(sql);
+  	
+  	
+  	String nome = anag.getNome();
+  	String cognome = anag.getCognome();
+  	LocalDate dataNascita = anag.getDataNascita();
+  	String cellulare = anag.getCellulare();
+  	
+  	
+  	
+  	ps.setString(1, nome);
+  	ps.setString(2, cognome);
+  	ps.setDate(3, java.sql.Date.valueOf(dataNascita));
+  	ps.setString(4, cellulare);
+  	
+  	
+  	ps.executeUpdate();
+  	
+  	}
+  	
+  	
+
+  	
+  	public Risorsa selectRisorsaCandidato(int idRisorsa)throws SQLException{
+  		String sql ="select * from risorsa where idRisorsa = ?";
+  		
+  		PreparedStatement ps = con.prepareStatement(sql);
+  		Risorsa risorsa = null;
+  		ps.setInt(1,idRisorsa);
+  		ResultSet rs = ps.executeQuery();
+  		if(rs.next()){
+  			do{
+  				risorsa= new Risorsa();
+  				risorsa.setIdTirocinio(rs.getInt(2));
+  				risorsa.setIdAnagrafica(rs.getInt(3));
+  			}while(rs.next());
+  		}
+  		return risorsa;
+  			
+  		
+  		
+  	}
+  	
+  	public int modificaIndirizzo(Indirizzo indirizzo)throws SQLException{
+  		String sql = "update Indirizzo set citta=?,cap=?,via=?,nCivico=?  where idIndirizzo=?";
+  		
+  		
+  		PreparedStatement ps = con.prepareStatement(sql);
+  		
+  			ps.setString(1,indirizzo.getCitta());
+  			ps.setString(2,indirizzo.getCap());
+  			ps.setString(3,indirizzo.getVia());
+  			ps.setString(4,indirizzo.getnCivico());
+  			
+  			return ps.executeUpdate();
+  		
+  		
+  	}
+  	
+  	public int modificaAnagrafica(AnagraficaCandidato anagraficaCandidato)throws SQLException{
+  		String sql = "update AnagraficaCandidato set cellulare=?, email=?, titolodiStudi=? where idAnagraficaCandidato=?";
+  		
+  		
+  			PreparedStatement ps = con.prepareStatement(sql);
+  			ps.setString(1,anagraficaCandidato.getCellulare());
+  			ps.setString(2, anagraficaCandidato.getEmail());
+  			ps.setString(3,anagraficaCandidato.getTitoloStudio());
+  			
+  			return ps.executeUpdate();
+  		
+  	}
+  	
+  	public void modificaCandidato(int idCandidato)throws SQLException{
+  		String sql = "UPDATE CANDIDATO SET IDRISORSA = sequenceRisorsa.currval WHERE IDCANDIDATO = ?";
+  		
+  		PreparedStatement ps = con.prepareStatement(sql);
+  		
+  		ps.setInt(1,idCandidato );
+  		ps.executeUpdate();
+  		
+  	}
     
     
 }
