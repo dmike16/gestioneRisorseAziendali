@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import domain.RicercaScelta;
 import domain.anagrafica.AnagraficaCandidato;
 import domain.anagrafica.Azienda;
+import domain.anagrafica.Certificazione;
 import domain.anagrafica.Formazione;
 import domain.anagrafica.Lavoro;
 import domain.corso.Corso;
@@ -40,10 +41,10 @@ public class ControllerGestioneCorsisti {
 	 * 
 	 * @return String index jsp
 	 */
-	@RequestMapping("gestioneCorsisti.action")
-	public String gestioneCorsistiIndex(BindingResult bindingResult ,Model model){
-		//TODO ritornare alla pagina precedente
-		return "GestioneCorsisti";
+	@RequestMapping("index.action")
+	public String gestioneCorsistiIndex(){
+
+		return "index";
 	}
 	
 	/**
@@ -64,7 +65,7 @@ public class ControllerGestioneCorsisti {
 		//----esegue la query a seconda della scelta presa nella radio----
 		if(scelta.equals("studi")){
 			ArrayList<Formazione> listFormazione = gestione.selectFormazioneCorsisti(ricercaScelta);
-			model.addAttribute("studio", listFormazione);
+			model.addAttribute("formazione", listFormazione);
 		}
 		else if(scelta.equals("lavoro")){
 			List<Lavoro> listaLavori = gestione.selectLavoriCorsisti(ricercaScelta);
@@ -118,6 +119,7 @@ public class ControllerGestioneCorsisti {
             return "GestioneCorsisti";
         }
 		List<AnagraficaCandidato> listaAnagrafica = gestione.selectCorsistiSettoreLavorativo(lavoro.getAmbito());
+		model.addAttribute("anagrafica",listaAnagrafica);
 		return "GestioneCorsisti";
 	}
 	
@@ -127,8 +129,15 @@ public class ControllerGestioneCorsisti {
 	 * @return String GestioneCorsisti
 	 */
 	@RequestMapping("GestioneCorsisti4.action")
-	public String ricercaPerFormazione(BindingResult bindingResult ,Model model){
-		// TODO
+	public String ricercaPerFormazione(@Valid @ModelAttribute Certificazione certificazione,BindingResult bindingResult ,Model model){
+		if (bindingResult.hasErrors()) {
+            FieldError fieldError = bindingResult.getFieldError();
+            return "GestioneCorsisti";
+        }
+		ArrayList<AnagraficaCandidato> listaAnagrafica = gestione.SelectCorsistiCertificazioniDaCompetenze(certificazione.getSettore());
+		ArrayList<Certificazione> listaCertificazione = gestione.selectCertificazioniDaCompetenze(certificazione.getSettore());
+		model.addAttribute("anagrafica",listaAnagrafica);
+		model.addAttribute("certificazione" , listaCertificazione);
 		return "GestioneCorsisti";
 	}
 	
@@ -138,13 +147,17 @@ public class ControllerGestioneCorsisti {
 	 * @return String GestioneCorsisti
 	 */
 	@RequestMapping("GestioneCorsisti5.action")
-	public String ricercaPerCorso(@Valid @ModelAttribute Corso corso , BindingResult bindingResult ,Model model){
+	public String ricercaPerCorso(@Valid @ModelAttribute Certificazione certificazione , BindingResult bindingResult ,Model model){
 		if (bindingResult.hasErrors()) {
             FieldError fieldError = bindingResult.getFieldError();
             return "GestioneCorsisti";
         }
-		//TODO
+		ArrayList<AnagraficaCandidato> listaAnagrafica = gestione.selectCorsistiDaCertificazione(certificazione.getSpecializzazione());
+		ArrayList<Certificazione> listaCertificazione = gestione.selectCertificazioniDaCertificazione(certificazione.getSpecializzazione());
+		model.addAttribute("anagrafica",listaAnagrafica);
+		model.addAttribute("specializzazione",listaCertificazione);
 		return "GestioneCorsisti";
 	}
 }
+
 
