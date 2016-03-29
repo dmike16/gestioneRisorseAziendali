@@ -18,25 +18,11 @@ import domain.RicercaScelta;
 public class DBGestioneCorsisti{
 	
 	private Connection conn;
+	private ConnectionDB db;
 	
-	public DBGestioneCorsisti() throws ClassNotFoundException, SQLException, NamingException{
-		establishConnection();
-	}
+	conn=db.getConnection();
 	
-	private void establishConnection(){
-		try{
-			Context initContext = new InitialContext();
-			Context envContext = (Context)initContext.lookup("java:comp/env");
-			DataSource ds = (DataSource)envContext.lookup("jdbc/hrakt");
-			conn = ds.getConnection();
-		} catch(SQLException e){
-			System.out.println("SQLException "+e);
-		} catch(NamingException e){
-			System.out.println("NamingException "+e);
-		}
-	}
-		
-		
+	
 	// Seleziona la formazione dei corsisti partendo da nome e cognome presi da input(TASK C SUBTASK 2)
 	public ArrayList<Formazione> selectFormazioneCorsisti(RicercaScelta ricercaScelta) throws SQLException
 	{
