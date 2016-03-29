@@ -23,7 +23,7 @@ public class ConnessioneDb {
     		DataSource ds = (DataSource) envContext.lookup("jdbc/hrakt");
     		con= ds.getConnection();
     }
-    public Connection returnConnection()
+    public Connection getConnection()
     {
     	return con;
     }
