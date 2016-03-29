@@ -1,6 +1,11 @@
 package domain.anagrafica;
-import javax.validation.constraints.*;
 import java.time.LocalDate;
+
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import com.sun.istack.internal.NotNull;
 
 public class AnagraficaCandidato {
 	@NotNull
