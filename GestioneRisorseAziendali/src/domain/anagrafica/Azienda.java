@@ -11,8 +11,8 @@ public class Azienda {
 	private String tipoAzienda;
 	@NotNull
 	private String settore;
-	@NotNull
-	private int idSede;
+	
+	private int idIndirizzo;
 	
 	
 	public int getIdAzienda() {
@@ -39,11 +39,11 @@ public class Azienda {
 	public void setSettore(String settore) {
 		this.settore = settore;
 	}
-	public int getIdSede() {
-		return idSede;
+	public int getIdIndirizzo() {
+		return idIndirizzo;
 	}
-	public void setIdSede(int idSede) {
-		this.idSede = idSede;
+	public void setIdIndirizzo(int idIndirizzo) {
+		this.idIndirizzo = idIndirizzo;
 	}
 	
 }
