@@ -1,6 +1,7 @@
 package domain.anagrafica;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 public class Formazione {
 	@NotNull
@@ -11,8 +12,17 @@ public class Formazione {
 	private String descrizione;
 	@NotNull
 	private String votazione;
-	@NotNull
-	private int idLuogoData;
+	
+	private LocalDate dataInizio;
+	
+	private LocalDate dataFine;
+	
+	private int idCv;
+	
+	private int idAzienda;
+	
+	/*@NotNull
+	private int idLuogoData;*/
 
 
 	public int getIdFormazione() {
@@ -39,12 +49,38 @@ public class Formazione {
 	public void setVotazione(String votazione) {
 		this.votazione = votazione;
 	}
-	public int getIdLuogoData() {
+	public LocalDate getDataInizio() {
+		return dataInizio;
+	}
+	public void setDataInizio(LocalDate dataInizio) {
+		this.dataInizio = dataInizio;
+	}
+	public LocalDate getDataFine() {
+		return dataFine;
+	}
+	public void setDataFine(LocalDate dataFine) {
+		this.dataFine = dataFine;
+	}
+	public int getIdCv() {
+		return idCv;
+	}
+	public void setIdCv(int idCv) {
+		this.idCv = idCv;
+	}
+	public int getIdAzienda() {
+		return idAzienda;
+	}
+	public void setIdAzienda(int idAzienda) {
+		this.idAzienda = idAzienda;
+	}
+	
+	
+	/*public int getIdLuogoData() {
 		return idLuogoData;
 	}
 	public void setIdLuogoData(int idLuogoData) {
 		this.idLuogoData = idLuogoData;
-	}
+	}*/
 
 
 }
