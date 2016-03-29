@@ -30,7 +30,7 @@ public class DBGestioneCorsisti{
 		ArrayList<Formazione> listaFormazioni = new ArrayList<>();
 		String sql="select f.* "
 				+ "from risorsa r,anagraficaCandidato ac ,candidato c, cv , formazione f "
-				+ "where r.idRisorsa = c.idRisorsa and c.idAnagraficaCandidato=ac.idAnagraficaCandidato "
+				+ "where r.idRisorsa = c.idRisorsa and c.idAnagrafica=ac.idAnagraficaCandidato "
 				+ "and ac.nome=? and ac.cognome=? and cv.idCV=c.idCV and "
 				+ "cv.idCV=f.idCV "
 				+ "order by f.dataInizio asc";
@@ -62,8 +62,8 @@ public class DBGestioneCorsisti{
 	{
 		List<Lavoro>listaLavori = new ArrayList<>();
 		String sql ="select l.* "
-					+ "from risorsa r, candidato c, anagraficaCandidato ac, cv cv, lavoro l, azienda az "
-					+ "where r.idRisorsa = c.idRisorsa and c.idAnagraficaCandidato = ac.idAnagraficaCandidato and ac.nome = ? "
+					+ "from risorsa r, candidato c, anagraficaCandidato ac, cv cv, lavoro l "
+					+ "where r.idRisorsa = c.idRisorsa and c.idAnagrafica = ac.idAnagraficaCandidato and ac.nome = ? "
 					+ "and ac.cognome = ? and c.idCv = cv.idCv and cv.idCv = l.idCv "
 					+ "order by l.dataInizio asc";
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -93,8 +93,9 @@ public class DBGestioneCorsisti{
 	{
 		List<Azienda>listaAziende = new ArrayList<>();
 		String sql ="select az.* "
-				+"from anagraficaCandidato ac, indirizzo i, azienda az "
-				+ "where ac.nome = ? and ac.cognome = ? and ac.idIndirizzo = i.idIndirizzo and az.idIndirizzo = i.idIndirizzo";
+				+"from anagraficaCandidato ac, indirizzo i, azienda az, candidato c, risorsa r "
+				+ "where ac.nome = ? and ac.cognome = ? and ac.idIndirizzo = i.idIndirizzo and az.idIndirizzo = i.idIndirizzo "
+				+ "and ac.idAnagraficaCandidato = c.idAnagrafica and c.idRisorsa = r.idRisorsa";
 		PreparedStatement statement = conn.prepareStatement(sql);
 		ResultSet result = statement.executeQuery();
 		
@@ -117,9 +118,9 @@ public class DBGestioneCorsisti{
 	{
 		List<Certificazione> listCertificazioni = new ArrayList<>();
 		String sql = "select ce.* "
-				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
-				+ "where ac.nome = ? and ac.cognome = ? and ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv "
-				+ "and cv.idCv = ce.idCv";
+				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce, risorsa r "
+				+ "where ac.nome = ? and ac.cognome = ? and ac.idAnagraficaCandidato = c.idAnagrafica and c.idCv = cv.idCv "
+				+ "and cv.idCv = ce.idCv and r.idRisorsa = c.idRisorsa";
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1,ricercaScelta.getNome());
 		statement.setString(2,ricercaScelta.getCognome());
@@ -143,7 +144,7 @@ public class DBGestioneCorsisti{
 		List<Corso> listCorsi = new ArrayList<>();
 		String sql = "select co.* "
 				+ "from risorsa r, candidato c, anagraficaCandidato ac, corsoHistory ch, corso co "
-				+ "where r.idRisorsa = c.idRisorsa and c.idAnagraficaCandidato = ac.idAnagraficaCandidato and ac.nome = ? "
+				+ "where r.idRisorsa = c.idRisorsa and c.idAnagrafica = ac.idAnagraficaCandidato and ac.nome = ? "
 				+ "and ac.cognome = ? and r.idRisorsa = ch.idRisorsa and ch.idCorso = co.idCorso "
 				+ "order by co.dataInizio asc";
 		PreparedStatement statement = conn.prepareStatement(sql);
@@ -170,12 +171,13 @@ public class DBGestioneCorsisti{
 	public List<AnagraficaCandidato> selectCorsistiPerStudio(String formazione) throws SQLException 
 	{
 		List<AnagraficaCandidato>listCandidati = new ArrayList<>();
+		String formazioneQuery = formazione + "%";
 		String sql = "select ac.nome, ac.cognome "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, formazione f "
-				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv and cv.idCv = f.idCv "
-				+ "and f.titoloStudio = ?";
+				+ "where ac.idAnagraficaCandidato = c.idAnagrafica and c.idCv = cv.idCv and cv.idCv = f.idCv "
+				+ "and f.titoloStudio like ?";
 		PreparedStatement statement = conn.prepareStatement(sql);
-		statement.setString(1,formazione);
+		statement.setString(1,formazioneQuery);
 		ResultSet result = statement.executeQuery();
 		
 		while(result.next())
@@ -189,12 +191,13 @@ public class DBGestioneCorsisti{
 	}
 	
 	/*Fornisce una lista di votazioni, partendo da un titolo di studio preso da input (TASK C SUBTASK 1) query 2/2*/
-	public ArrayList<Formazione> selectCorsistiPerVotoStudio(String formazioneQuery)throws SQLException{
+	public ArrayList<Formazione> selectCorsistiPerVotoStudio(String formaz)throws SQLException{
 		ArrayList<Formazione>listVoti = new ArrayList<>();
+		String formazioneQuery = "%" + formaz;
 		String sql = "select f.votazione "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, formazione f "
-				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv and cv.idCv = f.idCv "
-				+ " and f.titoloStudio = ?";
+				+ "where ac.idAnagraficaCandidato = c.idAnagrafica and c.idCv = cv.idCv and cv.idCv = f.idCv "
+				+ " and f.titoloStudio like ?";
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1,formazioneQuery);
 		ResultSet result = statement.executeQuery();
@@ -260,7 +263,7 @@ public class DBGestioneCorsisti{
 		List<AnagraficaCandidato>listCandidati = new ArrayList<>();
 		String sql ="select ac.nome, ac.cognome "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
-				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv "
+				+ "where ac.idAnagraficaCandidato = c.idAnagrafica and c.idCv = cv.idCv "
 				+ "and cv.idCv = ce.idCv and ce.specializzazione = ?";
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1,competenza);
@@ -281,13 +284,12 @@ public class DBGestioneCorsisti{
 	public List<AnagraficaCandidato> selectCorsistiCertificazioniDaCompetenze(String competenza) throws SQLException
 	{
 		List<AnagraficaCandidato>listCandidati = new ArrayList<>();
-		String comp = "%" + competenza;
 		String sql = "select ac.nome, ac.cognome "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
-				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv "
+				+ "where ac.idAnagraficaCandidato = c.idAnagrafica and c.idCv = cv.idCv "
 				+ "and cv.idCv = ce.idCv and ce.settore = ?";
 		PreparedStatement statement = conn.prepareStatement(sql);
-		statement.setString(1,comp);
+		statement.setString(1,competenza);
 		ResultSet result = statement.executeQuery();
 		
 		while(result.next())
@@ -307,7 +309,7 @@ public class DBGestioneCorsisti{
 		ArrayList<Certificazione> listCertificazioni = new ArrayList<>();
 		String sql = "select ce.* "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
-				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv "
+				+ "where ac.idAnagraficaCandidato = c.idAnagrafica and c.idCv = cv.idCv "
 				+ "and cv.idCv = ce.idCv and ce.settore = ?";
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1, competenza);
@@ -332,7 +334,7 @@ public class DBGestioneCorsisti{
 		List<AnagraficaCandidato>listCandidati = new ArrayList<>();
 		String sql = "select ac.nome, ac.cognome "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
-				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv and cv.idCv = ce.idCv "
+				+ "where ac.idAnagraficaCandidato = c.idAnagrafica and c.idCv = cv.idCv and cv.idCv = ce.idCv "
 				+ "and ce.specializzazione = ?";
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1, certificazione.getSpecializzazione());
@@ -355,7 +357,7 @@ public class DBGestioneCorsisti{
 		ArrayList<Certificazione>listCertificazioni = new ArrayList<>();
 		String sql = "select ce.* "
 				+ "from anagraficaCandidato ac, candidato c, cv cv, certificazione ce "
-				+ "where ac.idAnagraficaCandidato = c.idAnagraficaCandidato and c.idCv = cv.idCv and cv.idCv = ce.idCv "
+				+ "where ac.idAnagraficaCandidato = c.idAnagrafica and c.idCv = cv.idCv and cv.idCv = ce.idCv "
 				+ "and ce.specializzazione = ?";
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setString(1,certificazioneQuery.getSpecializzazione());
