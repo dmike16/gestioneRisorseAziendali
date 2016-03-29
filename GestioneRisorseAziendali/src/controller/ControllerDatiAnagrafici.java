@@ -17,15 +17,18 @@ import db.DbGestioneAnagraficaRisorse;
 import domain.anagrafica.AnagraficaCandidato;
 import domain.anagrafica.CV;
 import domain.anagrafica.Indirizzo;
-import domain.anagrafica.formAnagrafica.FormDatiAnagrafici;
+import domain.anagrafica.FormDatiAnagrafici;
 
 @Controller
 public class ControllerDatiAnagrafici {
 	
-	
+	@RequestMapping(value="/index.action")
+	public String index(Model model)
+	{
+		return "Index";
+	}
 
-	
-  	@RequestMapping(value="/gestioneDatiAnagrafici.action")
+  	@RequestMapping(value="/gestioneDatiAnagrafici.action")//Verificato
 	public String gestioneDatiAnagrafici(Model model)
 	{
 		return "GestioneDatiAnagrafici";
@@ -38,7 +41,7 @@ public class ControllerDatiAnagrafici {
 		return "InserimentoDatiAnagrafici";
 	}
 	
-	@RequestMapping(value="/inserimentoCandidato.action")
+	@RequestMapping(value="/inserimentoCandidato.action")//Verificato
 	public String inserimentoCandidato(Model model, @ModelAttribute("form") FormDatiAnagrafici form,
         BindingResult bindingResult) {
 		
