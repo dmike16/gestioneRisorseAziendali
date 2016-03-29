@@ -13,6 +13,61 @@ public class DbGestioneSelezione{
 	private Connection con=db.getConnection();
 	
 
+	public ArrayList<String> selectNomeCognomeTestPreselettivo (String test)throws SQLException{
+		ArrayList<String> list= new ArrayList<>();
+		
+		String sql =" select nome ,cognome ,bt.punteggio from AnagraficaCandidato a ,"
+				+ " Candidato c , Partecipa p ,Selezione s ,testSelezione t ,"
+				+ " batteriaTest bt ,batteria bat "
+				+ " where a.idAnagraficaCandidato = c.idAnagraficaCandidato and "
+				+ " c.idCandidato = p.idCandidato and "
+				+ " p.idSelezione = s.idSelezione and "
+				+ " s.idSelezione = bt.idSelezione and "
+				+ " t.idTest = b.idTest and "
+				+ " bt.codiceBatteria = bat.codiceBatteria and "
+				+ " b.tipo = ? ";
+		PreparedStatement prep = con.prepareStatement(sql);
+		prep.setString(1, test);
+		
+		ResultSet result =prep.executeQuery(); 
+		while(result.next()){
+
+			list.add( "nome: "+result.getString(1)+" "+
+			 "cognome: "+result.getString(2)+" "+
+			"Punteggio: "+result.getInt(3));
+		}
+		return list;
+	}
+	
+	public ArrayList<String> selectNomeCognomeBatterieEPunteggio(String nome,String cognome)throws SQLException{
+		ArrayList<String> list= new ArrayList<>();
+		String sql =" select nome ,cognome ,bat.tipo,bt.punteggio from AnagraficaCandidato a ,"
+				+ " Candidato c , Partecipa p ,Selezione s ,testSelezione t ,"
+				+ " batteriaTest bt ,batteria bat "
+				+ " where a.idAnagraficaCandidato = c.idAnagraficaCandidato and "
+				+ " c.idCandidato = p.idCandidato and "
+				+ " p.idSelezione = s.idSelezione and "
+				+ " s.idSelezione = t.idSelezione and "
+				+ " t.idTest = bt.idTest and "
+				+ " bt.codiceBatteria = bat.codiceBatteria and "
+				+ " a.nome = ? and a.cognome = ?";
+		PreparedStatement prep = con.prepareStatement(sql);
+		prep.setString(1, nome);
+		prep.setString(2, cognome);
+
+		ResultSet result =prep.executeQuery(); 
+		while(result.next()){
+
+			list.add( "nome: "+result.getString(1)+" "+
+			 "cognome: "+result.getString(2)+" "+
+			"tipo: "+result.getString(3)+" "+
+			"punteggio: "+result.getInt(4));
+			
+		}
+
+		return list;
+	}
+	
 	//dato un certo corsista si ottera la descrizione delle sue potenzialita
 	
 	public ArrayList<String> selectNomeCognomePotenzialita(String nome,String cognome)throws SQLException{
@@ -42,6 +97,7 @@ public class DbGestioneSelezione{
 
 	}
 	
+	 
 	public ArrayList<String> selectNomeCognomeProfiloCaratteriale(String nome,String cognome)throws SQLException{
 		ArrayList<String> s= new ArrayList<>();
 
@@ -69,6 +125,33 @@ public class DbGestioneSelezione{
 
 	}
 	
+	
+	public ArrayList<String> selectNomeCognomeElencoModuli(String nome,String cognome)throws SQLException{
+	
+		 ArrayList<String> list = new ArrayList<>();
+		 
+		 String sql="select nome,cognome,nomeModulo,valutazione from  anagraficaCandidato a ,"
+		 		+ "Candidato c ,Risorsa r , Risultato ris , Modulo m "
+		 		+ " where a.idAnagraficaCandidato = c.idAnagraficaCandidato and "
+		 		+ " c.idAnagraficaCandidato = r.idAnagrafica and "
+		 		+ " r.idRisorsa = ris.idRisorsa and "
+		 		+ " ris.idModulo = m.idModulo and "  
+		 		+ "  where nome = ? and cognome = ? ";
+		 
+		 PreparedStatement prep = con.prepareStatement(sql);
+		 prep.setString(1, nome);
+			prep.setString(2, cognome);
+			ResultSet result =prep.executeQuery(); 	
+			while(result.next()){
+
+				list.add( "nome: "+result.getString(1)+" "+
+						 "cognome: "+result.getString(2)+" "+
+						"nomeModulo: "+result.getString(3)+" "+
+						"valutazione: "+result.getString(4));
+			}
+		 return list;
+	}
+		
 	
 		
 
