@@ -297,7 +297,7 @@ idModulo char(7) PRIMARY KEY,
 nomeModulo varchar2(30)
 );
 
-CREATE TABLE ModuloCorsi(
+CREATE TABLE ModuloCorso(
 idCorso char(7),
 idModulo char(7),
 dataInizio date,

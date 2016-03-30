@@ -273,17 +273,17 @@ insert into Corso values ('AKT001C', 'Corso Sistemista', (TO_DATE ('2016-MAR-01'
 insert into Corso values ('AKT002C', 'Corso Sviluppatore Android', (TO_DATE ('2015-SET-07', 'yyyy-mon-dd')), (TO_DATE ('2015-NOV-17', 'yyyy-mon-dd')), 'AKT S.r.l', 11);
 
 --Tabella MODULO 
-insert into modulo(idmodulo, nomemodulo) values('AKT000M',  'Strutturata');
-insert into modulo(idmodulo, nomemodulo) values('AKT002M',  'PL-SQL');
+insert into modulo(idmodulo, nomemodulo) values('AKT000M', 'Strutturata');
+insert into modulo(idmodulo, nomemodulo) values('AKT002M', 'PL-SQL');
 insert into modulo(idmodulo, nomemodulo) values('AKT001M', 'SQL');
 insert into modulo(idmodulo, nomemodulo) values('AKT003M', 'Java SE');
 
 --Tabella MODULOCORSO
-insert into modulocorsi values ('AKT001C', 'AKT000M', null, null);
-insert into modulocorsi values ('AKT001C', 'AKT002M', null, null);
-insert into modulocorsi values ('AKT001C', 'AKT001M', null, null);
-insert into modulocorsi values ('AKT000C', 'AKT000M', null, null);
-insert into modulocorsi values ('AKT000C', 'AKT003M', null, null);
+insert into modulocorso values ('AKT001C', 'AKT000M', null, null);
+insert into modulocorso values ('AKT001C', 'AKT002M', null, null);
+insert into modulocorso values ('AKT001C', 'AKT001M', null, null);
+insert into modulocorso values ('AKT000C', 'AKT000M', null, null);
+insert into modulocorso values ('AKT000C', 'AKT003M', null, null);
 
 --Tabella RISORSA -> SECONDO CAMPO FK IDTIROCINIO -> TERZO CAMPO FK IDANAGRAFICA
 insert into Risorsa values(sequenceRisorsa.nextval, null, 1);
