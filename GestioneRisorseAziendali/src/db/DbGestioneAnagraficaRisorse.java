@@ -30,8 +30,7 @@ import domain.corso.Risultato;
 import domain.anagrafica.Nazionalita;
 import db.ConnessioneDb;
 
-@Service
-public class DbGestioneAnagraficaRisorse implements DbGestRis {
+public class DbGestioneAnagraficaRisorse {
 	
 	Connection con;
 	
@@ -60,11 +59,12 @@ public class DbGestioneAnagraficaRisorse implements DbGestRis {
 	 */
     public AnagraficaCandidato selectAnagraficaCandidato(int idCandidato) throws SQLException{
     	AnagraficaCandidato anagraficaCandidato =new AnagraficaCandidato();
-    	String sql = "select * from anagraficaCandidato, Candidato where idCandidato = ?";
+    	String sql = "select * from anagraficaCandidato where idCandidato = ?";
     	PreparedStatement stm = con.prepareStatement(sql);
     	stm.setInt(1, idCandidato);
     	ResultSet rs = stm.executeQuery();
     	while(rs.next()){
+    		anagraficaCandidato.setIdAnagraficaCandidato(rs.getInt("idAnagraficaCandidato"));
     		anagraficaCandidato.setNome(rs.getString("nome"));
     		anagraficaCandidato.setCognome(rs.getString("cognome"));
     		anagraficaCandidato.setDataNascita(rs.getDate("datanascita").toLocalDate());
@@ -103,6 +103,7 @@ public class DbGestioneAnagraficaRisorse implements DbGestRis {
     	ResultSet rs = stm.executeQuery();
     	while(rs.next()){
     		AnagraficaCandidato candidato = new AnagraficaCandidato();
+    		candidato.setIdAnagraficaCandidato(rs.getInt("idanagraficacandidato"));
     		candidato.setNome(rs.getString("nome"));
     		candidato.setCognome(rs.getString("cognome"));
     		candidato.setDataNascita(rs.getDate("datanascita").toLocalDate());
@@ -119,12 +120,14 @@ public class DbGestioneAnagraficaRisorse implements DbGestRis {
     	String sql = "select * from anagraficaCandidato where nome = ? and cognome = ?";
     	PreparedStatement stm = con.prepareStatement(sql);
     	stm.setString(1, nomeCandidato);
-    	stm.setString(1, cognomeCandidato);
+    	stm.setString(2, cognomeCandidato);
     	ResultSet rs = stm.executeQuery();
     	while(rs.next()){
     		Candidato candidato = new Candidato();
+    		candidato.setIdAnagrafica(rs.getInt("idanagrafica"));
     		candidato.setIdCandidato(rs.getInt("idcandidato"));
     		candidato.setIdCv(rs.getInt("idCv"));
+    		candidato.setIdRisorsa(rs.getInt("idrisorsa"));
     		candidati.add(candidato);
     		   		
     	}
@@ -141,6 +144,7 @@ public class DbGestioneAnagraficaRisorse implements DbGestRis {
     	ResultSet rs = stm.executeQuery();
     	while(rs.next()){
     		AnagraficaCandidato candidato = new AnagraficaCandidato();
+    		candidato.setIdAnagraficaCandidato(rs.getInt("idanagraficacandidato"));
     		candidato.setNome(rs.getString("nome"));
     		candidato.setCognome(rs.getString("cognome"));
     		candidato.setDataNascita(rs.getDate("datanascita").toLocalDate());
@@ -151,6 +155,9 @@ public class DbGestioneAnagraficaRisorse implements DbGestRis {
     	}
     	return anagraficaCandidati;
     }
+
+
+    //da controllare e fare subselect
     public List<Candidato> selectCandidatoId(String email) throws SQLException{
     	List<Candidato> candidati =new ArrayList<>();
     	String sql = "select * from anagraficaCandidato where email=?";
@@ -160,6 +167,7 @@ public class DbGestioneAnagraficaRisorse implements DbGestRis {
     	ResultSet rs = stm.executeQuery();
     	while(rs.next()){
     		Candidato candidato = new Candidato();
+    		candidato.setIdAnagrafica(rs.getInt("idanagrafica"));
     		candidato.setIdCandidato(rs.getInt("idcandidato"));
     		candidato.setIdCv(rs.getInt("idCv"));
     		candidati.add(candidato);
@@ -198,11 +206,11 @@ public class DbGestioneAnagraficaRisorse implements DbGestRis {
     	
     }
     
-    public void insertRisorsa() throws SQLException{
+    public void insertRisorsa(Risorsa risorsa) throws SQLException{
     	String sql = "insert into Risorsa values (sequenceRisorsa.nextval,sequenceTirocinio.currval,sequenceAnagrafica.currval)";
     	Statement stm = con.createStatement();
     	stm.executeUpdate(sql);
-    	
+    	//da finire
     }
     
     public void insertCorsoHistory(CorsoHistory ch, Corso corso) throws  SQLException{
@@ -411,6 +419,7 @@ public class DbGestioneAnagraficaRisorse implements DbGestRis {
   		if(rs.next()){
   			do{
   				risorsa= new Risorsa();
+  				risorsa.setIdRisorsa(rs.getInt(1));
   				risorsa.setIdTirocinio(rs.getInt(2));
   				risorsa.setIdAnagrafica(rs.getInt(3));
   			}while(rs.next());
@@ -459,6 +468,107 @@ public class DbGestioneAnagraficaRisorse implements DbGestRis {
   		ps.executeUpdate();
   		
   	}
+  	// Controllo se torna 0
+  	public int selectIdSelezione(int idCandidato)throws SQLException{
+  		String sql = " SELECT IDSELEZIONE FROM PARTECIPA WHERE IDCANDIDATO = ?";
+  		
+  		PreparedStatement ps = con.prepareStatement(sql);
+  		
+  		ps.setInt(1, idCandidato);
+  		ResultSet rs = ps.executeQuery();
+  		if(rs.next()){
+  		return  rs.getInt(1);
+  		}else{
+  			return 0;
+  		}
+  	}
+    //elimina Risorsa e corso
+    public int eliminaRisorsaCorsoHistory(int idRisorsa)throws SQLException{
+    	
+    	String sql = "DELETE CORSOHISTORY WHERE IDRISORSA = ? ";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idRisorsa);
+    	
+    	return ps.executeUpdate();
+    }
     
+    public int eliminaRisultato(int idRisorsa)throws SQLException{
+    	
+    	String sql= "DELETE RISULTATO WHERE IDRISORSA = ? ";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idRisorsa);
+    	
+    	return ps.executeUpdate();
+    }
     
+    public int eliminaRisorsa(int idRisorsa)throws SQLException{
+    	String sql = "DELETE RISORSA WHERE IDRISORSA = ?";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idRisorsa);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaColloquio(int idCandidato)throws SQLException{
+    	String sql = " DELETE COLLOQUIO WHERE IDCANDIDATO = ? ";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idCandidato);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaEsito(int idSelezione)throws SQLException{
+    	String sql = " DELETE ESITO WHERE IDESITO = "
+    			+" (SELECT IDESITO FROM SELEZIONE WHERE IDSELEZIONE = ?)";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idSelezione);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaBatteriaTest(int idSelezione)throws SQLException{
+    	String sql = "DELETE BATTERIATEST WHERE IDTEST = "
+    			+ "(SELECT IDTEST FROM TESTSELEZIONE WHERE IDSELEZIONE = ?) ";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idSelezione);
+    	
+    	return ps.executeUpdate();
+    	
+    }
+    
+    public int eliminaTestSelezione(int idSelezione)throws SQLException{
+    	String sql = "DELETE FROM TESTSELEZIONE WHERE IDSELEZIONE = ? ";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setInt(1, idSelezione);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaSelezione(int idSelezione)throws SQLException{
+    	String sql = "DELETE FROM SELEZIONE WHERE IDSELEZIONE = ? ";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setInt(1, idSelezione);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaPartecipa(int idSelezione)throws SQLException{
+    	String sql = "DELETE FROM PARTECIPA WHERE IDSELEZIONE = ? ";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setInt(1, idSelezione);
+    	
+    	return ps.executeUpdate();
+    }
 }

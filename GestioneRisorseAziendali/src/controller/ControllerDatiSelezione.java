@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import db.ConnessioneDb;
 
-import service.ConnessioneService;
+import db.DbGestioneSelezione;
 
 import java.util.ArrayList;
 
@@ -18,9 +19,8 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class ControllerDatiSelezione {
-	@Autowired  // mi autoistanzia  L'interfaccia ProductService senza che ogni volta la devo dichiarare
-	private ConnessioneService connessioneService;
-
+	
+	DbGestioneSelezione db = new DbGestioneSelezione();
 	@RequestMapping(value = "/GestioneDatiSelezione1.action")
 	public String gestioneDatiSelezione1(
 			@RequestParam(value ="nome",required = true) String nome,
@@ -31,7 +31,7 @@ public class ControllerDatiSelezione {
 		if(ricerca.equals("potenzialita")){
 			try{
 				ArrayList<String> list = new ArrayList<>();
-				list =connessioneService.selectNomeCognomePotenzialita(nome, cognome);
+				list =db.selectNomeCognomePotenzialita(nome, cognome);
 				model.addAttribute("list",list);
 			}
 			catch(Exception e ){
@@ -42,7 +42,7 @@ public class ControllerDatiSelezione {
 		else if(ricerca.equals("profiloCaratteriale")){
 			try{
 				ArrayList<String> list = new ArrayList<>();
-				list =connessioneService.selectNomeCognomeProfiloCaratteriale(nome, cognome);
+				list =db.selectNomeCognomeProfiloCaratteriale(nome, cognome);
 				model.addAttribute("list",list);
 			}
 			catch(Exception e ){

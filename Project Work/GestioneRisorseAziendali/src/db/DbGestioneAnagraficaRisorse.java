@@ -1,4 +1,3 @@
-
 package db;
 
 import java.sql.Connection;
@@ -45,9 +44,15 @@ public class DbGestioneAnagraficaRisorse {
 	 * @throws SQLException
 	 */
     public AnagraficaCandidato selectAnagraficaCandidato(int idCandidato) throws SQLException{
+<<<<<<< HEAD
     	AnagraficaCandidato anagraficaCandidato = new AnagraficaCandidato();
     	String sql = "select * from anagraficaCandidato where idCandidato = ?";
     	PreparedStatement stm = con.prepareStatement(sql);
+=======
+    	AnagraficaCandidato anagraficaCandidato =new AnagraficaCandidato();
+    	String sql = "select * from anagraficaCandidato, Candidato where idCandidato = ?";
+    	PreparedStatement stm = conn.prepareStatement(sql);
+>>>>>>> 320e4bf5573f6e8a636a401ca1ca84a5f2d331ac
     	stm.setInt(1, idCandidato);
     	ResultSet rs = stm.executeQuery();
     	while(rs.next()){
@@ -73,7 +78,7 @@ public class DbGestioneAnagraficaRisorse {
     public Candidato selectCandidato (int idCandidato) throws SQLException{
     	Candidato candidato = new Candidato();
     	String sql = "select * from Candidato where idCandidato=?";
-    	PreparedStatement stm = con.prepareStatement(sql);
+    	PreparedStatement stm = conn.prepareStatement(sql);
     	stm.setInt(1, idCandidato);
     	
     	ResultSet rs = stm.executeQuery();
@@ -102,7 +107,7 @@ public class DbGestioneAnagraficaRisorse {
     public List<AnagraficaCandidato> selectCandidato(String nomeCandidato, String cognomeCandidato) throws SQLException{
     	List<AnagraficaCandidato> anagraficaCandidati =new ArrayList<>();
     	String sql = "select * from anagraficaCandidato where nome = ? and cognome = ?";
-    	PreparedStatement stm = con.prepareStatement(sql);
+    	PreparedStatement stm = conn.prepareStatement(sql);
     	stm.setString(1, nomeCandidato);
     	stm.setString(2, cognomeCandidato);
     	ResultSet rs = stm.executeQuery();
@@ -130,6 +135,7 @@ public class DbGestioneAnagraficaRisorse {
      * @throws SQLException
      */
     public List<Candidato> selectCandidatoId(String nomeCandidato, String cognomeCandidato) throws SQLException{
+<<<<<<< HEAD
     	List<Candidato> candidati = new ArrayList<>();
     	//String sql = "select * from anagraficaCandidato where nome = ? and cognome = ?";
     	String sql = "select * from candidato "
@@ -138,6 +144,11 @@ public class DbGestioneAnagraficaRisorse {
     			+ "where nome = ? "
     			+ "and cognome = ?)";
     	PreparedStatement stm = con.prepareStatement(sql);
+=======
+    	List<Candidato> candidati =new ArrayList<>();
+    	String sql = "select * from anagraficaCandidato where nome = ? and cognome = ?";
+    	PreparedStatement stm = conn.prepareStatement(sql);
+>>>>>>> 320e4bf5573f6e8a636a401ca1ca84a5f2d331ac
     	stm.setString(1, nomeCandidato);
     	stm.setString(2, cognomeCandidato);
     	ResultSet rs = stm.executeQuery();
@@ -168,7 +179,7 @@ public class DbGestioneAnagraficaRisorse {
     public AnagraficaCandidato selectCandidato(String email) throws SQLException{
     	AnagraficaCandidato candidato = null;
     	String sql = "select * from anagraficaCandidato where email = ?";
-    	PreparedStatement stm = con.prepareStatement(sql);
+    	PreparedStatement stm = conn.prepareStatement(sql);
     	stm.setString(1, email);    	
     	ResultSet rs = stm.executeQuery();
     	while(rs.next()){
@@ -183,6 +194,7 @@ public class DbGestioneAnagraficaRisorse {
     	}
     	return candidato;
     }
+<<<<<<< HEAD
     
     /**
      * Dato un'indirizzo email,
@@ -199,6 +211,12 @@ public class DbGestioneAnagraficaRisorse {
     			+ "select idAnagraficaCandidato from AnagraficaCandidato "
     			+ "where email = ?)";
     	PreparedStatement stm = con.prepareStatement(sql);
+=======
+    public List<Candidato> selectCandidatoId(String email) throws SQLException{
+    	List<Candidato> candidati =new ArrayList<>();
+    	String sql = "select * from anagraficaCandidato where email=?";
+    	PreparedStatement stm = conn.prepareStatement(sql);
+>>>>>>> 320e4bf5573f6e8a636a401ca1ca84a5f2d331ac
     	stm.setString(1, email);
     	
     	ResultSet rs = stm.executeQuery();
@@ -224,7 +242,7 @@ public class DbGestioneAnagraficaRisorse {
      */
     public Nazionalita selectNazionalita(String nomeNazionalita) throws SQLException{
     	String sql = "select * from Nazionalita where nomeNazionalita = ?";
-    	PreparedStatement stm = con.prepareStatement(sql);
+    	PreparedStatement stm = conn.prepareStatement(sql);
     	stm.setString(1, nomeNazionalita);
     	Nazionalita nazionalita = null;
     	ResultSet rs = stm.executeQuery();
@@ -248,9 +266,14 @@ public class DbGestioneAnagraficaRisorse {
      * @throws SQLException
      */
     public void insertAnagrafica(Anagrafica anagrafica, Nazionalita nazionalita)throws SQLException{    	
+<<<<<<< HEAD
     	String sql = "insert into Anagrafica(luogoNascita, telefono, codiceFiscale, sesso, idAnagraficaCandidato, idNazionalita) "
     			+ "values(sequenceAnagrafica.nextval,?,?,?,?,?,sequenceIndirizzo.currval,?)";
     	PreparedStatement stm = con.prepareStatement(sql);
+=======
+    	String sql = "insert into Anagrafica values(sequenceAnagrafica.nextval,?,?,?,?,?,sequenceIndirizzo.currval,?)";
+    	PreparedStatement stm = conn.prepareStatement(sql);
+>>>>>>> 320e4bf5573f6e8a636a401ca1ca84a5f2d331ac
     	
     	stm.setString(1,anagrafica.getLuogoNascita());
     	stm.setString(2, anagrafica.getTelefono());
@@ -269,12 +292,18 @@ public class DbGestioneAnagraficaRisorse {
      * @throws SQLException
      */
     public void insertRisorsa() throws SQLException{
+<<<<<<< HEAD
     	String sql = "insert into Risorsa(idRisorsa, idAnagrafica) values (sequenceRisorsa.nextval, sequenceAnagrafica.currval)";
     	Statement stm = con.createStatement();
+=======
+    	String sql = "insert into Risorsa values (sequenceRisorsa.nextval,sequenceTirocinio.currval,sequenceAnagrafica.currval)";
+    	Statement stm = conn.createStatement();
+>>>>>>> 320e4bf5573f6e8a636a401ca1ca84a5f2d331ac
     	stm.executeUpdate(sql);
     	
     }
     
+<<<<<<< HEAD
     /**
      * Il metodo consente l'inserimento di una nuova riga nella tabella CorsoHistory.
      * Questo inserimento avverrà tipicamente quando ha terminato il corso attuale.
@@ -287,6 +316,11 @@ public class DbGestioneAnagraficaRisorse {
     public void insertCorsoHistory(CorsoHistory ch, Corso corso, String superamento) throws  SQLException{
     	String sql = "insert into CorsoHistory(idCorso, idRisorsa, superamento) values (?,sequenceRisorsa.currval,?)";
     	PreparedStatement stm = con.prepareStatement(sql);
+=======
+    public void insertCorsoHistory(CorsoHistory ch, Corso corso) throws  SQLException{
+    	String sql = "insert into CorsoHistory values (?,sequenceRisorsa.currval,?)";
+    	PreparedStatement stm = conn.prepareStatement(sql);
+>>>>>>> 320e4bf5573f6e8a636a401ca1ca84a5f2d331ac
     	stm.setString(1, corso.getIdCorso());
     	stm.setString(2, ch.getSuperamento());
     	stm.setString(3, superamento);
@@ -305,7 +339,7 @@ public class DbGestioneAnagraficaRisorse {
     	List<Corso> corsi = new ArrayList<>();
     	String sql = "select * from corso where idCorso in " +
     				" (select idCorso from corsoHistory where idRisorsa = ?)";
-    	PreparedStatement stm = con.prepareStatement(sql);
+    	PreparedStatement stm = conn.prepareStatement(sql);
     	stm.setInt(1, risorsa.getIdRisorsa());
     	ResultSet rs = stm.executeQuery();
     	
@@ -326,7 +360,7 @@ public class DbGestioneAnagraficaRisorse {
     	String sql = "select * from Modulo where idModulo in "+
     				 " (select idModulo from ModuloCorso where idCorso = "+
     				 "( select idCorso from Corso where titoloCorso = ?)";
-    	PreparedStatement stm = con.prepareStatement(sql);
+    	PreparedStatement stm = conn.prepareStatement(sql);
     	stm.setString(1, nomeCorso);
     	ResultSet rs = stm.executeQuery();
     	while(rs.next()){
@@ -341,7 +375,7 @@ public class DbGestioneAnagraficaRisorse {
     public Modulo selectModulo(String nomeModulo) throws SQLException {
     	String sql = "select * from modulo where nomeModulo = ?";
     	Modulo modulo = new Modulo();
-    	PreparedStatement stm = con.prepareStatement(sql);
+    	PreparedStatement stm = conn.prepareStatement(sql);
     	stm.setString(1, nomeModulo);
     	ResultSet rs = stm.executeQuery();
     	while(rs.next()){
@@ -353,7 +387,7 @@ public class DbGestioneAnagraficaRisorse {
     public void insertCorso(Corso corso) throws SQLException{
     	String sql = "insert into Corso values (sequenceCorso.nextval, ?,?,?,?,sequenceCompetenza.currval)";
     	
-    	PreparedStatement stm = con.prepareStatement(sql);
+    	PreparedStatement stm = conn.prepareStatement(sql);
     	stm.setString(1, corso.getTitoloCorso());
     	stm.setDate(2, java.sql.Date.valueOf(corso.getDataInizio().toString()));
     	stm.setDate(3, java.sql.Date.valueOf(corso.getDataFine().toString()));
@@ -364,7 +398,7 @@ public class DbGestioneAnagraficaRisorse {
     
     public void insertCompetenza(Competenza competenza) throws SQLException {
     	String sql = "insert into competenza values (sequenceCompetenza.nextval,?,?)";
-    	PreparedStatement stm = con.prepareStatement(sql);    	
+    	PreparedStatement stm = conn.prepareStatement(sql);    	
     	stm.setString(1, competenza.getSettore());
     	stm.setString(2, competenza.getSpecializzazione());
     	stm.executeUpdate();    	
@@ -372,7 +406,7 @@ public class DbGestioneAnagraficaRisorse {
     
     public void insertModulo(Modulo modulo) throws SQLException {
     	String sql = "insert into Modulo values (sequenceModulo.nextval,?)";
-    	PreparedStatement stm = con.prepareStatement(sql);   	
+    	PreparedStatement stm = conn.prepareStatement(sql);   	
     	stm.setString(3, modulo.getNomeModulo());
     	stm.executeUpdate();    	
    	
@@ -380,7 +414,7 @@ public class DbGestioneAnagraficaRisorse {
     
     public void insertRisultato(Risultato risultato, Modulo modulo, Risorsa risorsa ) throws SQLException {
     	String sql = "insert into Risultato values (?,?,?,?)";
-    	PreparedStatement stm = con.prepareStatement(sql);
+    	PreparedStatement stm = conn.prepareStatement(sql);
     	stm.setString(1, modulo.getIdModulo() );
     	stm.setInt(2, risorsa.getIdRisorsa());
     	stm.setString(3, risultato.getValutazione());
@@ -395,7 +429,7 @@ public class DbGestioneAnagraficaRisorse {
     public List<Corso> selectCorsi() throws SQLException {
     	List<Corso> corsi = new ArrayList<>();
     	String sql = "select * from corso";
-    	Statement stm = con.createStatement();
+    	Statement stm = conn.createStatement();
     	ResultSet rs = stm.executeQuery(sql);
     	
     	while(rs.next()){
@@ -415,7 +449,7 @@ public class DbGestioneAnagraficaRisorse {
     public Corso selectCorso(String nomeCorso) throws SQLException {
     	Corso corso = new Corso();
     	String sql = "select * from corso where titoloCorso = ?";
-    	PreparedStatement stm = con.prepareStatement(sql);
+    	PreparedStatement stm = conn.prepareStatement(sql);
     	stm.setString(1, nomeCorso);
     	ResultSet rs = stm.executeQuery();
     	
@@ -438,7 +472,7 @@ public class DbGestioneAnagraficaRisorse {
   		String sql = "INSERT INTO CANDIDATO (idCandidato,idCv,idAnagraficaCandidato)"+
   					" VALUES(sequenceCandidato.nextval,sequenceCv.currval,sequenceAnagraficaCandidato.currval)";
   		
-  		PreparedStatement ps = con.prepareStatement(sql);
+  		PreparedStatement ps = conn.prepareStatement(sql);
   	
   		ps.executeUpdate();
   	}
@@ -446,7 +480,7 @@ public class DbGestioneAnagraficaRisorse {
   	public void insertIndirizzo(Indirizzo indirizzo)throws SQLException{
   		//String sql= "INSERT INTO INDIRIZZO VALUES (sequenceIndirizzo.nextval,?,?,?,?)";
   		String sql= "INSERT INTO INDIRIZZO (idindirizzo,citta) VALUES (sequenceIndirizzo.nextval,?)";
-  		PreparedStatement ps = con.prepareStatement(sql);
+  		PreparedStatement ps = conn.prepareStatement(sql);
   		
 
   		String citta = indirizzo.getCitta();
@@ -466,7 +500,7 @@ public class DbGestioneAnagraficaRisorse {
   	public void insertAnagraficaCandidato(AnagraficaCandidato anag)throws SQLException{
   	String sql = "INSERT INTO ANAGRAFICACANDIDATO VALUES(sequenceAnagraficaCandidato.nextval,?,?,?,?,?,sequenceIndirizzo.currval)";
   	
-  	PreparedStatement ps = con.prepareStatement(sql);
+  	PreparedStatement ps = conn.prepareStatement(sql);
   	
   	
   	String nome = anag.getNome();
@@ -491,7 +525,7 @@ public class DbGestioneAnagraficaRisorse {
   	public Risorsa selectRisorsaCandidato(int idRisorsa)throws SQLException{
   		String sql ="select * from risorsa where idRisorsa = ?";
   		
-  		PreparedStatement ps = con.prepareStatement(sql);
+  		PreparedStatement ps = conn.prepareStatement(sql);
   		Risorsa risorsa = null;
   		ps.setInt(1,idRisorsa);
   		ResultSet rs = ps.executeQuery();
@@ -512,7 +546,7 @@ public class DbGestioneAnagraficaRisorse {
   		String sql = "update Indirizzo set citta=?,cap=?,via=?,nCivico=?  where idIndirizzo=?";
   		
   		
-  		PreparedStatement ps = con.prepareStatement(sql);
+  		PreparedStatement ps = conn.prepareStatement(sql);
   		
   			ps.setString(1,indirizzo.getCitta());
   			ps.setString(2,indirizzo.getCap());
@@ -528,7 +562,7 @@ public class DbGestioneAnagraficaRisorse {
   		String sql = "update AnagraficaCandidato set cellulare=?, email=?, titolodiStudi=? where idAnagraficaCandidato=?";
   		
   		
-  			PreparedStatement ps = con.prepareStatement(sql);
+  			PreparedStatement ps = conn.prepareStatement(sql);
   			ps.setString(1,anagraficaCandidato.getCellulare());
   			ps.setString(2, anagraficaCandidato.getEmail());
   			ps.setString(3,anagraficaCandidato.getTitoloStudio());
@@ -540,7 +574,7 @@ public class DbGestioneAnagraficaRisorse {
   	public void modificaCandidato(int idCandidato)throws SQLException{
   		String sql = "UPDATE CANDIDATO SET IDRISORSA = sequenceRisorsa.currval WHERE IDCANDIDATO = ?";
   		
-  		PreparedStatement ps = con.prepareStatement(sql);
+  		PreparedStatement ps = conn.prepareStatement(sql);
   		
   		ps.setInt(1,idCandidato);
   		ps.executeUpdate();

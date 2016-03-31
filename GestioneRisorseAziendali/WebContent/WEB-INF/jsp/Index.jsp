@@ -23,7 +23,7 @@
     <!--container menu start-->
     <div class="container-fluid">
         <!--Inizio anagrafica-->
-        <a href="#">
+        <a href="GestioneDatiAnagrafici.action">
             <div id="anagrafica" class="row">
                 <div class="col-xs-12">
                     <p>Gestione Dati Anagrafici</p>

@@ -1,4 +1,5 @@
-package service;
+package db;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,37 +9,33 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import org.springframework.stereotype.Service;
-import service.ConnessioneService;
+
 
 
 @Service
-public class DbGestioneSelezione implements ConnessioneService{
+public class DbGestioneSelezione{
 
-	private Connection con;
-
-	public DbGestioneSelezione() throws ClassNotFoundException, SQLException, NamingException {
-		establishConnection();
-	}
-
-	// method used to establish connection with database
-	private void establishConnection() {
-
-		try {
-			Context initContext = new InitialContext();
-			Context envContext = (Context) initContext.lookup("java:comp/env");
-			DataSource ds = (DataSource) envContext.lookup("jdbc/hrdb");
-			con = ds.getConnection();
-		} catch (SQLException e) {
-			System.out.println("SQLException "+e);
-		} catch (NamingException e) {
-			System.out.println("NamingException "+e);
-		}
-	}
-
+	Connection con;
 	
+	public DbGestioneSelezione(){
+		
+			try {
+				con =(new ConnessioneDb()).getConnection();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}    
 
 	//dato un certo corsista si ottera la descrizione delle sue potenzialita
-	@Override
+	
 	public ArrayList<String> selectNomeCognomePotenzialita(String nome,String cognome)throws SQLException{
 		ArrayList<String> s= new ArrayList<>();
 		String sql = "select nome,cognome,dataNascita,email , potenzialita from AnagraficaCandidato a,Candidato c, "
@@ -65,7 +62,7 @@ public class DbGestioneSelezione implements ConnessioneService{
 		return s;
 
 	}
-	@Override
+	
 	public ArrayList<String> selectNomeCognomeProfiloCaratteriale(String nome,String cognome)throws SQLException{
 		ArrayList<String> s= new ArrayList<>();
 

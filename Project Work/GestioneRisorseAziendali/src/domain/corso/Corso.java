@@ -1,6 +1,5 @@
 package domain.corso;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 public class Corso {
@@ -26,13 +25,13 @@ public class Corso {
 	public void setTitoloCorso(String titoloCorso) {
 		this.titoloCorso = titoloCorso;
 	}
-	public Date getDataInizio() {
+	public LocalDate getDataInizio() {
 		return dataInizio;
 	}
 	public void setDataInizio(LocalDate localDate) {
 		this.dataInizio = localDate;
 	}
-	public Date getDataFine() {
+	public LocalDate getDataFine() {
 		return dataFine;
 	}
 	public void setDataFine(LocalDate localDate) {

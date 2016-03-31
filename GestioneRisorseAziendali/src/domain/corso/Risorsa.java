@@ -6,6 +6,7 @@ public class Risorsa {
 	@NotNull
 	private int idRisorsa;
 	
+	private int idAnagrafica;
 	private int idTirocinio;
 	
 	public int getIdRisorsa() {
@@ -19,6 +20,12 @@ public class Risorsa {
 	}
 	public void setIdTirocinio(int idTirocinio) {
 		this.idTirocinio = idTirocinio;
+	}
+	public int getIdAnagrafica() {
+		return idAnagrafica;
+	}
+	public void setIdAnagrafica(int idAnagrafica) {
+		this.idAnagrafica = idAnagrafica;
 	}
 	
 	
