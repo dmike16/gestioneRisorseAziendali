@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
+
 <Context>
-<Resource 
+	<Resource 
 		name="jdbc/hrakt" 
 		auth="Container" 
 		type="javax.sql.DataSource"
@@ -8,8 +9,9 @@
 		maxIdle="30" 
 		maxWait="10000" 
 		driverClassName="oracle.jdbc.OracleDriver"
-		url="192.168.1.201" 
+		url="jdbc:oracle:thin:@192.168.1.201:1521:ORCL" 
 		username="hrakt"
 		password="hrakt" 
 		/>
+	
 </Context>

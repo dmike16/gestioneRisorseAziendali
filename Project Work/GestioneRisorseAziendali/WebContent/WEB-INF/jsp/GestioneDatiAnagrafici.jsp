@@ -1,4 +1,5 @@
 <!-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> -->
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <!doctype html>
 
 <html>
@@ -10,11 +11,17 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="GestioneDatiAnagrafici.css" />
-    <script src="jquery-2.2.0.min.js"></script>
-	<script src="bootstrap.min.js"></script>
+   
+    
+    
+    <s:url value="/resources/css/bootstrap-theme.min.css" var="boot1"/>
+	<s:url value="/resources/css/bootstrap.min.css" var="boot2"/>
+	<s:url value="/resources/css/GestioneDatiAnagrafici.css" var="css"/>
+	
+	<link href="${css}" rel="stylesheet"></link>
+	<link href="${boot1}" rel="stylesheet"></link>
+	<link href="${boot2}" rel="stylesheet"></link>
+
 
 
 </head>
@@ -37,7 +44,7 @@
                     <div class="box">
                         <a href="inserimentoDatiAnagrafici.action">
                             <h2>Inserimento Dati Anagrafici</h2>
-                            <!-- <input type="image" src="../../img/GestioneDatiAnagrafici_form_input.png" width="30%" class="inserimento" style="cursor:pointer" />-->
+                            <input type="image" src="/img/GestioneDatiAnagrafici_form_input.png" width="30%" class="inserimento" style="cursor:pointer" />
                         </a>
                     </div>
 
@@ -49,15 +56,10 @@
                 <div class="col-xs-6 col-md-6 colonna">
 
                     <div class="box">
-
-                        <form action="RicercaDatiAnagrafici.action" method="post">
+                        <a href="ricercaDatiAnagrafici.action">
                             <h2>Ricerca Dati Anagrafici</h2>
-                            <input type="checkbox" name="scelta" value="Corsisti" /> Corsisti
-                            <input type="checkbox" name="scelta" value="Candidati" /> Candidati
-                            <br/>
-                            <input type="image" src="GestioneDatiAnagrafici_form_search.png" width="30%" class="ricerca" style="cursor:pointer" alt="Submit Form" />
-                        </form>
-
+                            <input type="image" src="/img/GestioneDatiAnagrafici_form_search.png" width="30%" class="ricerca" style="cursor:pointer" />
+                        </a>
                     </div>
 
                 </div>
@@ -70,4 +72,5 @@
 
         <footer>FOOTER</footer>
     </div>
+    
 </body>

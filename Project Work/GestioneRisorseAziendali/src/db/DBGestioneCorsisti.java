@@ -6,10 +6,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 import domain.corso.*;
 import domain.anagrafica.*;
@@ -17,9 +13,8 @@ import domain.RicercaScelta;
 
 public class DBGestioneCorsisti{
 	
-	private ConnessioneDb db;
+	private ConnessioneDb db = new ConnessioneDb();
 	private Connection conn=db.getConnection();
-	
 	
 	
 	

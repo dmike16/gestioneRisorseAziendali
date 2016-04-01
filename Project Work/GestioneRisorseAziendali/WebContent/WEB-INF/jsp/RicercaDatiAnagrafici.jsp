@@ -1,20 +1,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap-theme.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/RicercaDatiAnagrafici.css" />
-<script src="js/jquery-2.2.0.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+
+	
+		<s:url value="/resources/css/bootstrap-theme.min.css" var="boot1"/>
+		<s:url value="/resources/css/bootstrap.min.css" var="boot2"/>
+		<s:url value="/resources/css/RicercaDatiAnagrafici.css" var="css"/>
+		
+		<s:url value="/resources/js/jquery-2.2.0.min.js" var="jquery"/>
+		<s:url value="/resources/js/bootstrap.min.js" var="bootjs"/>
+		<s:url value="/resources/js/RicercaDatiAnagrafici.js" var="corjs"/>
+		
+		<s:url value="/resources/img/pointRed.png" var="pointred"/>
+		
+		<link href="${css}" rel="stylesheet"></link>
+		<link href="${boot1}" rel="stylesheet"></link>
+		<link href="${boot2}" rel="stylesheet"></link>
+		<script src="${jquery}"></script>
+		<script src="${bootjs}"></script>
+		
+
+
 <title>Ricerca Dati Anagrafici</title>
 </head>
+
 <body>
 	<div class="container effect">
 		<section>
@@ -35,54 +51,37 @@
 				<div class="col-md-5">
 					<section>
 						<h2>Ricerca per nome</h2>
-
+			
 						<%-- Messaggio di Errore in caso entrambi campi nulli --%>
 						<c:if test="${nomeCognomeError != null}">
-							<p class="text-danger">${nomeCognomeError}</p>
+							<p class="text-danger">${requestScope.nomeCognomeError}</p>
 						</c:if>
-						<form action="ricercaDatiAnagrafici1.action" method="post">
+						<form:form commandName="RicercaScelta" modelAttribute="ricerca" action="ricercaDatiAnagrafici1.action" method="post">
 							<div class="form-group">
-								<label for="nome"> <input id="nome" class="form-control"
-									path="nome" placeholder="nome" />
+								
+								<label for="nome"> 
+								<form:input id="nome"  path="nome" placeholder="nome" />
 								</label>
 							</div>
 
 							<div class="form-group">
-								<label for="cognome"> <input id="cognome"
-									class="form-control" path="cognome" placeholder="cognome" />
+								<label for="cognome"> 
+								<form:input id="cognome" path="cognome" placeholder="cognome" />
 								</label>
 							</div>
 
 							<button class="btn btn-default" type="submit">Cerca</button>
-						</form>
+						</form:form>
 					</section>
 				</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-5">
-					<section>
-						<h2>Ricerca per email</h2>
-
-						<%-- Messaggio di Errore in caso entrambi campi nulli --%>
-						<c:if test="${emailError != null}">
-							<p class="text-danger">${emailError}</p>
-						</c:if>
-						<form action="ricercaDatiAnagrafici2.action">
-							<div class="form-group">
-								<label for="nome"><input id="nome" class="form-control"
-									name="email" type="email" placeholder="email" /> </label>
-							</div>
-
-							<button class="btn btn-default" type="submit">Cerca</button>
-						</form>
-					</section>
-				</div>
+				
 			</div>
 		</section>
-
+		
 		<%-- Parte lista  --%>
 		<div class="row titleTable">
 			<div class="col-md-1">
-				<img src="img/pointRed.png" class="icon" />
+				
 			</div>
 			<div class="col-md-2">
 				<h3>Nome</h3>
@@ -96,39 +95,39 @@
 			<div class="col-md-2">
 				<h3>E-Mail</h3>
 			</div>
-			<div class="col-md-3">
-				<p class="sprite elimina"></p>
-				<p class="sprite modifica"></p>
-				<p class="sprite view"></p>
-				<p class="sprite scarica"></p>
-			</div>
+		
 		</div>
-		<c:forEach var="DatoAnagrafico" items="${listaCandidato }">
+		<c:forEach var="Candidato" items="${requestScope.listaCandidato}">
 			<div class="row list">
 				<div class="col-md-1">
-					<img src="img/pointGreen.png" class="icon" />
+					<img src="/resources/img/pointGreen.png" class="icon" />
 				</div>
 				<div class="col-md-2">
-					<h3>${DatoAnagrafico.nome }</h3>
+					<h3>${Candidato.nome}</h3>
+					<c:out value="${Candidato.nome}"/>
 				</div>
 				<div class="col-md-2">
-					<h3>${DatoAnagrafico.cognome }</h3>
+					<h3>${Candidato.cognome}</h3>
 				</div>
 				<div class="col-md-2">
-					<h3>${DatoAnagrafico.cellulare }</h3>
+					<h3>${Candidato.cellulare}</h3>
 				</div>
 				<div class="col-md-2">
-					<h3>${DatoAnagrafico.email }</h3>
+					<h3>${Candidato.email}</h3>
 				</div>
 				<div class="col-md-3">
-					<button type="button" class="sprite elimina" data-toggle="modal"
-						data-target="#eliminaModal"></button>
-					<button type="button" class="sprite modifica" data-toggle="modal"
-						data-target="#myModal"></button>
-					<button type="button" class="sprite view" data-toggle="modal"
-						data-target="#myModal"></button>
-					<button type="button" class="sprite scarica" data-toggle="modal"
-						data-target="#myModal"></button>
+					<button type="button" class="sprite elimina"
+						data-toggle="modal" data-target="#myModal">
+					</button>
+					<button type="button" class="sprite modifica"
+						data-toggle="modal" data-target="#myModal">
+					</button>
+					<button type="button" class="sprite view"
+						data-toggle="modal" data-target="#myModal">
+					</button>
+					<button type="button" class="sprite scarica"
+						data-toggle="modal" data-target="#myModal">
+					</button>
 				</div>
 			</div>
 		</c:forEach>
@@ -136,27 +135,7 @@
 
 
 	</div>
-
-	<div class="modal fade" id="eliminaModal" tabindex="-1" role="dialog"
-		aria-labelledby="eliminaLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="eliminaLabel">Modal title</h4>
-				</div>
-				<div class="modal-body">...</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script src="js/RicercaDatiAnagrafici.js"></script>
+	<script src="${corjs}"></script>
+	
 </body>
 </html>

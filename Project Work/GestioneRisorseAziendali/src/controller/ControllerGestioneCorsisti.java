@@ -35,7 +35,13 @@ import domain.corso.Corso;
 public class ControllerGestioneCorsisti {
 	
 	//----implementazione della classe con le query----
+
 	private DBGestioneCorsisti db = new DBGestioneCorsisti();
+	
+	@RequestMapping(value="/tornaAlMenu.action")
+	public String tornaAlMenu(Model model){
+		return "Index";
+	}
 	
 	/**
 	 * Metodo che rimanda la jsp che contiente tutte le form
@@ -43,11 +49,12 @@ public class ControllerGestioneCorsisti {
 	 * 
 	 * @return String index jsp
 	 */
-	@RequestMapping("index.action")
-	public String gestioneCorsistiIndex(){
-
-		return "index";
+	@RequestMapping(value="gestioneCorsisti.action")
+	public String gestioneCorsisti(Model model)
+	{
+		return "GestioneCorsisti";
 	}
+	
 	
 	/**
 	 * Metodo che interroga il database per la ricerca tramite nome e permette di selezionare per : studi , lavoro ,

@@ -9,19 +9,20 @@
 <body>
 <div id="global">
 
-    <c:if test="${requestScope.list != null">
-        <p >
-        
+    <c:if test="${requestScope.list}!= null">
+       </c:if> 
+         
         <ul>
         <c:forEach var="elem" items="${requestScope.list}">
-            <li>${elem}<p>
+            <li>
+            ${elem}
             
            
             </li>
         </c:forEach>
         </ul>
         
-</c:if>
+
 </div>
 </body>
 </html>

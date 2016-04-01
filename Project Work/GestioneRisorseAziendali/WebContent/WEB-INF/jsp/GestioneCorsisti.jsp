@@ -1,68 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE HTML>
+
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+
+
+<!DOCTYPE html>
 <html>
 <head>
 <title>Gestione Corsisti</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<link rel="stylesheet" href="css/bootstrap.min.css"></link>
-		<link rel="stylesheet" href="css/bootstrap-theme.min.css"></link>
-		<link rel="stylesheet" href="css/GestioneCorsisti.css"></link>
-<script src="js/jquery-2.2.0.min.js"></script>
+	
+
+		
+		<s:url value="/resources/css/bootstrap-theme.min.css" var="boot1"/>
+		<s:url value="/resources/css/bootstrap.min.css" var="boot2"/>
+		<s:url value="/resources/css/GestioneCorsisti.css" var="css"/>
+		
+		<s:url value="/resources/js/jquery-2.2.0.min.js" var="jquery"/>
+		<s:url value="/resources/js/bootstrap.min.js" var="bootjs"/>
+		<s:url value="/resources/js/GestioneCorsisti.js" var="corjs"/>
+		
+		
+		<link href="${css}" rel="stylesheet"></link>
+		<link href="${boot1}" rel="stylesheet"></link>
+		<link href="${boot2}" rel="stylesheet"></link>
+		<script src="${jquery}"></script>
+		<script src="${bootjs}"></script>
+		
+		
+
 </head>
+
 <body>
-	<!-- Ricerca -->
 	<div class="container">
 		<div class = "row">
 			<div class="col-md-4 menu">
-				<input type="radio" id="nome">Ricerca per nome</br>
-				<input type="radio" id="studio">Ricerca per titolo di studio</br>
-				<input type="radio" id="lavoro">Ricerca per lavoro</br>
-				<input type="radio" id="formazione">Ricerca per formazione</br>
-				<input type="radio" id="corso">Ricerca per corso</br>
+				<input type="radio" name="ricerca" id="nome">Ricerca per nome</br>
+				<input type="radio" name="ricerca" id="studio">Ricerca per titolo di studio</br>
+				<input type="radio" name="ricerca" id="lavoro">Ricerca per lavoro</br>
+				<input type="radio" name="ricerca" id="formazione">Ricerca per formazione</br>
+				<input type="radio" name="ricerca" id="corso">Ricerca per corso</br>
 				
 			</div>
 			<div class="col-md-3"></div>
-			<div class="col-md-5 ricerca"></div>
-		</div>
-		
-		<!-- VISUALIZZAZIONE -->
-		<div class="row">
+			<div class="col-md-5 ricerca">
 			
-				<c:forEach var="datoAnagrafica" items="${anagrafica}">
-					<div class="col-md-5">
-					<p>nome:${datoAnagrafica.nome} cognome:${datoAnagrafica.cognome} </p>
-					</div>
-					<div class="col-md-5">
-						<c:forEach var="datiLavoro" items="${lavori}">
-							<p> ${datiLavoro}</p>
-						</c:forEach>
-						<c:forEach var="datiCertificazioni" items="${certificazioni }">
-							<p>${datiCertificazioni }</p>
-						</c:forEach>
-						<c:forEach var="datiCorso" items="${corsi }">
-							<p>${datiCorso }
-						</c:forEach>
-						<c:forEach var="voto" items="${voto }">
-							<p>${voto }</p>
-						</c:forEach>
-					</div>
-					<div class="col-md-2">
-						<c:forEach var="datiAzenda" items="${aziende }">
-							<p>${datiAzienda}</p>
-						</c:forEach>
-					</div>
-				</c:forEach>
-			
-			<div class="col-md-5">
-				<ul>
-				<c:forEach var="datiStudi" items="${formazione }">
-				<li><p> titolo di studio :${datiStudi.titoloStudio} </p>
-				</c:forEach>
 			</div>
 		</div>
-		<input id ="submit" type="submit" action="Index.html" value="Ritorna Al Menu Principale">
+		<form:form action="tornaAlMenu.action" method="post">
+			<input id="submit" type="submit" tabindex="2" 
+                    value="torna al menù">
+		</form:form>
 	</div>
+	
+	
+	<script src="${corjs}"></script>
 </body>
 </html>

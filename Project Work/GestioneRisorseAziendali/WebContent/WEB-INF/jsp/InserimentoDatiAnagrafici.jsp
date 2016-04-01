@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Aggiungi dati anagrafici</title>
-<style type="text/css">@import url("<c:url value="/css/InserimentoDatiAnagrafici.css"/>");</style>
+
 </head>
 <body>
 
@@ -81,14 +81,17 @@
         </p>
         <p id="buttons">
             <input id="reset" type="reset" tabindex="11">
+            
             <input id="submit" type="submit" tabindex="12" 
-                value="Indietro">
-            <input id="submit" type="submit" tabindex="13" 
                 value="Salva">
-            <input id="submit" type="submit" tabindex="14" 
+            <input id="submit" type="submit" tabindex="13" 
                 value="Salva e inserisci CV">        
         </p>
     </fieldset>
+</form:form>
+<form:form action="gestioneDatiAnagrafici.action" method="post">
+<input id="submit" type="submit" tabindex="14" 
+                value="Indietro">
 </form:form>
 </div>
 </body>

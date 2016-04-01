@@ -1,11 +1,16 @@
 package controller;
 
+
+
+
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,13 +19,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import db.DbGestioneAnagraficaRisorse;
+import domain.RicercaScelta;
 import domain.anagrafica.AnagraficaCandidato;
-import domain.anagrafica.CV;
-import domain.anagrafica.Indirizzo;
 import domain.anagrafica.FormDatiAnagrafici;
+import domain.anagrafica.Indirizzo;
 
 @Controller
 public class ControllerDatiAnagrafici {
+	private static final Log logger = LogFactory.getLog(ControllerDatiAnagrafici.class);
+	
+	@RequestMapping(value="/gestioneCV.action")
+	public String gestioneCV(Model model)
+	{
+		return "GestioneCV";
+	}
 	
 	@RequestMapping(value="/index.action")
 	public String index(Model model)
@@ -42,41 +54,72 @@ public class ControllerDatiAnagrafici {
 	}
 	
 	@RequestMapping(value="/inserimentoCandidato.action")
-	public String inserimentoCandidato(Model model, @ModelAttribute("form") FormDatiAnagrafici form,
-        BindingResult bindingResult) {
+	public String inserimentoCandidato( @Valid @ModelAttribute("form") FormDatiAnagrafici form,
+			BindingResult bindingResult,Model model) {
 		
+		
+		if(bindingResult.hasErrors()){
+			FieldError fieldError = bindingResult.getFieldError();
+			logger.info("Code:" + fieldError.getCode() + ", object:"
+                    + fieldError.getObjectName() + ", field:"
+                    + fieldError.getField());
+			return "InserimentoDatiAnagrafici";
+		}
 		AnagraficaCandidato anagCand = form.getAnagraficaCandidato();
 		Indirizzo indirizzo = form.getIndirizzo();
 		
-		
+		System.out.println(anagCand.toString());
+		System.out.println(indirizzo.toString());
 		DbGestioneAnagraficaRisorse db = new DbGestioneAnagraficaRisorse();
-		
 		try {
 			db.insertIndirizzo(indirizzo);
 		
 			db.insertAnagraficaCandidato(anagCand);
-			
-			if (bindingResult.hasErrors()) {
-		        FieldError fieldError = bindingResult.getFieldError();		
-				return "GestioneDatiAnagrafici";
-		    	}	
 		
 			return "GestioneDatiAnagrafici";
 	
 
 	    
 		} catch (SQLException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 		return "GestioneDatiAnagrafici";
 
 		}
-		
 	}
 	
-	@RequestMapping(value="/inserisciCV.action")
-	public String inserisciCV(Model model)
-	{
-		return null;
+	@RequestMapping(value="/ricercaDatiAnagrafici.action")
+	public String ricercaCandidato(Model model){
+		
+		model.addAttribute("ricerca",new RicercaScelta());
+		
+		return "RicercaDatiAnagrafici";
 	}
+	
+	@RequestMapping(value="/ricercaDatiAnagrafici1.action")
+	public String ricercaPerNome(@ModelAttribute("ricerca") RicercaScelta ricercaScelta, BindingResult bindingResult,Model model ){
+		if(bindingResult.hasErrors()){
+			FieldError fieldError = bindingResult.getFieldError();
+			logger.info("Code:" + fieldError.getCode() + ", object:"
+                    + fieldError.getObjectName() + ", field:"
+                    + fieldError.getField());
+			return "RicercaDatiAnagrafici";
+		}
+		System.out.println(ricercaScelta.getNome());
+		List<AnagraficaCandidato>listaCandidato = new ArrayList<>();
+		
+		DbGestioneAnagraficaRisorse db = new DbGestioneAnagraficaRisorse();
+		try{
+			System.out.println(ricercaScelta.getNome());
+			listaCandidato = db.selectCandidato(ricercaScelta.getNome(), ricercaScelta.getCognome());
+			model.addAttribute("listaCandidato", listaCandidato);
+			System.out.println(listaCandidato.toString());
+			return "RicercaDatiAnagrafici";
+		
+		}catch(SQLException e){
+			
+		}
+		return "RicercaDatiAnagrafici";
+	}
+	
 }
