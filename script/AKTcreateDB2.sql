@@ -88,12 +88,14 @@ create sequence sequenceColloquio
   increment by 1
   nocache
   nocycle; 
-create sequence sequenceCompetenza
+  
+/*create sequence sequenceCompetenza
   start with 0
   minvalue 0
   increment by 1
   nocache
-  nocycle;  
+  nocycle;*/  
+  
 create sequence sequenceRisorsa
   start with 0
   minvalue 0
@@ -275,11 +277,11 @@ create table colloquio
 
 /*SEZIONE CORSO*/
 
-CREATE TABLE competenza(
+/*CREATE TABLE competenza(
   idCompetenza number(6) PRIMARY KEY,
   settore varchar2(20),
   specializzazione varchar2(30)
-);
+);*/
 
 CREATE TABLE corso(
 	idCorso char(7) primary key,
@@ -287,8 +289,8 @@ CREATE TABLE corso(
 	dataInizio date,
 	dataFine date,
 	azienda varchar2(20),
-	idCompetenza number(6) not null,
-	foreign key(idCompetenza) references competenza(idCompetenza)
+	settore varchar2(20),
+  specializzazione varchar2(30)
 );
 
 
@@ -327,7 +329,7 @@ CREATE TABLE CorsoHistory(
 CREATE TABLE risultato (
 	idModulo char(7) not null,
 	idRisorsa number(6) not null,
-  valutazione varchar2(250),
+  valutazione number(1),
   esito varchar2(250),
   primary key(idModulo,idRisorsa),
 	foreign key(idModulo) references modulo(idModulo),

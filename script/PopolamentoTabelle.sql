@@ -253,7 +253,7 @@ insert into Anagrafica(idanagrafica, sesso, luogonascita, telefono, codicefiscal
 /*SEZIONE CORSO*/
 
 --Tabella COMPETENZA
-insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Html5');
+/*insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Html5');
 insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Javascript');
 insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'jQuery');
 insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Css3');
@@ -265,14 +265,14 @@ insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Java
 insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Java EE');
 insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Framework Spring');
 insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Framework Spring');
-insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Framework Liferay');
+insert into Competenza  values (sequenceCompetenza.nextval, 'Informatica', 'Framework Liferay');*/
 
 --Tabella CORSO  -> ULTIMO CAMPO FK IDCOMPETENZA
-insert into Corso values ('AKT000C', 'Corso Analista Programmatore Java-Oracle', (TO_DATE ('2016-GEN-07', 'yyyy-mon-dd')), (TO_DATE ('2016-MAR-17', 'yyyy-mon-dd')), 'AKT S.r.l', 10);
-insert into Corso values ('AKT001C', 'Corso Sistemista', (TO_DATE ('2016-MAR-01', 'yyyy-mon-dd')), (TO_DATE ('2016-MAG-01', 'yyyy-mon-dd')), 'AKT S.r.l', 7);
-insert into Corso values ('AKT002C', 'Corso Sviluppatore Android', (TO_DATE ('2015-SET-07', 'yyyy-mon-dd')), (TO_DATE ('2015-NOV-17', 'yyyy-mon-dd')), 'AKT S.r.l', 11);
+insert into Corso values ('AKT000C', 'Corso Analista Programmatore Java-Oracle', (TO_DATE ('2016-GEN-07', 'yyyy-mon-dd')), (TO_DATE ('2016-MAR-17', 'yyyy-mon-dd')), 'AKT S.r.l', 'programmazione', 'java se');
+insert into Corso values ('AKT001C', 'Corso Sistemista', (TO_DATE ('2016-MAR-01', 'yyyy-mon-dd')), (TO_DATE ('2016-MAG-01', 'yyyy-mon-dd')), 'AKT S.r.l', 'sistemistica', 'pl-sql');
+insert into Corso values ('AKT002C', 'Corso Sviluppatore Android', (TO_DATE ('2015-SET-07', 'yyyy-mon-dd')), (TO_DATE ('2015-NOV-17', 'yyyy-mon-dd')), 'AKT S.r.l', 'programmazione mobile', 'apache cordova');
 
---Tabella MODULO 
+--Tabella MODULO ,''
 insert into modulo(idmodulo, nomemodulo) values('AKT000M', 'Strutturata');
 insert into modulo(idmodulo, nomemodulo) values('AKT002M', 'PL-SQL');
 insert into modulo(idmodulo, nomemodulo) values('AKT001M', 'SQL');
@@ -287,6 +287,7 @@ insert into modulocorso values ('AKT000C', 'AKT003M', null, null);
 
 --Tabella RISORSA -> SECONDO CAMPO FK IDTIROCINIO -> TERZO CAMPO FK IDANAGRAFICA
 insert into Risorsa values(sequenceRisorsa.nextval, null, 1);
+insert into Risorsa values(sequenceRisorsa.nextval, null, 2);
 insert into Risorsa values(sequenceRisorsa.nextval, null, 3);
 insert into Risorsa values(sequenceRisorsa.nextval, null, 4);
 insert into Risorsa values(sequenceRisorsa.nextval, null, 5);
@@ -307,15 +308,15 @@ insert into corsohistory(IDCORSO, IDRISORSA) values('AKT001C', 8);
 insert into corsohistory(IDCORSO, IDRISORSA) values('AKT001C', 9);
 
 --Tabella RISULTATO
-INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT000M',1,'Ammesso');
-INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT000M',2,'Non ammesso');
-INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT002M',1,'Non ammesso');
-INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT002M',2,'Ammesso');
-INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT001M',3,'Non ammesso');
-INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT003M',5,'Ammesso');
-INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT003M',6,'Non ammesso');
-INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT002M',7,'Ammesso');
-INSERT INTO Risultato (idModulo,idRisorsa,esito) VALUES ('AKT002M',8,'Non ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa, valutazione, esito) VALUES ('AKT000M',1, 6,'Ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa, valutazione, esito) VALUES ('AKT000M',2, 4,'Non ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa, valutazione, esito) VALUES ('AKT002M',1, 4,'Non ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa, valutazione, esito) VALUES ('AKT002M',2, 7,'Ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa, valutazione, esito) VALUES ('AKT001M',3, 2, 'Non ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa, valutazione, esito) VALUES ('AKT003M',5, 8,'Ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa, valutazione, esito) VALUES ('AKT003M',6, 5,'Non ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa, valutazione, esito) VALUES ('AKT002M',7, 7,'Ammesso');
+INSERT INTO Risultato (idModulo,idRisorsa, valutazione, esito) VALUES ('AKT002M',8, 3,'Non ammesso');
 
 --Tabella CANDIDATO -> secondo campo FK IDCV -> TERZO CAMPO FK IDANAGRAFICA -> QUARTOCAMPO FK IDRISORSA
 insert into Candidato values (sequenceCandidato.nextval, 1, 1, 1);
@@ -327,6 +328,7 @@ insert into Candidato values (sequenceCandidato.nextval, 6, 6, 6);
 insert into Candidato values (sequenceCandidato.nextval, 7, 7, 7);
 insert into Candidato values (sequenceCandidato.nextval, 8, 8, 8);
 insert into Candidato values (sequenceCandidato.nextval, 9, 9, 9);
+insert into Candidato values (sequenceCandidato.nextval, 10, 10, 10);
 
 /*SEZIONE SELEZIONE*/
 

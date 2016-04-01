@@ -54,6 +54,6 @@ DROP SEQUENCE sequenceCV;
 DROP SEQUENCE sequenceAnagraficaCandidato;
 DROP SEQUENCE sequenceAnagrafica;
 DROP SEQUENCE sequenceCandidato;
-DROP SEQUENCE sequenceCompetenza;
+--DROP SEQUENCE sequenceCompetenza;
 DROP SEQUENCE sequenceRisorsa;
 DROP SEQUENCE sequenceBatteria;
