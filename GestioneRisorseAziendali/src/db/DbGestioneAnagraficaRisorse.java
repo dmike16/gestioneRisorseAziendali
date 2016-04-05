@@ -338,6 +338,109 @@ public class DbGestioneAnagraficaRisorse  {
     	
     }
     
+    // Controllo se torna 0
+  	public int selectIdSelezione(int idCandidato)throws SQLException{
+  		String sql = " SELECT IDSELEZIONE FROM PARTECIPA WHERE IDCANDIDATO = ?";
+  		
+  		PreparedStatement ps = con.prepareStatement(sql);
+  		
+  		ps.setInt(1, idCandidato);
+  		ResultSet rs = ps.executeQuery();
+  		if(rs.next()){
+  		return  rs.getInt(1);
+  		}else{
+  			return 0;
+  		}
+  	}
+    //elimina Risorsa e corso
+    public int eliminaRisorsaCorsoHistory(int idRisorsa)throws SQLException{
+    	
+    	String sql = "DELETE CORSOHISTORY WHERE IDRISORSA = ? ";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idRisorsa);
+    	
+    	return ps.executeUpdate();
+    }
     
+    public int eliminaRisultato(int idRisorsa)throws SQLException{
+    	
+    	String sql= "DELETE RISULTATO WHERE IDRISORSA = ? ";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idRisorsa);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaRisorsa(int idRisorsa)throws SQLException{
+    	String sql = "DELETE RISORSA WHERE IDRISORSA = ?";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idRisorsa);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaColloquio(int idCandidato)throws SQLException{
+    	String sql = " DELETE COLLOQUIO WHERE IDCANDIDATO = ? ";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idCandidato);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaEsito(int idSelezione)throws SQLException{
+    	String sql = " DELETE ESITO WHERE IDESITO = "
+    			+" (SELECT IDESITO FROM SELEZIONE WHERE IDSELEZIONE = ?)";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idSelezione);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaBatteriaTest(int idSelezione)throws SQLException{
+    	String sql = "DELETE BATTERIATEST WHERE IDTEST = "
+    			+ "(SELECT IDTEST FROM TESTSELEZIONE WHERE IDSELEZIONE = ?) ";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setInt(1, idSelezione);
+    	
+    	return ps.executeUpdate();
+    	
+    }
+    
+    public int eliminaTestSelezione(int idSelezione)throws SQLException{
+    	String sql = "DELETE FROM TESTSELEZIONE WHERE IDSELEZIONE = ? ";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setInt(1, idSelezione);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaSelezione(int idSelezione)throws SQLException{
+    	String sql = "DELETE FROM SELEZIONE WHERE IDSELEZIONE = ? ";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setInt(1, idSelezione);
+    	
+    	return ps.executeUpdate();
+    }
+    
+    public int eliminaPartecipa(int idSelezione)throws SQLException{
+    	String sql = "DELETE FROM PARTECIPA WHERE IDSELEZIONE = ? ";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setInt(1, idSelezione);
+    	
+    	return ps.executeUpdate();
+    }
+}
     
 }
