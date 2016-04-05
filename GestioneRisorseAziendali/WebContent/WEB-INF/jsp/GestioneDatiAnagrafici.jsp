@@ -10,11 +10,11 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/GestioneDatiAnagrafici.css" />
-    <script src="../../js/jquery-2.2.0.min.js"></script>
-
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="GestioneDatiAnagrafici.css" />
+    <script src="jquery-2.2.0.min.js"></script>
+	<script src="bootstrap.min.js"></script>
 
 
 </head>
@@ -35,9 +35,9 @@
                 <div class="col-xs-6 col-md-6 colonna">
 
                     <div class="box">
-                        <a href="InserimentoDatiAnagrafici.action">
+                        <a href="inserimentoDatiAnagrafici.action">
                             <h2>Inserimento Dati Anagrafici</h2>
-                            <input type="image" src="../../img/GestioneDatiAnagrafici_form_input.png" width="30%" class="inserimento" style="cursor:pointer" />
+                            <!-- <input type="image" src="../../img/GestioneDatiAnagrafici_form_input.png" width="30%" class="inserimento" style="cursor:pointer" />-->
                         </a>
                     </div>
 
@@ -55,7 +55,7 @@
                             <input type="checkbox" name="scelta" value="Corsisti" /> Corsisti
                             <input type="checkbox" name="scelta" value="Candidati" /> Candidati
                             <br/>
-                            <input type="image" src="../../img/GestioneDatiAnagrafici_form_search.png" width="30%" class="ricerca" style="cursor:pointer" alt="Submit Form" />
+                            <input type="image" src="GestioneDatiAnagrafici_form_search.png" width="30%" class="ricerca" style="cursor:pointer" alt="Submit Form" />
                         </form>
 
                     </div>
@@ -70,5 +70,4 @@
 
         <footer>FOOTER</footer>
     </div>
-    <script src="../../js/bootstrap.min.js"></script>
 </body>

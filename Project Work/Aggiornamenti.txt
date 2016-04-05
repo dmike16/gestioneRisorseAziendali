@@ -1,0 +1,2 @@
+Progetto da cui ripartire
+Modificato gestioneCorsisti.jsp : aggiunta la visualizzazione in coda.
