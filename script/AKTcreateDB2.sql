@@ -275,11 +275,6 @@ create table colloquio
 
 /*SEZIONE CORSO*/
 
-CREATE TABLE competenza(
-  idCompetenza number(6) PRIMARY KEY,
-  settore varchar2(20),
-  specializzazione varchar2(30)
-);
 
 CREATE TABLE corso(
 	idCorso char(7) primary key,
@@ -287,8 +282,9 @@ CREATE TABLE corso(
 	dataInizio date,
 	dataFine date,
 	azienda varchar2(20),
-	idCompetenza number(6) not null,
-	foreign key(idCompetenza) references competenza(idCompetenza)
+	settore varchar2(20),
+  	specializzazione varchar2(30)
+	
 );
 
 
@@ -297,7 +293,7 @@ idModulo char(7) PRIMARY KEY,
 nomeModulo varchar2(30)
 );
 
-CREATE TABLE ModuloCorsi(
+CREATE TABLE ModuloCorso(
 idCorso char(7),
 idModulo char(7),
 dataInizio date,
@@ -318,7 +314,7 @@ CREATE TABLE risorsa(
 CREATE TABLE CorsoHistory(
 	idcorso		CHAR(7),
 	idrisorsa	number(6),
-  superamento char(1),
+  	superamento char(1),
 	FOREIGN KEY(idcorso) REFERENCES Corso(idCorso),
 	FOREIGN KEY(idrisorsa) REFERENCES Risorsa(idRisorsa),
 	PRIMARY KEY(idcorso,idrisorsa)
@@ -327,9 +323,9 @@ CREATE TABLE CorsoHistory(
 CREATE TABLE risultato (
 	idModulo char(7) not null,
 	idRisorsa number(6) not null,
-  valutazione varchar2(250),
-  esito varchar2(250),
-  primary key(idModulo,idRisorsa),
+  	valutazione number(1,0),
+  	esito varchar2(250),
+  	primary key(idModulo,idRisorsa),
 	foreign key(idModulo) references modulo(idModulo),
 	foreign key(idRisorsa) references risorsa (idRisorsa)
 );
