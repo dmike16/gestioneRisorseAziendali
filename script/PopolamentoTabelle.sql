@@ -18,6 +18,7 @@ alter table colloquio modify valutazionefinale varchar2(20);
 /*SEZIONE ANAGRAFICA*/
 
 --Tabella CV
+insert into cv values (0,null,null);
 INSERT INTO Cv VALUES (sequenceCV.nextval, 'dog.jpg', null);
 INSERT INTO Cv VALUES (sequenceCV.nextval, 'dog.jpg', null);
 INSERT INTO Cv VALUES (sequenceCV.nextval, 'dog.jpg', null);
@@ -286,6 +287,7 @@ insert into modulocorso values ('AKT000C', 'AKT000M', null, null);
 insert into modulocorso values ('AKT000C', 'AKT003M', null, null);
 
 --Tabella RISORSA -> SECONDO CAMPO FK IDTIROCINIO -> TERZO CAMPO FK IDANAGRAFICA
+insert into risorsa values (0,null,null);
 insert into Risorsa values(sequenceRisorsa.nextval, null, 1);
 insert into Risorsa values(sequenceRisorsa.nextval, null, 3);
 insert into Risorsa values(sequenceRisorsa.nextval, null, 4);
@@ -386,9 +388,9 @@ INSERT INTO BatteriaTest VALUES ('chiap33','batt010',  88);
 
 --Tabella COLLOQUIO -> FK IDSELEZIONE
 INSERT INTO Colloquio VALUES (sequenceColloquio.nextval, 'Selezionato', 'Il candidato sembra predisposto per l informatica.', 'Conoscitivo', 1,'Buona conoscenza dell inglese','Determinato e sicuro');
-INSERT INTO Colloquio VALUES (sequenceColloquio.nextval, 'Positiva', 'Il candidato sembra avere le competenze adeguate', 'Tecnico', 1,'Ottima capicit‡ di problem solving', 'Determinato e sicuro');
+INSERT INTO Colloquio VALUES (sequenceColloquio.nextval, 'Positiva', 'Il candidato sembra avere le competenze adeguate', 'Tecnico', 1,'Ottima capicit√† di problem solving', 'Determinato e sicuro');
 INSERT INTO Colloquio VALUES (sequenceColloquio.nextval, 'Non selezionato', 'Il candidato sembra non avere una predisposizione per l informativa.', 'Conoscitivo', 2,'Nessuna','Insicuro e troppo teso');
-INSERT INTO Colloquio VALUES (sequenceColloquio.nextval, 'Selezionato', 'Il candidato sembra avere una spiccata propedeudicit‡ per questo settore', 'Conoscitivo', 3,'Entusiasmo e voglia di imparare', 'Energico e sveglio');
+INSERT INTO Colloquio VALUES (sequenceColloquio.nextval, 'Selezionato', 'Il candidato sembra avere una spiccata propedeudicit√† per questo settore', 'Conoscitivo', 3,'Entusiasmo e voglia di imparare', 'Energico e sveglio');
 INSERT INTO Colloquio VALUES (sequenceColloquio.nextval, 'Negativa', 'Il candidato non sembra essere pronto per questo tipo di percorso', 'Tecnico', 3, 'Entusiasmo e voglia di imparare','Buona conoscenza dell inglese');
 
 --Tabella PARTECIPA 
