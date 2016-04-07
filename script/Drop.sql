@@ -7,10 +7,10 @@ DROP TABLE Candidato;
 DROP TABLE Risultato;
 DROP TABLE CorsoHistory;
 DROP TABLE Risorsa;
-DROP TABLE ModuloCorsi;
+DROP TABLE ModuloCorso;
 DROP TABLE Modulo;
 DROP TABLE Corso;
-DROP TABLE Competenza;
+--DROP TABLE Competenza;
 
 DROP TABLE BatteriaTest;
 DROP TABLE Batteria;
