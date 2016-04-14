@@ -363,16 +363,16 @@ INSERT INTO TestSelezione VALUES ('gepi98e', 100, 9);
 INSERT INTO TestSelezione VALUES ('chiap33', 77, 10);
 
 --Tabella BATTERIA
-INSERT INTO Batteria VALUES ('batt001', 'JSE','frak98c');
-INSERT INTO Batteria VALUES ('batt002', 'strutturata','frib43n');
-INSERT INTO Batteria VALUES ('batt003', 'JEE','gesu47b');
-INSERT INTO Batteria VALUES ('batt004', 'SQL','lallo44');
-INSERT INTO Batteria VALUES ('batt005', 'jbdc','filos39');
-INSERT INTO Batteria VALUES ('batt006', 'html','jurk98c');
-INSERT INTO Batteria VALUES ('batt007', 'xml','lupw92c');
-INSERT INTO Batteria VALUES ('batt008', 'css','caio993');
+INSERT INTO Batteria VALUES ('batt001', 'JSE');
+INSERT INTO Batteria VALUES ('batt002', 'strutturata');
+INSERT INTO Batteria VALUES ('batt003', 'JEE');
+INSERT INTO Batteria VALUES ('batt004', 'SQL');
+INSERT INTO Batteria VALUES ('batt005', 'jbdc');
+INSERT INTO Batteria VALUES ('batt006', 'html');
+INSERT INTO Batteria VALUES ('batt007', 'xml',);
+INSERT INTO Batteria VALUES ('batt008', 'css');
 
-INSERT INTO Batteria VALUES ('batt010', 'logica','chiap33');
+INSERT INTO Batteria VALUES ('batt010', 'logica');
 
 --Tabella BATTERIATEST
 INSERT INTO BatteriaTest VALUES ('frak98c','batt001',  77); 
