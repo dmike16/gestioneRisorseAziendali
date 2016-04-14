@@ -1,115 +1,115 @@
 create sequence sequenceIndirizzo
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceLingua
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceAzienda
-  start with 0
-  minvalue 0  
+  start with 1
+  minvalue 1 
   increment by 1
   nocache
   nocycle;
  
  create sequence sequenceCertificazione
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
  
 create sequence sequenceFormazione
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceLavoro
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceCV
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;  
 
 create sequence sequenceNazionalita
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceAnagraficaCandidato
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;  
   
 create sequence sequenceAnagrafica
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceEsito
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceSelezione
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
   
 create sequence sequenceColloquio
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle; 
 create sequence sequenceCompetenza
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;  
 create sequence sequenceRisorsa
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
 create sequence sequenceCandidato
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
 
   create sequence sequenceBatteria
-  start with 0
-  minvalue 0
+  start with 1
+  minvalue 1
   increment by 1
   nocache
   nocycle;
