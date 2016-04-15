@@ -336,8 +336,8 @@ CREATE TABLE Candidato(
 	idrisorsa 		number(6),
 	idcv			NUMBER(6),
 	CONSTRAINT idprimary PRIMARY KEY(idcandidato),
-	CONSTRAINT	refrisorsa FOREIGN KEY(idrisorsa) REFERENCES Risorsa(idRisorsa),
-	CONSTRAINT refcv FOREIGN KEY(idcv) REFERENCES Cv(idCV),
+	CONSTRAINT	refrisorsa FOREIGN KEY(idrisorsa) REFERENCES Risorsa(idRisorsa) set null,
+	CONSTRAINT refcv FOREIGN KEY(idcv) REFERENCES Cv(idCV) set null,
 	CONSTRAINT refanagrafica FOREIGN KEY(idanagrafica) REFERENCES AnagraficaCandidato(idAnagraficaCandidato)
 );
 
