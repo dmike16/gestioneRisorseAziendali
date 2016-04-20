@@ -1,3 +1,18 @@
+
+  create sequence sequenceMateria
+  start with 0
+  minvalue 0
+  increment by 1
+  nocache
+  nocycle;
+ 
+  create sequence sequenceDocente
+  start with 0
+  minvalue 0
+  increment by 1
+  nocache
+  nocycle;
+
 create sequence sequenceIndirizzo
   start with 0
   minvalue 0
@@ -113,6 +128,44 @@ create sequence sequenceCandidato
   increment by 1
   nocache
   nocycle;
+  
+/*SEZIONE DOCENTE*/
+
+create table docente(
+idDocente number(6) primary key,
+nome varchar2(20) not null,
+cognome varchar2(20) not null,
+dataNascita date not null,
+telefono varchar2(20),
+cellulare varchar2(10) not null,
+email varchar2(30) not null,
+titoloStudio varchar2(20) not null,
+sesso char(1) not null,
+luogoNascita varchar2(50) not null,
+idNazionalita number(6) not null,
+codiceFiscale varchar2(16),
+partitaIva varchar2(11) not null,
+note varchar2(250),
+tariffa number(5,2),
+idIndirizzo number(6) not null,
+foreign key(idIndirizzo) references Indirizzo(idIndirizzo),
+foreign key(idNazionalita) references nazionalita(idNazionalita)
+);
+
+create table materia(
+idMateria number(6) primary key,
+argomentoMateria varchar2(30) not null
+);
+
+create table materieDocente(
+idMateria number(6),
+idDocente number(6),
+primary key(idMateria,idDocente),
+foreign key (idMateria) references materia(idMateria),
+foreign key (idDocente) references docente(idDocente)
+);
+
+
   
 /*SEZIONE ANAGRAFICA*/
 
